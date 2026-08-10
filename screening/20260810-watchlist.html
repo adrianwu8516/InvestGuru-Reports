@@ -1,0 +1,1486 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>InvestGuru｜追蹤清單篩選審計</title>
+  <style>
+    :root{--ink:#182225;--muted:#657276;--line:#d8dfdd;--paper:#fff;--canvas:#edf1ef;--green:#0d7963;--green-soft:#e5f2ed;--amber:#a96316;--amber-soft:#f8eddd;--blue:#315d86;--blue-soft:#e8eff6;--red:#ad3f47;--red-soft:#f7e5e7}
+    *{box-sizing:border-box} body{margin:0;background:var(--canvas);color:var(--ink);font:14px/1.5 -apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang TC",sans-serif}
+    main{width:min(1500px,calc(100% - 28px));margin:20px auto 40px;background:var(--paper);box-shadow:0 18px 44px rgb(24 34 37 / 8%)}
+    header{padding:30px 34px 24px;border-top:5px solid var(--ink)} .eyebrow{color:var(--green);font-size:11px;font-weight:800;text-transform:uppercase}
+    h1{margin:5px 0 8px;font-size:clamp(28px,4vw,46px);line-height:1.05} p{max-width:920px;color:var(--muted)} a{color:var(--green)}
+    .metrics{display:grid;grid-template-columns:repeat(6,1fr);border-block:1px solid var(--line)} .metric{padding:18px;border-right:1px solid var(--line)} .metric b{display:block;font-size:27px} .metric span,small{display:block;color:var(--muted);font-size:11px}
+    section{padding:24px 28px;border-bottom:1px solid var(--line)} h2{margin:0 0 7px;font-size:23px} .notice{padding:13px 15px;background:var(--amber-soft);border-left:4px solid var(--amber);color:#70430f}
+    .funnel{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:16px} .step{padding:14px;border:1px solid var(--line);background:#f8faf9} .step b{display:block;font-size:20px}
+    .controls{display:grid;grid-template-columns:minmax(220px,1fr) 180px 180px;gap:10px;margin:15px 0} input,select{min-height:40px;width:100%;padding:8px 10px;border:1px solid #bdc8c5;background:#fff;font:inherit}
+    .table-wrap{overflow-x:auto;border:1px solid var(--line)} table{width:100%;border-collapse:collapse;min-width:1100px} th{background:#f5f8f7;color:var(--muted);font-size:10px;text-align:left;white-space:nowrap} th,td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top} tbody tr:hover{background:#fafcfb}
+    .ticker{font:800 17px/1.1 ui-monospace,SFMono-Regular,Menlo,monospace} .depth,.verdict{display:inline-block;padding:3px 7px;border-radius:3px;font-size:11px;font-weight:750} .depth-report,.verdict-conditional_accumulate{background:var(--green-soft);color:var(--green)} .depth-decision,.depth-research,.depth-bundle{background:var(--blue-soft);color:var(--blue)} .depth-screen{background:#eef0ef;color:var(--muted)} .verdict-watch{background:var(--amber-soft);color:var(--amber)} .verdict-reject_now{background:var(--red-soft);color:var(--red)} .open{font-weight:750;text-decoration:none} .muted{color:var(--muted)}
+    footer{padding:17px 28px;color:var(--muted);font-size:11px} [hidden]{display:none!important}
+    @media(max-width:900px){main{width:100%;margin:0;box-shadow:none}.metrics{grid-template-columns:repeat(3,1fr)}.funnel{grid-template-columns:1fr 1fr}.controls{grid-template-columns:1fr}}
+  </style>
+</head>
+<body><main>
+  <header><div class="eyebrow">InvestGuru · Watchlist screening audit</div><h1>追蹤清單篩選審計</h1>
+    <p>本頁展示實際做過的全部篩選資料與研究深度。高階篩選不等於完整 Investment Guru verdict；只有標示「完整 S1–S10 報告」的標的才完成單股全流程。</p>
+    <p><a href="../index.html">返回投資報告索引</a> · 產生時間 2026-08-10T09:59:30+08:00</p></header>
+  <div class="metrics">
+    <div class="metric"><b>182</b><span>截圖辨識標的</span></div><div class="metric"><b>150</b><span>合格股票</span></div>
+    <div class="metric"><b>32</b><span>ETF／指數等排除</span></div><div class="metric"><b>53</b><span>20–200 億美元</span></div>
+    <div class="metric"><b>12</b><span>小型股決策矩陣</span></div><div class="metric"><b>1</b><span>小型股條件式累積</span></div>
+  </div>
+  <section><h2>研究漏斗與限制</h2><div class="notice">150 檔都有報價、基本面、估值與 SEPA 高階資料；但並非 150 檔都完成一手研究、KB 分類與 S1–S10。下表逐檔標示深度，避免把 breadth 誤稱為 depth。</div>
+    <div class="funnel"><div class="step"><b>150</b>高階機械篩選</div><div class="step"><b>30</b>完整資料 bundle</div><div class="step"><b>0</b>一手研究標的</div><div class="step"><b>12</b>小型股決策矩陣</div><div class="step"><b>28</b>已有完整報告</div></div>
+  </section>
+  <section><h2>12 檔小型高速成長股決策矩陣</h2><p>市值 20–200 億美元；不強迫湊足買進數量。</p>
+    <div class="table-wrap"><table><thead><tr><th>標的</th><th>企業品質</th><th>成長品質</th><th>SEPA／Setup</th><th>估值</th><th>結論與條件</th></tr></thead><tbody><tr>
+      <td><strong class="ticker">ZETA</strong></td>
+      <td>medium-high</td>
+      <td>organic growth about 28-29%; headline 44-50% includes Marigold</td>
+      <td>Stage 2, 8/8, 2 distribution days, 96th-percentile extension</td>
+      <td>4.23x sales; about 26x FY2026 guided FCF</td>
+      <td><span class="verdict verdict-conditional_accumulate">conditional_accumulate</span><small>Do not chase at 26.64; buy only in the 21.5-23.0 pullback zone or after a new base.</small></td>
+    </tr><tr>
+      <td><strong class="ticker">TOST</strong></td>
+      <td>high</td>
+      <td>ARR, locations and GPV each grow about 22-25%; real operating leverage</td>
+      <td>Transitional, 3/8, 5 distribution days, 93rd-percentile extension</td>
+      <td>2.93x sales; 19.8x forward earnings, but FCF declined YoY</td>
+      <td><span class="verdict verdict-watch">watch</span><small>Wait for 50DMA &gt; 150DMA &gt; 200DMA and a non-extended base.</small></td>
+    </tr><tr>
+      <td><strong class="ticker">OSCR</strong></td>
+      <td>medium</td>
+      <td>70% headline growth amplified by weak comp and favorable reserve development</td>
+      <td>Stage 2, 7/8, 7 distribution days</td>
+      <td>0.56x sales; 16.3x forward earnings</td>
+      <td><span class="verdict verdict-watch">watch</span><small>Wait for distribution days to roll below five and verify 2027 ACA subsidy/risk-adjustment economics.</small></td>
+    </tr><tr>
+      <td><strong class="ticker">FORM</strong></td>
+      <td>medium-high</td>
+      <td>HBM/test growth is real; about half of headline GAAP operating jump is restructuring-charge reversal</td>
+      <td>Transitional, 6/8, 8 distribution days</td>
+      <td>10.16x sales; 33.8x forward earnings</td>
+      <td><span class="verdict verdict-watch">watch</span><small>Wait for distribution pressure to clear and Texas capacity to prove returns.</small></td>
+    </tr><tr>
+      <td><strong class="ticker">LSCC</strong></td>
+      <td>high</td>
+      <td>Q1-Q2 acceleration is organic and pre-AMI acquisition</td>
+      <td>Stage 2, 7/8, 7 distribution days</td>
+      <td>28.36x sales; 40.5x forward earnings</td>
+      <td><span class="verdict verdict-watch">watch</span><small>Require post-AMI financial proof, lower distribution and a materially better valuation.</small></td>
+    </tr><tr>
+      <td><strong class="ticker">ONTO</strong></td>
+      <td>high</td>
+      <td>Structural advanced-packaging recovery with backlog above USD 1B</td>
+      <td>Stage 2, 8/8, 9 distribution days</td>
+      <td>13.69x sales; 31.0x forward earnings</td>
+      <td><span class="verdict verdict-watch">watch</span><small>No entry until distribution days fall below five and Rigaku/convertible effects are visible.</small></td>
+    </tr><tr>
+      <td><strong class="ticker">SIMO</strong></td>
+      <td>medium</td>
+      <td>Cycle rebound; about 55% of Q2 GAAP net income uplift was investment gains</td>
+      <td>Transitional, 6/8, 7 distribution days, below 50DMA</td>
+      <td>6.61x sales; 16.1x forward earnings</td>
+      <td><span class="verdict verdict-reject_now">reject_now</span><small>Need positive OCF, inventory normalization and a new Stage 2.</small></td>
+    </tr><tr>
+      <td><strong class="ticker">S</strong></td>
+      <td>medium</td>
+      <td>Organic growth around 21-23%, but SBC is 27-33% of revenue and GAAP losses persist</td>
+      <td>Stage 2, 7/8, 98th-percentile extension</td>
+      <td>6.99x sales; non-GAAP forward earnings are not comparable to GAAP economics</td>
+      <td><span class="verdict verdict-reject_now">reject_now</span><small>Require durable GAAP margin improvement and dilution-adjusted FCF.</small></td>
+    </tr><tr>
+      <td><strong class="ticker">AXTI</strong></td>
+      <td>low-medium</td>
+      <td>Headline acceleration conflicts with continuing quarterly GAAP operating losses</td>
+      <td>Stage 2, 7/8, 5 distribution days</td>
+      <td>46.17x sales</td>
+      <td><span class="verdict verdict-reject_now">reject_now</span><small>Valuation and earnings quality fail the sanity gate.</small></td>
+    </tr><tr>
+      <td><strong class="ticker">CHYM</strong></td>
+      <td>medium</td>
+      <td>Recent GAAP operating margin is far below the headline aggregate margin</td>
+      <td>Transitional, 5/8, 99th-percentile extension</td>
+      <td>4.48x sales; 18.1x forward earnings</td>
+      <td><span class="verdict verdict-reject_now">reject_now</span><small>Wait for non-extended Stage 2 and stable GAAP profitability.</small></td>
+    </tr><tr>
+      <td><strong class="ticker">BROS</strong></td>
+      <td>medium-high</td>
+      <td>Organic store growth and operating leverage are attractive</td>
+      <td>Transitional, 2/8, 7 distribution days</td>
+      <td>4.92x sales; 40.3x forward earnings</td>
+      <td><span class="verdict verdict-reject_now">reject_now</span><small>SEPA execution gate blocks bottom-fishing.</small></td>
+    </tr><tr>
+      <td><strong class="ticker">AVAV</strong></td>
+      <td>medium</td>
+      <td>Headline growth is acquisition-heavy while GAAP operating losses persist</td>
+      <td>Transitional, 2/8</td>
+      <td>4.78x sales; 42.4x forward earnings</td>
+      <td><span class="verdict verdict-reject_now">reject_now</span><small>Require organic growth disclosure, GAAP margin recovery and Stage 2.</small></td>
+    </tr></tbody></table></div>
+  </section>
+  <section><h2>150 檔股票完整篩選表</h2>
+    <div class="controls"><input id="search" type="search" placeholder="搜尋 ticker、公司、階段或結論"><select id="depth"><option value="">全部研究深度</option><option value="report">完整 S1–S10</option><option value="decision">決策矩陣</option><option value="research">一手研究</option><option value="bundle">完整 bundle</option><option value="screen">僅高階篩選</option></select><select id="cap"><option value="">全部市值</option><option value="small">20–200 億美元</option><option value="mid">200–500 億美元</option><option value="large">500 億美元以上</option></select></div>
+    <div class="table-wrap"><table><thead><tr><th>標的</th><th>市值／價格</th><th>分數</th><th>SEPA</th><th>營收／EPS 成長</th><th>利潤率／估值</th><th>研究深度／處置</th><th>連結</th></tr></thead><tbody id="equities"><tr data-search="tsm taiwan semiconductor manufacturing co ltd 完整 s1–s10 報告 已產生完整報告：neutral stage 2 上升(可持有)" data-depth="report" data-cap="2178526609408.0">
+      <td><strong class="ticker">TSM</strong><small>TAIWAN SEMICONDUCTOR MANUFACTURING CO LTD</small></td>
+      <td>$2,178.53B<small>US$420.04</small></td>
+      <td><b>90.0</b><small>高階分數</small></td>
+      <td>Stage 2 上升(可持有)<small>7/8 · 派發 9</small></td>
+      <td>36.0%<small>EPS 77.4%</small></td>
+      <td>60.3%<small>P/S 0.5x · Fwd P/E 19.4x</small></td>
+      <td><span class="depth depth-report">完整 S1–S10 報告</span><small>已產生完整報告：neutral</small></td>
+      <td><a class="open" href="../20260810-0957-TSM-neutral-M.html">完整報告 ↗</a></td>
+    </tr><tr data-search="nvda nvidia corp 完整 s1–s10 報告 已產生完整報告：accumulate stage 2 上升(可持有)" data-depth="report" data-cap="5424535306240.0">
+      <td><strong class="ticker">NVDA</strong><small>NVIDIA CORP</small></td>
+      <td>$5,424.54B<small>US$223.96</small></td>
+      <td><b>88.0</b><small>高階分數</small></td>
+      <td>Stage 2 上升(可持有)<small>8/8 · 派發 4</small></td>
+      <td>85.2%<small>EPS 214.5%</small></td>
+      <td>65.6%<small>P/S 21.4x · Fwd P/E 17.4x</small></td>
+      <td><span class="depth depth-report">完整 S1–S10 報告</span><small>已產生完整報告：accumulate</small></td>
+      <td><a class="open" href="../20260809-2336-NVDA-accumulate-H.html">完整報告 ↗</a></td>
+    </tr><tr data-search="avgo broadcom inc. 完整 s1–s10 報告 已產生完整報告：accumulate stage 2 上升(可持有)" data-depth="report" data-cap="2035102646272.0">
+      <td><strong class="ticker">AVGO</strong><small>Broadcom Inc.</small></td>
+      <td>$2,035.10B<small>US$427.76</small></td>
+      <td><b>85.0</b><small>高階分數</small></td>
+      <td>Stage 2 上升(可持有)<small>8/8 · 派發 4</small></td>
+      <td>47.9%<small>EPS 85.4%</small></td>
+      <td>49.0%<small>P/S 27.0x · Fwd P/E 21.9x</small></td>
+      <td><span class="depth depth-report">完整 S1–S10 報告</span><small>已產生完整報告：accumulate</small></td>
+      <td><a class="open" href="../20260809-2336-AVGO-accumulate-H.html">完整報告 ↗</a></td>
+    </tr><tr data-search="lly eli lilly &amp; co 完整 s1–s10 報告 已產生完整報告：accumulate stage 2 上升(可持有)" data-depth="report" data-cap="1057346617344.0">
+      <td><strong class="ticker">LLY</strong><small>ELI LILLY &amp; Co</small></td>
+      <td>$1,057.35B<small>US$1,185.71</small></td>
+      <td><b>84.0</b><small>高階分數</small></td>
+      <td>Stage 2 上升(可持有)<small>8/8 · 派發 5</small></td>
+      <td>47.7%<small>EPS 26.2%</small></td>
+      <td>54.2%<small>P/S 13.3x · Fwd P/E 25.5x</small></td>
+      <td><span class="depth depth-report">完整 S1–S10 報告</span><small>已產生完整報告：accumulate</small></td>
+      <td><a class="open" href="../20260809-2336-LLY-accumulate-M.html">完整報告 ↗</a></td>
+    </tr><tr data-search="sb safe bulkers, inc. 完整 s1–s10 報告 已產生完整報告：accumulate stage 2 上升(可持有)" data-depth="report" data-cap="773934400.0">
+      <td><strong class="ticker">SB</strong><small>SAFE BULKERS, INC.</small></td>
+      <td>$0.77B<small>US$7.60</small></td>
+      <td><b>82.0</b><small>高階分數</small></td>
+      <td>Stage 2 上升(可持有)<small>8/8 · 派發 2</small></td>
+      <td>33.0%<small>EPS --</small></td>
+      <td>41.1%<small>P/S 2.5x · Fwd P/E 11.9x</small></td>
+      <td><span class="depth depth-report">完整 S1–S10 報告</span><small>已產生完整報告：accumulate</small></td>
+      <td><a class="open" href="../20260810-0921-SB-accumulate-M.html">完整報告 ↗</a></td>
+    </tr><tr data-search="ateyy advantest corp 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 stage 2 上升(可持有)" data-depth="screen" data-cap="149641297920.0">
+      <td><strong class="ticker">ATEYY</strong><small>ADVANTEST CORP</small></td>
+      <td>$149.64B<small>US$206.66</small></td>
+      <td><b>80.0</b><small>高階分數</small></td>
+      <td>Stage 2 上升(可持有)<small>8/8 · 派發 5</small></td>
+      <td>39.3%<small>EPS 95.3%</small></td>
+      <td>51.7%<small>P/S 0.1x · Fwd P/E --</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="aapl apple inc. 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 stage 2 上升(可持有)" data-depth="screen" data-cap="4572794322944.0">
+      <td><strong class="ticker">AAPL</strong><small>Apple Inc.</small></td>
+      <td>$4,572.79B<small>US$313.33</small></td>
+      <td><b>79.0</b><small>高階分數</small></td>
+      <td>Stage 2 上升(可持有)<small>8/8 · 派發 4</small></td>
+      <td>16.4%<small>EPS 28.7%</small></td>
+      <td>32.6%<small>P/S 9.8x · Fwd P/E 32.9x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="amzn amazon com inc 完整 s1–s10 報告 已產生完整報告：accumulate stage 2 上升(可持有)" data-depth="report" data-cap="2960627335168.0">
+      <td><strong class="ticker">AMZN</strong><small>AMAZON COM INC</small></td>
+      <td>$2,960.63B<small>US$274.48</small></td>
+      <td><b>78.0</b><small>高階分數</small></td>
+      <td>Stage 2 上升(可持有)<small>8/8 · 派發 5</small></td>
+      <td>19.6%<small>EPS 242.3%</small></td>
+      <td>13.7%<small>P/S 3.8x · Fwd P/E 26.6x</small></td>
+      <td><span class="depth depth-report">完整 S1–S10 報告</span><small>已產生完整報告：accumulate</small></td>
+      <td><a class="open" href="../20260809-2336-AMZN-accumulate-M.html">完整報告 ↗</a></td>
+    </tr><tr data-search="ter teradyne, inc 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 stage 2 上升(可持有)" data-depth="screen" data-cap="59301609472.0">
+      <td><strong class="ticker">TER</strong><small>TERADYNE, INC</small></td>
+      <td>$59.30B<small>US$379.31</small></td>
+      <td><b>76.0</b><small>高階分數</small></td>
+      <td>Stage 2 上升(可持有)<small>7/8 · 派發 9</small></td>
+      <td>103.9%<small>EPS 385.8%</small></td>
+      <td>33.2%<small>P/S 13.3x · Fwd P/E 32.8x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="goog alphabet inc. 完整 s1–s10 報告 已產生完整報告：neutral 過渡/不明(趨勢模板未達標)" data-depth="report" data-cap="4322915254272.0">
+      <td><strong class="ticker">GOOG</strong><small>Alphabet Inc.</small></td>
+      <td>$4,322.92B<small>US$353.47</small></td>
+      <td><b>76.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>6/8 · 派發 6</small></td>
+      <td>24.2%<small>EPS 294.0%</small></td>
+      <td>34.0%<small>P/S 9.7x · Fwd P/E 24.0x</small></td>
+      <td><span class="depth depth-report">完整 S1–S10 報告</span><small>已產生完整報告：neutral</small></td>
+      <td><a class="open" href="../20260810-0947-GOOG-neutral-M.html">完整報告 ↗</a></td>
+    </tr><tr data-search="anet arista networks, inc. 完整 s1–s10 報告 已產生完整報告：accumulate stage 2 上升(可持有)" data-depth="report" data-cap="237955268608.0">
+      <td><strong class="ticker">ANET</strong><small>Arista Networks, Inc.</small></td>
+      <td>$237.96B<small>US$188.67</small></td>
+      <td><b>75.0</b><small>高階分數</small></td>
+      <td>Stage 2 上升(可持有)<small>8/8 · 派發 7</small></td>
+      <td>37.7%<small>EPS 35.7%</small></td>
+      <td>45.4%<small>P/S 22.6x · Fwd P/E 36.7x</small></td>
+      <td><span class="depth depth-report">完整 S1–S10 報告</span><small>已產生完整報告：accumulate</small></td>
+      <td><a class="open" href="../20260810-0939-ANET-accumulate-M.html">完整報告 ↗</a></td>
+    </tr><tr data-search="crdo credo technology group holding ltd 完整 s1–s10 報告 已產生完整報告：neutral stage 2 上升(可持有)" data-depth="report" data-cap="46598963200.0">
+      <td><strong class="ticker">CRDO</strong><small>Credo Technology Group Holding Ltd</small></td>
+      <td>$46.60B<small>US$249.89</small></td>
+      <td><b>75.0</b><small>高階分數</small></td>
+      <td>Stage 2 上升(可持有)<small>8/8 · 派發 8</small></td>
+      <td>157.0%<small>EPS 343.2%</small></td>
+      <td>35.7%<small>P/S 34.9x · Fwd P/E 27.5x</small></td>
+      <td><span class="depth depth-report">完整 S1–S10 報告</span><small>已產生完整報告：neutral</small></td>
+      <td><a class="open" href="../20260810-0940-CRDO-neutral-M.html">完整報告 ↗</a></td>
+    </tr><tr data-search="scco southern copper corp/ 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 stage 2 上升(可持有)" data-depth="screen" data-cap="166082068480.0">
+      <td><strong class="ticker">SCCO</strong><small>SOUTHERN COPPER CORP/</small></td>
+      <td>$166.08B<small>US$199.06</small></td>
+      <td><b>75.0</b><small>高階分數</small></td>
+      <td>Stage 2 上升(可持有)<small>7/8 · 派發 8</small></td>
+      <td>40.6%<small>EPS 71.6%</small></td>
+      <td>61.2%<small>P/S 10.5x · Fwd P/E 27.6x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="wdc western digital corp 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="149695447040.0">
+      <td><strong class="ticker">WDC</strong><small>WESTERN DIGITAL CORP</small></td>
+      <td>$149.70B<small>US$434.30</small></td>
+      <td><b>75.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>6/8 · 派發 7</small></td>
+      <td>43.8%<small>EPS 984.7%</small></td>
+      <td>42.9%<small>P/S 11.6x · Fwd P/E 13.6x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="sqm chemical &amp; mining co of chile inc 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="20551641088.0">
+      <td><strong class="ticker">SQM</strong><small>CHEMICAL &amp; MINING CO OF CHILE INC</small></td>
+      <td>$20.55B<small>US$71.95</small></td>
+      <td><b>73.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>3/8 · 派發 3</small></td>
+      <td>69.8%<small>EPS 165.2%</small></td>
+      <td>41.1%<small>P/S 3.9x · Fwd P/E 10.4x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="stx seagate technology holdings plc 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="184207589376.0">
+      <td><strong class="ticker">STX</strong><small>Seagate Technology Holdings plc</small></td>
+      <td>$184.21B<small>US$812.76</small></td>
+      <td><b>72.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>6/8 · 派發 7</small></td>
+      <td>48.5%<small>EPS 148.8%</small></td>
+      <td>43.1%<small>P/S 15.1x · Fwd P/E 14.7x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="onto onto innovation inc. 一手研究＋決策矩陣 watch；no entry until distribution days fall below five and rigaku/convertible effects are visible. stage 2 上升(可持有)" data-depth="decision" data-cap="15335941120.0">
+      <td><strong class="ticker">ONTO</strong><small>ONTO INNOVATION INC.</small></td>
+      <td>$15.34B<small>US$308.30</small></td>
+      <td><b>72.0</b><small>高階分數</small></td>
+      <td>Stage 2 上升(可持有)<small>8/8 · 派發 9</small></td>
+      <td>35.3%<small>EPS 75.4%</small></td>
+      <td>23.0%<small>P/S 13.7x · Fwd P/E 31.0x</small></td>
+      <td><span class="depth depth-decision">一手研究＋決策矩陣</span><small>watch；No entry until distribution days fall below five and Rigaku/convertible effects are visible.</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="simo silicon motion technology corp 一手研究＋決策矩陣 reject_now；need positive ocf, inventory normalization and a new stage 2. 過渡/不明(趨勢模板未達標)" data-depth="decision" data-cap="8684474368.0">
+      <td><strong class="ticker">SIMO</strong><small>Silicon Motion Technology CORP</small></td>
+      <td>$8.68B<small>US$256.12</small></td>
+      <td><b>71.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>6/8 · 派發 7</small></td>
+      <td>127.0%<small>EPS 722.9%</small></td>
+      <td>22.4%<small>P/S 6.6x · Fwd P/E 16.1x</small></td>
+      <td><span class="depth depth-decision">一手研究＋決策矩陣</span><small>reject_now；Need positive OCF, inventory normalization and a new Stage 2.</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="amd advanced micro devices inc 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 stage 2 上升(可持有)" data-depth="screen" data-cap="789073100800.0">
+      <td><strong class="ticker">AMD</strong><small>ADVANCED MICRO DEVICES INC</small></td>
+      <td>$789.07B<small>US$483.36</small></td>
+      <td><b>69.0</b><small>高階分數</small></td>
+      <td>Stage 2 上升(可持有)<small>7/8 · 派發 9</small></td>
+      <td>50.1%<small>EPS 159.5%</small></td>
+      <td>17.2%<small>P/S 19.1x · Fwd P/E 31.3x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="sndk sandisk corp 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="176982654976.0">
+      <td><strong class="ticker">SNDK</strong><small>Sandisk Corp</small></td>
+      <td>$176.98B<small>US$1,212.21</small></td>
+      <td><b>68.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>6/8 · 派發 9</small></td>
+      <td>371.6%<small>EPS --</small></td>
+      <td>78.5%<small>P/S 8.7x · Fwd P/E 4.6x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="all allstate corp 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 stage 2 上升(可持有)" data-depth="screen" data-cap="67513073664.0">
+      <td><strong class="ticker">ALL</strong><small>ALLSTATE CORP</small></td>
+      <td>$67.51B<small>US$267.00</small></td>
+      <td><b>68.0</b><small>高階分數</small></td>
+      <td>Stage 2 上升(可持有)<small>8/8 · 派發 5</small></td>
+      <td>11.8%<small>EPS 61.2%</small></td>
+      <td>22.8%<small>P/S 1.0x · Fwd P/E 9.9x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="msft microsoft corp 完整 s1–s10 報告 已產生完整報告：neutral stage 3 派發(疑,減碼/收緊止損)" data-depth="report" data-cap="3712698548224.0">
+      <td><strong class="ticker">MSFT</strong><small>MICROSOFT CORP</small></td>
+      <td>$3,712.70B<small>US$499.99</small></td>
+      <td><b>65.0</b><small>高階分數</small></td>
+      <td>Stage 3 派發(疑,減碼/收緊止損)<small>4/8 · 派發 3</small></td>
+      <td>17.7%<small>EPS 31.7%</small></td>
+      <td>45.1%<small>P/S 11.2x · Fwd P/E 21.3x</small></td>
+      <td><span class="depth depth-report">完整 S1–S10 報告</span><small>已產生完整報告：neutral</small></td>
+      <td><a class="open" href="../20260810-0948-MSFT-neutral-M.html">完整報告 ↗</a></td>
+    </tr><tr data-search="fslr first solar, inc. 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="26872821760.0">
+      <td><strong class="ticker">FSLR</strong><small>FIRST SOLAR, INC.</small></td>
+      <td>$26.87B<small>US$250.05</small></td>
+      <td><b>65.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>6/8 · 派發 5</small></td>
+      <td>-3.7%<small>EPS 23.3%</small></td>
+      <td>42.6%<small>P/S 5.0x · Fwd P/E 10.8x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="fcx freeport-mcmoran inc 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 stage 2 上升(可持有)" data-depth="screen" data-cap="97468006400.0">
+      <td><strong class="ticker">FCX</strong><small>FREEPORT-MCMORAN INC</small></td>
+      <td>$97.47B<small>US$69.62</small></td>
+      <td><b>65.0</b><small>高階分數</small></td>
+      <td>Stage 2 上升(可持有)<small>8/8 · 派發 9</small></td>
+      <td>-7.3%<small>EPS 28.1%</small></td>
+      <td>33.4%<small>P/S 3.8x · Fwd P/E 17.0x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="pltr palantir technologies inc. 完整 s1–s10 報告 已產生完整報告：neutral 過渡/不明(趨勢模板未達標)" data-depth="report" data-cap="413350068224.0">
+      <td><strong class="ticker">PLTR</strong><small>Palantir Technologies Inc.</small></td>
+      <td>$413.35B<small>US$172.01</small></td>
+      <td><b>64.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>4/8 · 派發 4</small></td>
+      <td>92.8%<small>EPS 215.4%</small></td>
+      <td>47.1%<small>P/S 67.1x · Fwd P/E 74.5x</small></td>
+      <td><span class="depth depth-report">完整 S1–S10 報告</span><small>已產生完整報告：neutral</small></td>
+      <td><a class="open" href="../20260810-0953-PLTR-neutral-M.html">完整報告 ↗</a></td>
+    </tr><tr data-search="alab astera labs, inc. 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="57973518336.0">
+      <td><strong class="ticker">ALAB</strong><small>Astera Labs, Inc.</small></td>
+      <td>$57.97B<small>US$334.17</small></td>
+      <td><b>63.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>6/8 · 派發 8</small></td>
+      <td>104.5%<small>EPS 186.2%</small></td>
+      <td>22.7%<small>P/S 48.2x · Fwd P/E 53.4x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="amat applied materials inc /de 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="428055298048.0">
+      <td><strong class="ticker">AMAT</strong><small>APPLIED MATERIALS INC /DE</small></td>
+      <td>$428.06B<small>US$539.14</small></td>
+      <td><b>63.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>6/8 · 派發 9</small></td>
+      <td>11.4%<small>EPS 33.5%</small></td>
+      <td>31.9%<small>P/S 14.7x · Fwd P/E 31.6x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="app applovin corp 完整 s1–s10 報告 已產生完整報告：neutral 過渡/不明(趨勢模板未達標)" data-depth="report" data-cap="116503822336.0">
+      <td><strong class="ticker">APP</strong><small>AppLovin Corp</small></td>
+      <td>$116.50B<small>US$346.80</small></td>
+      <td><b>62.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>0/8 · 派發 8</small></td>
+      <td>52.8%<small>EPS 57.0%</small></td>
+      <td>77.7%<small>P/S 17.1x · Fwd P/E 16.3x</small></td>
+      <td><span class="depth depth-report">完整 S1–S10 報告</span><small>已產生完整報告：neutral</small></td>
+      <td><a class="open" href="../20260809-1138-APP-neutral-H.html">完整報告 ↗</a></td>
+    </tr><tr data-search="orcl oracle corp 完整 s1–s10 報告 已產生完整報告：neutral stage 4 下跌(絕不持有)" data-depth="report" data-cap="423486849024.0">
+      <td><strong class="ticker">ORCL</strong><small>ORACLE CORP</small></td>
+      <td>$423.49B<small>US$147.02</small></td>
+      <td><b>62.0</b><small>高階分數</small></td>
+      <td>Stage 4 下跌(絕不持有)<small>1/8 · 派發 5</small></td>
+      <td>20.6%<small>EPS 21.9%</small></td>
+      <td>36.2%<small>P/S 6.3x · Fwd P/E 13.5x</small></td>
+      <td><span class="depth depth-report">完整 S1–S10 報告</span><small>已產生完整報告：neutral</small></td>
+      <td><a class="open" href="../20260810-0948-ORCL-neutral-M.html">完整報告 ↗</a></td>
+    </tr><tr data-search="form formfactor inc 一手研究＋決策矩陣 watch；wait for distribution pressure to clear and texas capacity to prove returns. 過渡/不明(趨勢模板未達標)" data-depth="decision" data-cap="9170591744.0">
+      <td><strong class="ticker">FORM</strong><small>FORMFACTOR INC</small></td>
+      <td>$9.17B<small>US$117.39</small></td>
+      <td><b>62.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>6/8 · 派發 8</small></td>
+      <td>31.9%<small>EPS 502.5%</small></td>
+      <td>24.1%<small>P/S 10.2x · Fwd P/E 33.8x</small></td>
+      <td><span class="depth depth-decision">一手研究＋決策矩陣</span><small>watch；Wait for distribution pressure to clear and Texas capacity to prove returns.</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="afrm affirm holdings, inc. 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="25201117184.0">
+      <td><strong class="ticker">AFRM</strong><small>Affirm Holdings, Inc.</small></td>
+      <td>$25.20B<small>US$75.25</small></td>
+      <td><b>62.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>6/8 · 派發 9</small></td>
+      <td>32.6%<small>EPS 3529.3%</small></td>
+      <td>8.5%<small>P/S 6.3x · Fwd P/E 20.2x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="gev ge vernova inc. 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 stage 2 上升(可持有)" data-depth="screen" data-cap="263755481088.0">
+      <td><strong class="ticker">GEV</strong><small>GE Vernova Inc.</small></td>
+      <td>$263.76B<small>US$990.32</small></td>
+      <td><b>62.0</b><small>高階分數</small></td>
+      <td>Stage 2 上升(可持有)<small>7/8 · 派發 9</small></td>
+      <td>21.9%<small>EPS 32.8%</small></td>
+      <td>7.5%<small>P/S 6.4x · Fwd P/E 39.8x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="mchp microchip technology inc 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="45987409920.0">
+      <td><strong class="ticker">MCHP</strong><small>MICROCHIP TECHNOLOGY INC</small></td>
+      <td>$45.99B<small>US$84.69</small></td>
+      <td><b>62.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>6/8 · 派發 9</small></td>
+      <td>38.0%<small>EPS --</small></td>
+      <td>24.0%<small>P/S 9.0x · Fwd P/E 18.7x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="okta okta, inc. 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 stage 2 上升(可持有)" data-depth="screen" data-cap="25779109888.0">
+      <td><strong class="ticker">OKTA</strong><small>Okta, Inc.</small></td>
+      <td>$25.78B<small>US$148.32</small></td>
+      <td><b>62.0</b><small>高階分數</small></td>
+      <td>Stage 2 上升(可持有)<small>8/8 · 派發 8</small></td>
+      <td>11.2%<small>EPS 21.2%</small></td>
+      <td>7.3%<small>P/S 8.6x · Fwd P/E 34.6x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="klac kla corp 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="258839986176.0">
+      <td><strong class="ticker">KLAC</strong><small>KLA CORP</small></td>
+      <td>$258.84B<small>US$198.11</small></td>
+      <td><b>61.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>6/8 · 派發 8</small></td>
+      <td>15.2%<small>EPS 13.8%</small></td>
+      <td>42.5%<small>P/S 19.1x · Fwd P/E 30.2x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="mnst monster beverage corp 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="88509956096.0">
+      <td><strong class="ticker">MNST</strong><small>Monster Beverage Corp</small></td>
+      <td>$88.51B<small>US$90.36</small></td>
+      <td><b>61.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>6/8 · 派發 7</small></td>
+      <td>20.2%<small>EPS 18.0%</small></td>
+      <td>29.2%<small>P/S 9.6x · Fwd P/E 34.5x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="adbe adobe inc. 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="105420972032.0">
+      <td><strong class="ticker">ADBE</strong><small>ADOBE INC.</small></td>
+      <td>$105.42B<small>US$265.21</small></td>
+      <td><b>61.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>2/8 · 派發 2</small></td>
+      <td>12.7%<small>EPS 7.9%</small></td>
+      <td>35.3%<small>P/S 4.2x · Fwd P/E 9.6x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="fico fair isaac corp 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 stage 4 下跌(絕不持有)" data-depth="screen" data-cap="22491779072.0">
+      <td><strong class="ticker">FICO</strong><small>FAIR ISAAC CORP</small></td>
+      <td>$22.49B<small>US$1,041.40</small></td>
+      <td><b>60.0</b><small>高階分數</small></td>
+      <td>Stage 4 下跌(絕不持有)<small>0/8 · 派發 5</small></td>
+      <td>25.7%<small>EPS 41.2%</small></td>
+      <td>53.8%<small>P/S 9.4x · Fwd P/E 19.6x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="lscc lattice semiconductor corp 一手研究＋決策矩陣 watch；require post-ami financial proof, lower distribution and a materially better valuation. stage 2 上升(可持有)" data-depth="decision" data-cap="18468196352.0">
+      <td><strong class="ticker">LSCC</strong><small>LATTICE SEMICONDUCTOR CORP</small></td>
+      <td>$18.47B<small>US$130.03</small></td>
+      <td><b>60.0</b><small>高階分數</small></td>
+      <td>Stage 2 上升(可持有)<small>7/8 · 派發 7</small></td>
+      <td>62.2%<small>EPS 600.0%</small></td>
+      <td>13.3%<small>P/S 28.4x · Fwd P/E 40.5x</small></td>
+      <td><span class="depth depth-decision">一手研究＋決策矩陣</span><small>watch；Require post-AMI financial proof, lower distribution and a materially better valuation.</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="alb albemarle corp 僅高階篩選 成長達標但 setup／獲利品質不足，保留觀察 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="15471642624.0">
+      <td><strong class="ticker">ALB</strong><small>ALBEMARLE CORP</small></td>
+      <td>$15.47B<small>US$131.11</small></td>
+      <td><b>60.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>3/8 · 派發 4</small></td>
+      <td>31.1%<small>EPS --</small></td>
+      <td>27.7%<small>P/S 2.6x · Fwd P/E 11.3x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>成長達標但 setup／獲利品質不足，保留觀察</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="rddt reddit, inc. 完整 s1–s10 報告 已產生完整報告：neutral 過渡/不明(趨勢模板未達標)" data-depth="report" data-cap="31110514688.0">
+      <td><strong class="ticker">RDDT</strong><small>Reddit, Inc.</small></td>
+      <td>$31.11B<small>US$161.70</small></td>
+      <td><b>59.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>1/8 · 派發 5</small></td>
+      <td>61.1%<small>EPS 177.8%</small></td>
+      <td>28.8%<small>P/S 11.2x · Fwd P/E 16.8x</small></td>
+      <td><span class="depth depth-report">完整 S1–S10 報告</span><small>已產生完整報告：neutral</small></td>
+      <td><a class="open" href="../20260810-0954-RDDT-neutral-M.html">完整報告 ↗</a></td>
+    </tr><tr data-search="nu nu holdings ltd. 完整 s1–s10 報告 已產生完整報告：neutral 過渡/不明(趨勢模板未達標)" data-depth="report" data-cap="66853904384.0">
+      <td><strong class="ticker">NU</strong><small>Nu Holdings Ltd.</small></td>
+      <td>$66.85B<small>US$13.84</small></td>
+      <td><b>59.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>1/8 · 派發 6</small></td>
+      <td>43.7%<small>EPS 55.9%</small></td>
+      <td>48.2%<small>P/S 8.8x · Fwd P/E 12.0x</small></td>
+      <td><span class="depth depth-report">完整 S1–S10 報告</span><small>已產生完整報告：neutral</small></td>
+      <td><a class="open" href="../20260808-1718-NU-neutral-M.html">完整報告 ↗</a></td>
+    </tr><tr data-search="eslt elbit systems ltd 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 stage 2 上升(可持有)" data-depth="screen" data-cap="40255348736.0">
+      <td><strong class="ticker">ESLT</strong><small>ELBIT SYSTEMS LTD</small></td>
+      <td>$40.26B<small>US$859.14</small></td>
+      <td><b>59.0</b><small>高階分數</small></td>
+      <td>Stage 2 上升(可持有)<small>8/8 · 派發 3</small></td>
+      <td>15.5%<small>EPS 42.1%</small></td>
+      <td>9.4%<small>P/S 4.9x · Fwd P/E 47.6x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="oscr oscar health, inc. 完整 s1–s10 報告 已產生完整報告：accumulate stage 2 上升(可持有)" data-depth="report" data-cap="8610887680.0">
+      <td><strong class="ticker">OSCR</strong><small>Oscar Health, Inc.</small></td>
+      <td>$8.61B<small>US$27.90</small></td>
+      <td><b>59.0</b><small>高階分數</small></td>
+      <td>Stage 2 上升(可持有)<small>7/8 · 派發 7</small></td>
+      <td>70.4%<small>EPS --</small></td>
+      <td>8.0%<small>P/S 0.6x · Fwd P/E 16.3x</small></td>
+      <td><span class="depth depth-report">完整 S1–S10 報告</span><small>已產生完整報告：accumulate</small></td>
+      <td><a class="open" href="../20260810-0952-OSCR-accumulate-M.html">完整報告 ↗</a></td>
+    </tr><tr data-search="veev veeva systems inc 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="37438308352.0">
+      <td><strong class="ticker">VEEV</strong><small>VEEVA SYSTEMS INC</small></td>
+      <td>$37.44B<small>US$230.47</small></td>
+      <td><b>58.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>3/8 · 派發 1</small></td>
+      <td>16.3%<small>EPS 14.6%</small></td>
+      <td>30.9%<small>P/S 11.3x · Fwd P/E 23.0x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="ifnny infineon technologies ag 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="93810884608.0">
+      <td><strong class="ticker">IFNNY</strong><small>INFINEON TECHNOLOGIES AG</small></td>
+      <td>$93.81B<small>US$72.19</small></td>
+      <td><b>58.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>6/8 · 派發 7</small></td>
+      <td>12.6%<small>EPS 39.6%</small></td>
+      <td>14.2%<small>P/S 6.0x · Fwd P/E 21.2x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="hood robinhood markets, inc. 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="83875389440.0">
+      <td><strong class="ticker">HOOD</strong><small>Robinhood Markets, Inc.</small></td>
+      <td>$83.88B<small>US$93.29</small></td>
+      <td><b>57.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>2/8 · 派發 7</small></td>
+      <td>32.3%<small>EPS 47.6%</small></td>
+      <td>43.9%<small>P/S 17.0x · Fwd P/E 29.3x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="ma mastercard inc 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 stage 3 派發(疑,減碼/收緊止損)" data-depth="screen" data-cap="493149782016.0">
+      <td><strong class="ticker">MA</strong><small>Mastercard Inc</small></td>
+      <td>$493.15B<small>US$562.95</small></td>
+      <td><b>57.0</b><small>高階分數</small></td>
+      <td>Stage 3 派發(疑,減碼/收緊止損)<small>3/8 · 派發 3</small></td>
+      <td>14.1%<small>EPS 22.1%</small></td>
+      <td>61.1%<small>P/S 14.1x · Fwd P/E 24.5x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="vrt vertiv holdings co 完整 s1–s10 報告 已產生完整報告：neutral 過渡/不明(趨勢模板未達標)" data-depth="report" data-cap="104870772736.0">
+      <td><strong class="ticker">VRT</strong><small>Vertiv Holdings Co</small></td>
+      <td>$104.87B<small>US$272.40</small></td>
+      <td><b>57.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>5/8 · 派發 7</small></td>
+      <td>24.1%<small>EPS 53.0%</small></td>
+      <td>20.4%<small>P/S 9.1x · Fwd P/E 29.9x</small></td>
+      <td><span class="depth depth-report">完整 S1–S10 報告</span><small>已產生完整報告：neutral</small></td>
+      <td><a class="open" href="../20260810-0959-VRT-neutral-M.html">完整報告 ↗</a></td>
+    </tr><tr data-search="futu futu holdings ltd 僅高階篩選 成長達標但 setup／獲利品質不足，保留觀察 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="15284003840.0">
+      <td><strong class="ticker">FUTU</strong><small>Futu Holdings Ltd</small></td>
+      <td>$15.28B<small>US$109.02</small></td>
+      <td><b>57.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>2/8 · 派發 2</small></td>
+      <td>28.8%<small>EPS -60.7%</small></td>
+      <td>64.9%<small>P/S 0.7x · Fwd P/E 8.9x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>成長達標但 setup／獲利品質不足，保留觀察</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="sofi sofi technologies, inc. 完整 s1–s10 報告 已產生完整報告：neutral 過渡/不明(趨勢模板未達標)" data-depth="report" data-cap="23739060224.0">
+      <td><strong class="ticker">SOFI</strong><small>SoFi Technologies, Inc.</small></td>
+      <td>$23.74B<small>US$18.38</small></td>
+      <td><b>56.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>1/8 · 派發 6</small></td>
+      <td>42.6%<small>EPS 40.4%</small></td>
+      <td>17.0%<small>P/S 5.6x · Fwd P/E 22.6x</small></td>
+      <td><span class="depth depth-report">完整 S1–S10 報告</span><small>已產生完整報告：neutral</small></td>
+      <td><a class="open" href="../20260810-0956-SOFI-neutral-M.html">完整報告 ↗</a></td>
+    </tr><tr data-search="nflx netflix inc 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 stage 4 下跌(絕不持有)" data-depth="screen" data-cap="308714471424.0">
+      <td><strong class="ticker">NFLX</strong><small>NETFLIX INC</small></td>
+      <td>$308.71B<small>US$74.14</small></td>
+      <td><b>56.0</b><small>高階分數</small></td>
+      <td>Stage 4 下跌(絕不持有)<small>0/8 · 派發 4</small></td>
+      <td>13.4%<small>EPS 11.1%</small></td>
+      <td>33.4%<small>P/S 6.4x · Fwd P/E 19.4x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="arm arm holdings plc /uk 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="301784367104.0">
+      <td><strong class="ticker">ARM</strong><small>ARM HOLDINGS PLC /UK</small></td>
+      <td>$301.78B<small>US$282.57</small></td>
+      <td><b>56.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>6/8 · 派發 7</small></td>
+      <td>22.4%<small>EPS 108.3%</small></td>
+      <td>7.6%<small>P/S 58.5x · Fwd P/E 92.1x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="o realty income corp 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 stage 3 派發(疑,減碼/收緊止損)" data-depth="screen" data-cap="59147083776.0">
+      <td><strong class="ticker">O</strong><small>REALTY INCOME CORP</small></td>
+      <td>$59.15B<small>US$62.51</small></td>
+      <td><b>56.0</b><small>高階分數</small></td>
+      <td>Stage 3 派發(疑,減碼/收緊止損)<small>4/8 · 派發 6</small></td>
+      <td>9.6%<small>EPS 69.2%</small></td>
+      <td>47.0%<small>P/S 9.8x · Fwd P/E 36.6x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="inmd inmode ltd. 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="880030656.0">
+      <td><strong class="ticker">INMD</strong><small>InMode Ltd.</small></td>
+      <td>$0.88B<small>US$15.31</small></td>
+      <td><b>56.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>5/8 · 派發 4</small></td>
+      <td>-0.0%<small>EPS -31.0%</small></td>
+      <td>12.8%<small>P/S 2.3x · Fwd P/E 10.9x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="zeta zeta global holdings corp. 完整 s1–s10 報告 已產生完整報告：accumulate stage 2 上升(可持有)" data-depth="report" data-cap="6640222720.0">
+      <td><strong class="ticker">ZETA</strong><small>Zeta Global Holdings Corp.</small></td>
+      <td>$6.64B<small>US$26.64</small></td>
+      <td><b>56.0</b><small>高階分數</small></td>
+      <td>Stage 2 上升(可持有)<small>8/8 · 派發 2</small></td>
+      <td>43.5%<small>EPS --</small></td>
+      <td>3.8%<small>P/S 4.2x · Fwd P/E 22.1x</small></td>
+      <td><span class="depth depth-report">完整 S1–S10 報告</span><small>已產生完整報告：accumulate</small></td>
+      <td><a class="open" href="../20260809-0014-ZETA-accumulate-M.html">完整報告 ↗</a></td>
+    </tr><tr data-search="stne stoneco ltd. 僅高階篩選 sepa 執行閘門不透過，不接下跌趨勢 stage 4 下跌(絕不持有)" data-depth="screen" data-cap="2578219264.0">
+      <td><strong class="ticker">STNE</strong><small>StoneCo Ltd.</small></td>
+      <td>$2.58B<small>US$10.60</small></td>
+      <td><b>55.0</b><small>高階分數</small></td>
+      <td>Stage 4 下跌(絕不持有)<small>0/8 · 派發 10</small></td>
+      <td>4.3%<small>EPS 273.8%</small></td>
+      <td>44.3%<small>P/S 0.2x · Fwd P/E 4.5x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>SEPA 執行閘門不透過，不接下跌趨勢</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="rnecy  僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="43750092800.0">
+      <td><strong class="ticker">RNECY</strong><small></small></td>
+      <td>$43.75B<small>US$11.97</small></td>
+      <td><b>55.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>6/8 · 派發 8</small></td>
+      <td>28.5%<small>EPS --</small></td>
+      <td>24.8%<small>P/S 0.0x · Fwd P/E --</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="mar marriott international inc /md/ 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="92287795200.0">
+      <td><strong class="ticker">MAR</strong><small>MARRIOTT INTERNATIONAL INC /MD/</small></td>
+      <td>$92.29B<small>US$353.91</small></td>
+      <td><b>55.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>6/8 · 派發 6</small></td>
+      <td>11.1%<small>EPS 4.3%</small></td>
+      <td>65.3%<small>P/S 12.5x · Fwd P/E 26.9x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="baba alibaba group holding ltd 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="307782549504.0">
+      <td><strong class="ticker">BABA</strong><small>Alibaba Group Holding Ltd</small></td>
+      <td>$307.78B<small>US$128.41</small></td>
+      <td><b>55.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>2/8 · 派發 2</small></td>
+      <td>2.9%<small>EPS 104.1%</small></td>
+      <td>1.0%<small>P/S 0.3x · Fwd P/E 14.2x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="meta meta platforms, inc. 完整 s1–s10 報告 已產生完整報告：reduce stage 4 下跌(絕不持有)" data-depth="report" data-cap="1508378279936.0">
+      <td><strong class="ticker">META</strong><small>Meta Platforms, Inc.</small></td>
+      <td>$1,508.38B<small>US$592.10</small></td>
+      <td><b>54.0</b><small>高階分數</small></td>
+      <td>Stage 4 下跌(絕不持有)<small>0/8 · 派發 5</small></td>
+      <td>28.0%<small>EPS -13.4%</small></td>
+      <td>34.8%<small>P/S 6.6x · Fwd P/E 16.9x</small></td>
+      <td><span class="depth depth-report">完整 S1–S10 報告</span><small>已產生完整報告：reduce</small></td>
+      <td><a class="open" href="../20260810-0948-META-reduce-M.html">完整報告 ↗</a></td>
+    </tr><tr data-search="xyz block, inc. 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 stage 2 上升(可持有)" data-depth="screen" data-cap="47462805504.0">
+      <td><strong class="ticker">XYZ</strong><small>Block, Inc.</small></td>
+      <td>$47.46B<small>US$79.00</small></td>
+      <td><b>54.0</b><small>高階分數</small></td>
+      <td>Stage 2 上升(可持有)<small>7/8 · 派發 8</small></td>
+      <td>9.3%<small>EPS -83.3%</small></td>
+      <td>7.0%<small>P/S 1.9x · Fwd P/E 15.3x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="rmbs rambus inc 僅高階篩選 成長達標但 setup／獲利品質不足，保留觀察 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="11011020800.0">
+      <td><strong class="ticker">RMBS</strong><small>RAMBUS INC</small></td>
+      <td>$11.01B<small>US$101.52</small></td>
+      <td><b>53.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>3/8 · 派發 6</small></td>
+      <td>20.4%<small>EPS 15.1%</small></td>
+      <td>36.7%<small>P/S 14.6x · Fwd P/E 27.5x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>成長達標但 setup／獲利品質不足，保留觀察</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="sap sap se 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="237950763008.0">
+      <td><strong class="ticker">SAP</strong><small>SAP SE</small></td>
+      <td>$237.95B<small>US$206.16</small></td>
+      <td><b>52.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>3/8 · 派發 5</small></td>
+      <td>9.4%<small>EPS 30.6%</small></td>
+      <td>27.6%<small>P/S 6.2x · Fwd P/E 21.5x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="se sea ltd 完整 s1–s10 報告 已產生完整報告：neutral 過渡/不明(趨勢模板未達標)" data-depth="report" data-cap="69474123776.0">
+      <td><strong class="ticker">SE</strong><small>Sea Ltd</small></td>
+      <td>$69.47B<small>US$113.43</small></td>
+      <td><b>52.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>3/8 · 派發 6</small></td>
+      <td>46.6%<small>EPS 3.1%</small></td>
+      <td>8.4%<small>P/S 2.8x · Fwd P/E 21.6x</small></td>
+      <td><span class="depth depth-report">完整 S1–S10 報告</span><small>已產生完整報告：neutral</small></td>
+      <td><a class="open" href="../20260810-0955-SE-neutral-M.html">完整報告 ↗</a></td>
+    </tr><tr data-search="nvo novo nordisk a s 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="208924655616.0">
+      <td><strong class="ticker">NVO</strong><small>NOVO NORDISK A S</small></td>
+      <td>$208.92B<small>US$47.26</small></td>
+      <td><b>51.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>4/8 · 派發 5</small></td>
+      <td>2.1%<small>EPS -20.6%</small></td>
+      <td>42.5%<small>P/S 0.6x · Fwd P/E 14.2x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="cohr coherent corp. 完整 s1–s10 報告 已產生完整報告：neutral stage 2 上升(可持有)" data-depth="report" data-cap="74172735488.0">
+      <td><strong class="ticker">COHR</strong><small>COHERENT CORP.</small></td>
+      <td>$74.17B<small>US$379.13</small></td>
+      <td><b>51.0</b><small>高階分數</small></td>
+      <td>Stage 2 上升(可持有)<small>8/8 · 派發 5</small></td>
+      <td>20.5%<small>EPS --</small></td>
+      <td>13.6%<small>P/S 11.2x · Fwd P/E 45.3x</small></td>
+      <td><span class="depth depth-report">完整 S1–S10 報告</span><small>已產生完整報告：neutral</small></td>
+      <td><a class="open" href="../20260810-0940-COHR-neutral-M.html">完整報告 ↗</a></td>
+    </tr><tr data-search="axti axt inc 一手研究＋決策矩陣 reject_now；valuation and earnings quality fail the sanity gate. stage 2 上升(可持有)" data-depth="decision" data-cap="5795185664.0">
+      <td><strong class="ticker">AXTI</strong><small>AXT INC</small></td>
+      <td>$5.80B<small>US$88.58</small></td>
+      <td><b>50.0</b><small>高階分數</small></td>
+      <td>Stage 2 上升(可持有)<small>7/8 · 派發 5</small></td>
+      <td>164.8%<small>EPS --</small></td>
+      <td>21.9%<small>P/S 46.2x · Fwd P/E 39.8x</small></td>
+      <td><span class="depth depth-decision">一手研究＋決策矩陣</span><small>reject_now；Valuation and earnings quality fail the sanity gate.</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="panw palo alto networks inc 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 stage 2 上升(可持有)" data-depth="screen" data-cap="296545878016.0">
+      <td><strong class="ticker">PANW</strong><small>Palo Alto Networks Inc</small></td>
+      <td>$296.55B<small>US$363.86</small></td>
+      <td><b>49.0</b><small>高階分數</small></td>
+      <td>Stage 2 上升(可持有)<small>8/8 · 派發 5</small></td>
+      <td>31.1%<small>EPS --</small></td>
+      <td>-2.5%<small>P/S 28.0x · Fwd P/E 88.3x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="crwd crowdstrike holdings, inc. 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 stage 2 上升(可持有)" data-depth="screen" data-cap="218335150080.0">
+      <td><strong class="ticker">CRWD</strong><small>CrowdStrike Holdings, Inc.</small></td>
+      <td>$218.34B<small>US$214.42</small></td>
+      <td><b>48.0</b><small>高階分數</small></td>
+      <td>Stage 2 上升(可持有)<small>8/8 · 派發 4</small></td>
+      <td>25.6%<small>EPS --</small></td>
+      <td>-2.2%<small>P/S 42.9x · Fwd P/E 137.2x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="upst upstart holdings, inc. 完整 s1–s10 報告 已產生完整報告：neutral stage 4 下跌(絕不持有)" data-depth="report" data-cap="3025462784.0">
+      <td><strong class="ticker">UPST</strong><small>Upstart Holdings, Inc.</small></td>
+      <td>$3.03B<small>US$31.09</small></td>
+      <td><b>47.0</b><small>高階分數</small></td>
+      <td>Stage 4 下跌(絕不持有)<small>1/8 · 派發 8</small></td>
+      <td>42.3%<small>EPS 211.2%</small></td>
+      <td>7.2%<small>P/S 2.4x · Fwd P/E 9.5x</small></td>
+      <td><span class="depth depth-report">完整 S1–S10 報告</span><small>已產生完整報告：neutral</small></td>
+      <td><a class="open" href="../20260810-0957-UPST-neutral-L.html">完整報告 ↗</a></td>
+    </tr><tr data-search="uber uber technologies, inc 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="153232850944.0">
+      <td><strong class="ticker">UBER</strong><small>Uber Technologies, Inc</small></td>
+      <td>$153.23B<small>US$75.02</small></td>
+      <td><b>47.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>1/8 · 派發 9</small></td>
+      <td>12.2%<small>EPS 85.5%</small></td>
+      <td>13.3%<small>P/S 2.8x · Fwd P/E 17.1x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="tost toast, inc. 一手研究＋決策矩陣 watch；wait for 50dma &gt; 150dma &gt; 200dma and a non-extended base. 過渡/不明(趨勢模板未達標)" data-depth="decision" data-cap="19929440256.0">
+      <td><strong class="ticker">TOST</strong><small>Toast, Inc.</small></td>
+      <td>$19.93B<small>US$34.48</small></td>
+      <td><b>47.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>3/8 · 派發 5</small></td>
+      <td>23.1%<small>EPS 100.0%</small></td>
+      <td>8.0%<small>P/S 2.9x · Fwd P/E 19.8x</small></td>
+      <td><span class="depth depth-decision">一手研究＋決策矩陣</span><small>watch；Wait for 50DMA &gt; 150DMA &gt; 200DMA and a non-extended base.</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="be bloom energy corp 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="64601628672.0">
+      <td><strong class="ticker">BE</strong><small>Bloom Energy Corp</small></td>
+      <td>$64.60B<small>US$219.34</small></td>
+      <td><b>47.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>6/8 · 派發 10</small></td>
+      <td>165.5%<small>EPS --</small></td>
+      <td>17.1%<small>P/S 20.8x · Fwd P/E 44.8x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="mrvl marvell technology, inc. 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="196310925312.0">
+      <td><strong class="ticker">MRVL</strong><small>Marvell Technology, Inc.</small></td>
+      <td>$196.31B<small>US$218.72</small></td>
+      <td><b>47.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>6/8 · 派發 7</small></td>
+      <td>27.6%<small>EPS -80.4%</small></td>
+      <td>14.5%<small>P/S 22.5x · Fwd P/E 35.0x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="chym chime financial, inc. 一手研究＋決策矩陣 reject_now；wait for non-extended stage 2 and stable gaap profitability. 過渡/不明(趨勢模板未達標)" data-depth="decision" data-cap="11016826880.0">
+      <td><strong class="ticker">CHYM</strong><small>Chime Financial, Inc.</small></td>
+      <td>$11.02B<small>US$29.10</small></td>
+      <td><b>47.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>5/8 · 派發 4</small></td>
+      <td>26.8%<small>EPS --</small></td>
+      <td>18.6%<small>P/S 4.5x · Fwd P/E 18.1x</small></td>
+      <td><span class="depth depth-decision">一手研究＋決策矩陣</span><small>reject_now；Wait for non-extended Stage 2 and stable GAAP profitability.</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="pypl paypal holdings, inc. 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="50532073472.0">
+      <td><strong class="ticker">PYPL</strong><small>PayPal Holdings, Inc.</small></td>
+      <td>$50.53B<small>US$59.07</small></td>
+      <td><b>46.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>3/8 · 派發 0</small></td>
+      <td>4.8%<small>EPS -3.1%</small></td>
+      <td>17.0%<small>P/S 1.5x · Fwd P/E 10.2x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="ftai ftai aviation ltd. 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="22209380352.0">
+      <td><strong class="ticker">FTAI</strong><small>FTAI Aviation Ltd.</small></td>
+      <td>$22.21B<small>US$216.24</small></td>
+      <td><b>45.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>3/8 · 派發 9</small></td>
+      <td>40.9%<small>EPS -28.0%</small></td>
+      <td>21.0%<small>P/S 7.1x · Fwd P/E 18.0x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="snow snowflake inc. 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 stage 2 上升(可持有)" data-depth="screen" data-cap="114547826688.0">
+      <td><strong class="ticker">SNOW</strong><small>Snowflake Inc.</small></td>
+      <td>$114.55B<small>US$330.49</small></td>
+      <td><b>45.0</b><small>高階分數</small></td>
+      <td>Stage 2 上升(可持有)<small>7/8 · 派發 4</small></td>
+      <td>33.5%<small>EPS --</small></td>
+      <td>-22.2%<small>P/S 22.8x · Fwd P/E 122.5x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="bros dutch bros inc. 一手研究＋決策矩陣 reject_now；sepa execution gate blocks bottom-fishing. 過渡/不明(趨勢模板未達標)" data-depth="decision" data-cap="9259967488.0">
+      <td><strong class="ticker">BROS</strong><small>Dutch Bros Inc.</small></td>
+      <td>$9.26B<small>US$53.01</small></td>
+      <td><b>44.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>2/8 · 派發 7</small></td>
+      <td>32.5%<small>EPS 37.3%</small></td>
+      <td>12.9%<small>P/S 4.9x · Fwd P/E 40.3x</small></td>
+      <td><span class="depth depth-decision">一手研究＋決策矩陣</span><small>reject_now；SEPA execution gate blocks bottom-fishing.</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="nbis nebius group n.v. 完整 s1–s10 報告 已產生完整報告：neutral 過渡/不明(趨勢模板未達標)" data-depth="report" data-cap="47725244416.0">
+      <td><strong class="ticker">NBIS</strong><small>Nebius Group N.V.</small></td>
+      <td>$47.73B<small>US$187.97</small></td>
+      <td><b>44.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>6/8 · 派發 7</small></td>
+      <td>683.9%<small>EPS --</small></td>
+      <td>-32.1%<small>P/S 54.4x · Fwd P/E -64.0x</small></td>
+      <td><span class="depth depth-report">完整 S1–S10 報告</span><small>已產生完整報告：neutral</small></td>
+      <td><a class="open" href="../20260809-1206-NBIS-neutral-H.html">完整報告 ↗</a></td>
+    </tr><tr data-search="duol duolingo, inc. 僅高階篩選 成長、獲利與 sepa 未形成三重確認 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="6099038720.0">
+      <td><strong class="ticker">DUOL</strong><small>Duolingo, Inc.</small></td>
+      <td>$6.10B<small>US$130.90</small></td>
+      <td><b>44.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>2/8 · 派發 2</small></td>
+      <td>18.3%<small>EPS -27.5%</small></td>
+      <td>11.7%<small>P/S 5.3x · Fwd P/E 17.1x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>成長、獲利與 SEPA 未形成三重確認</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="mndy monday.com ltd. 僅高階篩選 成長達標但 setup／獲利品質不足，保留觀察 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="3936988672.0">
+      <td><strong class="ticker">MNDY</strong><small>monday.com Ltd.</small></td>
+      <td>$3.94B<small>US$93.13</small></td>
+      <td><b>43.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>2/8 · 派發 6</small></td>
+      <td>24.5%<small>EPS 9.6%</small></td>
+      <td>5.6%<small>P/S 3.0x · Fwd P/E 16.8x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>成長達標但 setup／獲利品質不足，保留觀察</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="meli mercadolibre inc 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="92303155200.0">
+      <td><strong class="ticker">MELI</strong><small>MERCADOLIBRE INC</small></td>
+      <td>$92.30B<small>US$1,820.69</small></td>
+      <td><b>42.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>1/8 · 派發 3</small></td>
+      <td>49.8%<small>EPS -10.9%</small></td>
+      <td>6.7%<small>P/S 2.6x · Fwd P/E 31.6x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="zim zim integrated shipping services ltd. 僅高階篩選 趨勢尚可但成長／獲利未達高速成長門檻 stage 2 上升(可持有)" data-depth="screen" data-cap="3241978880.0">
+      <td><strong class="ticker">ZIM</strong><small>ZIM Integrated Shipping Services Ltd.</small></td>
+      <td>$3.24B<small>US$26.90</small></td>
+      <td><b>42.0</b><small>高階分數</small></td>
+      <td>Stage 2 上升(可持有)<small>7/8 · 派發 3</small></td>
+      <td>-30.4%<small>EPS --</small></td>
+      <td>-1.0%<small>P/S 0.5x · Fwd P/E -12.0x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>趨勢尚可但成長／獲利未達高速成長門檻</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="cnswy  僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 stage 1 築底(等待轉 stage 2)" data-depth="screen" data-cap="48528605184.0">
+      <td><strong class="ticker">CNSWY</strong><small></small></td>
+      <td>$48.53B<small>US$11.45</small></td>
+      <td><b>41.0</b><small>高階分數</small></td>
+      <td>Stage 1 築底(等待轉 Stage 2)<small>2/8 · 派發 7</small></td>
+      <td>19.9%<small>EPS 169.9%</small></td>
+      <td>13.8%<small>P/S 4.0x · Fwd P/E --</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="brk-b berkshire hathaway inc 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="1125446320128.0">
+      <td><strong class="ticker">BRK-B</strong><small>BERKSHIRE HATHAWAY INC</small></td>
+      <td>$1,125.45B<small>US$521.80</small></td>
+      <td><b>41.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>5/8 · 派發 5</small></td>
+      <td>4.4%<small>EPS 119.6%</small></td>
+      <td>14.4%<small>P/S 3.0x · Fwd P/E 24.2x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="now servicenow, inc. 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="129108688896.0">
+      <td><strong class="ticker">NOW</strong><small>ServiceNow, Inc.</small></td>
+      <td>$129.11B<small>US$124.88</small></td>
+      <td><b>41.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>3/8 · 派發 4</small></td>
+      <td>24.0%<small>EPS -21.9%</small></td>
+      <td>4.1%<small>P/S 8.8x · Fwd P/E 24.9x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="z zillow group, inc. 完整 s1–s10 報告 已產生完整報告：neutral 過渡/不明(趨勢模板未達標)" data-depth="report" data-cap="7558047744.0">
+      <td><strong class="ticker">Z</strong><small>ZILLOW GROUP, INC.</small></td>
+      <td>$7.56B<small>US$33.61</small></td>
+      <td><b>41.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>1/8 · 派發 7</small></td>
+      <td>17.9%<small>EPS --</small></td>
+      <td>4.7%<small>P/S 2.7x · Fwd P/E 11.6x</small></td>
+      <td><span class="depth depth-report">完整 S1–S10 報告</span><small>已產生完整報告：neutral</small></td>
+      <td><a class="open" href="../20260810-0959-Z-neutral-M.html">完整報告 ↗</a></td>
+    </tr><tr data-search="opfi oppfi inc. 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="1353895936.0">
+      <td><strong class="ticker">OPFI</strong><small>OppFi Inc.</small></td>
+      <td>$1.35B<small>US$9.40</small></td>
+      <td><b>41.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>4/8 · 派發 9</small></td>
+      <td>-2.2%<small>EPS --</small></td>
+      <td>44.9%<small>P/S 4.0x · Fwd P/E 4.3x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="team atlassian corp 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="37829177344.0">
+      <td><strong class="ticker">TEAM</strong><small>Atlassian Corp</small></td>
+      <td>$37.83B<small>US$149.07</small></td>
+      <td><b>41.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>4/8 · 派發 3</small></td>
+      <td>27.6%<small>EPS --</small></td>
+      <td>11.9%<small>P/S 5.8x · Fwd P/E 22.1x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="grab grab holdings ltd 僅高階篩選 sepa 執行閘門不透過，不接下跌趨勢 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="14929140736.0">
+      <td><strong class="ticker">GRAB</strong><small>Grab Holdings Ltd</small></td>
+      <td>$14.93B<small>US$3.66</small></td>
+      <td><b>40.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>1/8 · 派發 5</small></td>
+      <td>21.7%<small>EPS --</small></td>
+      <td>2.1%<small>P/S 4.0x · Fwd P/E 26.3x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>SEPA 執行閘門不透過，不接下跌趨勢</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="ttd trade desk, inc. 僅高階篩選 sepa 執行閘門不透過，不接下跌趨勢 stage 4 下跌(絕不持有)" data-depth="screen" data-cap="6487495168.0">
+      <td><strong class="ticker">TTD</strong><small>Trade Desk, Inc.</small></td>
+      <td>$6.49B<small>US$13.80</small></td>
+      <td><b>40.0</b><small>高階分數</small></td>
+      <td>Stage 4 下跌(絕不持有)<small>0/8 · 派發 8</small></td>
+      <td>3.0%<small>EPS -23.6%</small></td>
+      <td>14.2%<small>P/S 2.2x · Fwd P/E 12.2x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>SEPA 執行閘門不透過，不接下跌趨勢</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="ibm international business machines corp 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="223549652992.0">
+      <td><strong class="ticker">IBM</strong><small>INTERNATIONAL BUSINESS MACHINES CORP</small></td>
+      <td>$223.55B<small>US$237.28</small></td>
+      <td><b>39.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>0/8 · 派發 5</small></td>
+      <td>1.1%<small>EPS -1.8%</small></td>
+      <td>16.5%<small>P/S 3.2x · Fwd P/E 18.0x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="enov enovis corp 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="1534585344.0">
+      <td><strong class="ticker">ENOV</strong><small>Enovis CORP</small></td>
+      <td>$1.53B<small>US$26.61</small></td>
+      <td><b>39.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>4/8 · 派發 4</small></td>
+      <td>3.2%<small>EPS --</small></td>
+      <td>4.2%<small>P/S 0.7x · Fwd P/E 6.6x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="enph enphase energy, inc. 僅高階篩選 成長、獲利與 sepa 未形成三重確認 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="5532896256.0">
+      <td><strong class="ticker">ENPH</strong><small>Enphase Energy, Inc.</small></td>
+      <td>$5.53B<small>US$41.87</small></td>
+      <td><b>39.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>4/8 · 派發 5</small></td>
+      <td>-19.6%<small>EPS -3.5%</small></td>
+      <td>18.0%<small>P/S 4.2x · Fwd P/E 18.2x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>成長、獲利與 SEPA 未形成三重確認</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="dhi horton d r inc /de/ 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="42257268736.0">
+      <td><strong class="ticker">DHI</strong><small>HORTON D R INC /DE/</small></td>
+      <td>$42.26B<small>US$151.08</small></td>
+      <td><b>39.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>3/8 · 派發 9</small></td>
+      <td>0.0%<small>EPS -4.8%</small></td>
+      <td>13.0%<small>P/S 1.3x · Fwd P/E 12.8x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="bwxt bwx technologies, inc. 僅高階篩選 sepa 執行閘門不透過，不接下跌趨勢 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="15566574592.0">
+      <td><strong class="ticker">BWXT</strong><small>BWX Technologies, Inc.</small></td>
+      <td>$15.57B<small>US$169.90</small></td>
+      <td><b>38.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>1/8 · 派發 7</small></td>
+      <td>18.0%<small>EPS 14.1%</small></td>
+      <td>10.4%<small>P/S 4.4x · Fwd P/E 32.3x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>SEPA 執行閘門不透過，不接下跌趨勢</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="lhx l3harris technologies, inc. /de/ 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="53382148096.0">
+      <td><strong class="ticker">LHX</strong><small>L3HARRIS TECHNOLOGIES, INC. /DE/</small></td>
+      <td>$53.38B<small>US$286.67</small></td>
+      <td><b>38.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>2/8 · 派發 9</small></td>
+      <td>190.0%<small>EPS -6.1%</small></td>
+      <td>9.7%<small>P/S 4.2x · Fwd P/E 21.4x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="celh celsius holdings, inc. 完整 s1–s10 報告 已產生完整報告：reduce stage 4 下跌(絕不持有)" data-depth="report" data-cap="7026783232.0">
+      <td><strong class="ticker">CELH</strong><small>Celsius Holdings, Inc.</small></td>
+      <td>$7.03B<small>US$27.77</small></td>
+      <td><b>38.0</b><small>高階分數</small></td>
+      <td>Stage 4 下跌(絕不持有)<small>0/8 · 派發 9</small></td>
+      <td>10.6%<small>EPS -56.9%</small></td>
+      <td>19.1%<small>P/S 2.3x · Fwd P/E 15.4x</small></td>
+      <td><span class="depth depth-report">完整 S1–S10 報告</span><small>已產生完整報告：reduce</small></td>
+      <td><a class="open" href="../20260809-1218-CELH-reduce-H.html">完整報告 ↗</a></td>
+    </tr><tr data-search="iclr icon plc 僅高階篩選 成長、獲利與 sepa 未形成三重確認 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="12692638720.0">
+      <td><strong class="ticker">ICLR</strong><small>ICON PLC</small></td>
+      <td>$12.69B<small>US$164.51</small></td>
+      <td><b>38.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>5/8 · 派發 5</small></td>
+      <td>1.2%<small>EPS -63.3%</small></td>
+      <td>9.4%<small>P/S 1.5x · Fwd P/E 13.9x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>成長、獲利與 SEPA 未形成三重確認</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="p everpure, inc. 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 stage 3 派發(疑,減碼/收緊止損)" data-depth="screen" data-cap="29933064192.0">
+      <td><strong class="ticker">P</strong><small>Everpure, Inc.</small></td>
+      <td>$29.93B<small>US$90.05</small></td>
+      <td><b>37.0</b><small>高階分數</small></td>
+      <td>Stage 3 派發(疑,減碼/收緊止損)<small>6/8 · 派發 5</small></td>
+      <td>--<small>EPS --</small></td>
+      <td>-18.5%<small>P/S 7.6x · Fwd P/E 30.0x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="low lowes companies inc 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="125233930240.0">
+      <td><strong class="ticker">LOW</strong><small>LOWES COMPANIES INC</small></td>
+      <td>$125.23B<small>US$223.35</small></td>
+      <td><b>37.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>2/8 · 派發 8</small></td>
+      <td>10.3%<small>EPS -0.7%</small></td>
+      <td>11.1%<small>P/S 1.4x · Fwd P/E 16.6x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="aaoi applied optoelectronics, inc. 僅高階篩選 成長達標但 setup／獲利品質不足，保留觀察 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="11470126080.0">
+      <td><strong class="ticker">AAOI</strong><small>APPLIED OPTOELECTRONICS, INC.</small></td>
+      <td>$11.47B<small>US$135.63</small></td>
+      <td><b>37.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>6/8 · 派發 6</small></td>
+      <td>86.4%<small>EPS --</small></td>
+      <td>-12.9%<small>P/S 19.2x · Fwd P/E 29.1x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>成長達標但 setup／獲利品質不足，保留觀察</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="ldos leidos holdings, inc. 僅高階篩選 成長、獲利與 sepa 未形成三重確認 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="17263964160.0">
+      <td><strong class="ticker">LDOS</strong><small>Leidos Holdings, Inc.</small></td>
+      <td>$17.26B<small>US$137.57</small></td>
+      <td><b>35.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>2/8 · 派發 3</small></td>
+      <td>7.2%<small>EPS -6.7%</small></td>
+      <td>11.7%<small>P/S 1.0x · Fwd P/E 10.6x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>成長、獲利與 SEPA 未形成三重確認</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="s sentinelone, inc. 一手研究＋決策矩陣 reject_now；require durable gaap margin improvement and dilution-adjusted fcf. stage 2 上升(可持有)" data-depth="decision" data-cap="7335999488.0">
+      <td><strong class="ticker">S</strong><small>SentinelOne, Inc.</small></td>
+      <td>$7.34B<small>US$21.40</small></td>
+      <td><b>35.0</b><small>高階分數</small></td>
+      <td>Stage 2 上升(可持有)<small>7/8 · 派發 4</small></td>
+      <td>20.8%<small>EPS --</small></td>
+      <td>-28.8%<small>P/S 7.0x · Fwd P/E 43.4x</small></td>
+      <td><span class="depth depth-decision">一手研究＋決策矩陣</span><small>reject_now；Require durable GAAP margin improvement and dilution-adjusted FCF.</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="mq marqeta, inc. 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 stage 4 下跌(絕不持有)" data-depth="screen" data-cap="1661417344.0">
+      <td><strong class="ticker">MQ</strong><small>Marqeta, Inc.</small></td>
+      <td>$1.66B<small>US$15.96</small></td>
+      <td><b>34.0</b><small>高階分數</small></td>
+      <td>Stage 4 下跌(絕不持有)<small>0/8 · 派發 5</small></td>
+      <td>17.0%<small>EPS --</small></td>
+      <td>2.5%<small>P/S 2.5x · Fwd P/E 32.9x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="kvyo klaviyo, inc. 僅高階篩選 成長達標但 setup／獲利品質不足，保留觀察 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="4974030848.0">
+      <td><strong class="ticker">KVYO</strong><small>Klaviyo, Inc.</small></td>
+      <td>$4.97B<small>US$16.62</small></td>
+      <td><b>34.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>2/8 · 派發 5</small></td>
+      <td>26.4%<small>EPS --</small></td>
+      <td>-4.0%<small>P/S 3.6x · Fwd P/E 15.7x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>成長達標但 setup／獲利品質不足，保留觀察</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="ceg constellation energy corp 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="95624028160.0">
+      <td><strong class="ticker">CEG</strong><small>Constellation Energy Corp</small></td>
+      <td>$95.62B<small>US$269.89</small></td>
+      <td><b>34.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>1/8 · 派發 7</small></td>
+      <td>23.0%<small>EPS -46.8%</small></td>
+      <td>8.7%<small>P/S 3.1x · Fwd P/E 20.3x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="noc northrop grumman corp /de/ 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="81200381952.0">
+      <td><strong class="ticker">NOC</strong><small>NORTHROP GRUMMAN CORP /DE/</small></td>
+      <td>$81.20B<small>US$571.58</small></td>
+      <td><b>34.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>2/8 · 派發 5</small></td>
+      <td>5.1%<small>EPS -5.8%</small></td>
+      <td>11.6%<small>P/S 1.9x · Fwd P/E 18.8x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="hims hims &amp; hers health, inc. 僅高階篩選 成長、獲利與 sepa 未形成三重確認 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="7311748608.0">
+      <td><strong class="ticker">HIMS</strong><small>Hims &amp; Hers Health, Inc.</small></td>
+      <td>$7.31B<small>US$31.59</small></td>
+      <td><b>34.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>4/8 · 派發 4</small></td>
+      <td>3.8%<small>EPS --</small></td>
+      <td>-7.9%<small>P/S 3.1x · Fwd P/E 24.2x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>成長、獲利與 SEPA 未形成三重確認</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="amba ambarella inc 僅高階篩選 成長、獲利與 sepa 未形成三重確認 stage 3 派發(疑,減碼/收緊止損)" data-depth="screen" data-cap="3806881024.0">
+      <td><strong class="ticker">AMBA</strong><small>AMBARELLA INC</small></td>
+      <td>$3.81B<small>US$86.78</small></td>
+      <td><b>33.0</b><small>高階分數</small></td>
+      <td>Stage 3 派發(疑,減碼/收緊止損)<small>6/8 · 派發 3</small></td>
+      <td>16.9%<small>EPS --</small></td>
+      <td>-19.3%<small>P/S 9.4x · Fwd P/E 75.6x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>成長、獲利與 SEPA 未形成三重確認</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="rbrk rubrik, inc. 完整 s1–s10 報告 已產生完整報告：reduce stage 3 派發(疑,減碼/收緊止損)" data-depth="report" data-cap="18538979328.0">
+      <td><strong class="ticker">RBRK</strong><small>Rubrik, Inc.</small></td>
+      <td>$18.54B<small>US$90.07</small></td>
+      <td><b>32.0</b><small>高階分數</small></td>
+      <td>Stage 3 派發(疑,減碼/收緊止損)<small>5/8 · 派發 6</small></td>
+      <td>39.0%<small>EPS --</small></td>
+      <td>-13.6%<small>P/S 13.0x · Fwd P/E 138.4x</small></td>
+      <td><span class="depth depth-report">完整 S1–S10 報告</span><small>已產生完整報告：reduce</small></td>
+      <td><a class="open" href="../20260810-0954-RBRK-reduce-M.html">完整報告 ↗</a></td>
+    </tr><tr data-search="avav aerovironment inc 一手研究＋決策矩陣 reject_now；require organic growth disclosure, gaap margin recovery and stage 2. 過渡/不明(趨勢模板未達標)" data-depth="decision" data-cap="9450037248.0">
+      <td><strong class="ticker">AVAV</strong><small>AeroVironment Inc</small></td>
+      <td>$9.45B<small>US$186.73</small></td>
+      <td><b>32.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>2/8 · 派發 3</small></td>
+      <td>133.3%<small>EPS --</small></td>
+      <td>2.8%<small>P/S 4.8x · Fwd P/E 42.4x</small></td>
+      <td><span class="depth depth-decision">一手研究＋決策矩陣</span><small>reject_now；Require organic growth disclosure, GAAP margin recovery and Stage 2.</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="bull webull corp 僅高階篩選 成長達標但 setup／獲利品質不足，保留觀察 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="3892912640.0">
+      <td><strong class="ticker">BULL</strong><small>Webull Corp</small></td>
+      <td>$3.89B<small>US$7.32</small></td>
+      <td><b>31.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>2/8 · 派發 2</small></td>
+      <td>36.3%<small>EPS --</small></td>
+      <td>-1.5%<small>P/S 6.4x · Fwd P/E 24.0x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>成長達標但 setup／獲利品質不足，保留觀察</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="sam boston beer co inc 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="1920530560.0">
+      <td><strong class="ticker">SAM</strong><small>BOSTON BEER CO INC</small></td>
+      <td>$1.92B<small>US$186.61</small></td>
+      <td><b>31.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>2/8 · 派發 4</small></td>
+      <td>-3.3%<small>EPS -9.0%</small></td>
+      <td>9.3%<small>P/S 1.0x · Fwd P/E 17.7x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="poet poet technologies inc. 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="1537776896.0">
+      <td><strong class="ticker">POET</strong><small>POET TECHNOLOGIES INC.</small></td>
+      <td>$1.54B<small>US$8.91</small></td>
+      <td><b>30.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>6/8 · 派發 7</small></td>
+      <td>201.9%<small>EPS --</small></td>
+      <td>-3550.0%<small>P/S 1089.5x · Fwd P/E -52.4x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="etor etoro group ltd. 完整 s1–s10 報告 已產生完整報告：neutral 過渡/不明(趨勢模板未達標)" data-depth="report" data-cap="2802534656.0">
+      <td><strong class="ticker">ETOR</strong><small>eToro Group Ltd.</small></td>
+      <td>$2.80B<small>US$35.24</small></td>
+      <td><b>29.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>2/8 · 派發 7</small></td>
+      <td>-35.6%<small>EPS 24.6%</small></td>
+      <td>2.8%<small>P/S 0.2x · Fwd P/E 10.5x</small></td>
+      <td><span class="depth depth-report">完整 S1–S10 報告</span><small>已產生完整報告：neutral</small></td>
+      <td><a class="open" href="../20260810-0947-ETOR-neutral-L.html">完整報告 ↗</a></td>
+    </tr><tr data-search="otgly  僅高階篩選 成長、獲利與 sepa 未形成三重確認 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="6821889536.0">
+      <td><strong class="ticker">OTGLY</strong><small></small></td>
+      <td>$6.82B<small>US$17.07</small></td>
+      <td><b>28.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>3/8 · 派發 4</small></td>
+      <td>6.1%<small>EPS -5.4%</small></td>
+      <td>0.0%<small>P/S -- · Fwd P/E --</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>成長、獲利與 SEPA 未形成三重確認</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="ktos kratos defense &amp; security solutions, inc. 僅高階篩選 成長達標但 setup／獲利品質不足，保留觀察 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="11407824896.0">
+      <td><strong class="ticker">KTOS</strong><small>KRATOS DEFENSE &amp; SECURITY SOLUTIONS, INC.</small></td>
+      <td>$11.41B<small>US$60.77</small></td>
+      <td><b>28.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>2/8 · 派發 3</small></td>
+      <td>30.5%<small>EPS 7.4%</small></td>
+      <td>-0.2%<small>P/S 7.5x · Fwd P/E 54.4x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>成長達標但 setup／獲利品質不足，保留觀察</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="camt camtek ltd 僅高階篩選 成長、獲利與 sepa 未形成三重確認 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="7248090624.0">
+      <td><strong class="ticker">CAMT</strong><small>CAMTEK LTD</small></td>
+      <td>$7.25B<small>US$155.35</small></td>
+      <td><b>28.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>3/8 · 派發 4</small></td>
+      <td>2.5%<small>EPS -10.0%</small></td>
+      <td>22.4%<small>P/S 14.5x · Fwd P/E 34.3x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>成長、獲利與 SEPA 未形成三重確認</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="crcl circle internet group, inc. 僅高階篩選 sepa 執行閘門不透過，不接下跌趨勢 stage 4 下跌(絕不持有)" data-depth="screen" data-cap="18173849600.0">
+      <td><strong class="ticker">CRCL</strong><small>Circle Internet Group, Inc.</small></td>
+      <td>$18.17B<small>US$66.67</small></td>
+      <td><b>27.0</b><small>高階分數</small></td>
+      <td>Stage 4 下跌(絕不持有)<small>1/8 · 派發 4</small></td>
+      <td>6.6%<small>EPS --</small></td>
+      <td>4.9%<small>P/S 6.3x · Fwd P/E 40.4x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>SEPA 執行閘門不透過，不接下跌趨勢</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="zs zscaler, inc. 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="27277160448.0">
+      <td><strong class="ticker">ZS</strong><small>Zscaler, Inc.</small></td>
+      <td>$27.28B<small>US$168.68</small></td>
+      <td><b>26.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>2/8 · 派發 6</small></td>
+      <td>25.4%<small>EPS --</small></td>
+      <td>-3.3%<small>P/S 8.6x · Fwd P/E 36.7x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="crwv coreweave, inc. 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="49466863616.0">
+      <td><strong class="ticker">CRWV</strong><small>CoreWeave, Inc.</small></td>
+      <td>$49.47B<small>US$90.67</small></td>
+      <td><b>24.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>2/8 · 派發 8</small></td>
+      <td>111.6%<small>EPS --</small></td>
+      <td>-6.9%<small>P/S 7.9x · Fwd P/E -56.5x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="ntsk netskope inc 僅高階篩選 成長達標但 setup／獲利品質不足，保留觀察 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="6006344704.0">
+      <td><strong class="ticker">NTSK</strong><small>Netskope Inc</small></td>
+      <td>$6.01B<small>US$14.87</small></td>
+      <td><b>22.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>3/8 · 派發 4</small></td>
+      <td>27.8%<small>EPS --</small></td>
+      <td>-53.9%<small>P/S 8.0x · Fwd P/E 1045.0x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>成長達標但 setup／獲利品質不足，保留觀察</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="gtlb gitlab inc. 僅高階篩選 成長達標但 setup／獲利品質不足，保留觀察 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="6582033408.0">
+      <td><strong class="ticker">GTLB</strong><small>Gitlab Inc.</small></td>
+      <td>$6.58B<small>US$38.97</small></td>
+      <td><b>22.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>3/8 · 派發 4</small></td>
+      <td>23.1%<small>EPS --</small></td>
+      <td>-6.0%<small>P/S 6.6x · Fwd P/E 37.9x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>成長達標但 setup／獲利品質不足，保留觀察</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="glxy galaxy digital inc. 僅高階篩選 sepa 執行閘門不透過，不接下跌趨勢 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="7930990080.0">
+      <td><strong class="ticker">GLXY</strong><small>Galaxy Digital Inc.</small></td>
+      <td>$7.93B<small>US$20.17</small></td>
+      <td><b>21.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>1/8 · 派發 7</small></td>
+      <td>-3.8%<small>EPS --</small></td>
+      <td>96.2%<small>P/S 0.1x · Fwd P/E -565.9x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>SEPA 執行閘門不透過，不接下跌趨勢</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="quik quicklogic corp 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="257352496.0">
+      <td><strong class="ticker">QUIK</strong><small>QUICKLOGIC Corp</small></td>
+      <td>$0.26B<small>US$14.52</small></td>
+      <td><b>21.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>6/8 · 派發 8</small></td>
+      <td>16.8%<small>EPS --</small></td>
+      <td>-41.7%<small>P/S 17.7x · Fwd P/E 105.6x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="tsla tesla, inc. 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 stage 4 下跌(絕不持有)" data-depth="screen" data-cap="1297742299136.0">
+      <td><strong class="ticker">TSLA</strong><small>Tesla, Inc.</small></td>
+      <td>$1,297.74B<small>US$328.58</small></td>
+      <td><b>20.0</b><small>高階分數</small></td>
+      <td>Stage 4 下跌(絕不持有)<small>0/8 · 派發 4</small></td>
+      <td>25.5%<small>EPS -3.0%</small></td>
+      <td>1.4%<small>P/S 12.5x · Fwd P/E 148.1x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="leu centrus energy corp 僅高階篩選 成長、獲利與 sepa 未形成三重確認 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="3818378240.0">
+      <td><strong class="ticker">LEU</strong><small>CENTRUS ENERGY CORP</small></td>
+      <td>$3.82B<small>US$191.37</small></td>
+      <td><b>20.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>2/8 · 派發 8</small></td>
+      <td>14.0%<small>EPS -51.6%</small></td>
+      <td>5.3%<small>P/S 8.1x · Fwd P/E 53.2x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>成長、獲利與 SEPA 未形成三重確認</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="iren iren ltd 僅高階篩選 sepa 執行閘門不透過，不接下跌趨勢 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="14734723072.0">
+      <td><strong class="ticker">IREN</strong><small>IREN Ltd</small></td>
+      <td>$14.73B<small>US$41.23</small></td>
+      <td><b>19.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>1/8 · 派發 9</small></td>
+      <td>-0.0%<small>EPS --</small></td>
+      <td>-64.5%<small>P/S 19.5x · Fwd P/E -43.9x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>SEPA 執行閘門不透過，不接下跌趨勢</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="blsh bullish 僅高階篩選 sepa 執行閘門不透過，不接下跌趨勢 stage 4 下跌(絕不持有)" data-depth="screen" data-cap="3581934080.0">
+      <td><strong class="ticker">BLSH</strong><small>Bullish</small></td>
+      <td>$3.58B<small>US$23.62</small></td>
+      <td><b>19.0</b><small>高階分數</small></td>
+      <td>Stage 4 下跌(絕不持有)<small>0/8 · 派發 7</small></td>
+      <td>65.5%<small>EPS --</small></td>
+      <td>-742.5%<small>P/S 13.4x · Fwd P/E 29.8x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>SEPA 執行閘門不透過，不接下跌趨勢</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="asts ast spacemobile, inc. 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="27921682432.0">
+      <td><strong class="ticker">ASTS</strong><small>AST SpaceMobile, Inc.</small></td>
+      <td>$27.92B<small>US$71.94</small></td>
+      <td><b>19.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>2/8 · 派發 8</small></td>
+      <td>1952.2%<small>EPS --</small></td>
+      <td>-1014.0%<small>P/S 328.7x · Fwd P/E -276.5x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="cifr cipher digital inc. 僅高階篩選 成長、獲利與 sepa 未形成三重確認 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="7130227712.0">
+      <td><strong class="ticker">CIFR</strong><small>Cipher Digital Inc.</small></td>
+      <td>$7.13B<small>US$17.18</small></td>
+      <td><b>19.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>5/8 · 派發 7</small></td>
+      <td>-43.0%<small>EPS --</small></td>
+      <td>-301.7%<small>P/S 37.3x · Fwd P/E 58.2x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>成長、獲利與 SEPA 未形成三重確認</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="mara mara holdings, inc. 僅高階篩選 成長、獲利與 sepa 未形成三重確認 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="3897760000.0">
+      <td><strong class="ticker">MARA</strong><small>MARA Holdings, Inc.</small></td>
+      <td>$3.90B<small>US$10.09</small></td>
+      <td><b>19.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>2/8 · 派發 6</small></td>
+      <td>-26.7%<small>EPS --</small></td>
+      <td>-265.2%<small>P/S 4.8x · Fwd P/E -14.8x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>成長、獲利與 SEPA 未形成三重確認</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="mstr strategy inc 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 stage 4 下跌(絕不持有)" data-depth="screen" data-cap="38426419200.0">
+      <td><strong class="ticker">MSTR</strong><small>Strategy Inc</small></td>
+      <td>$38.43B<small>US$100.01</small></td>
+      <td><b>18.0</b><small>高階分數</small></td>
+      <td>Stage 4 下跌(絕不持有)<small>0/8 · 派發 3</small></td>
+      <td>6.9%<small>EPS --</small></td>
+      <td>-6808.1%<small>P/S 77.1x · Fwd P/E 2.0x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="ionq ionq, inc. 僅高階篩選 成長達標但 setup／獲利品質不足，保留觀察 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="16584384512.0">
+      <td><strong class="ticker">IONQ</strong><small>IonQ, Inc.</small></td>
+      <td>$16.58B<small>US$44.43</small></td>
+      <td><b>17.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>2/8 · 派發 8</small></td>
+      <td>286.8%<small>EPS --</small></td>
+      <td>-421.3%<small>P/S 67.3x · Fwd P/E -36.6x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>成長達標但 setup／獲利品質不足，保留觀察</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="yss york space systems inc. 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 stage 1 築底(等待轉 stage 2)" data-depth="screen" data-cap="1499251584.0">
+      <td><strong class="ticker">YSS</strong><small>York Space Systems Inc.</small></td>
+      <td>$1.50B<small>US$11.41</small></td>
+      <td><b>17.0</b><small>高階分數</small></td>
+      <td>Stage 1 築底(等待轉 Stage 2)<small>0/8 · 派發 9</small></td>
+      <td>9.5%<small>EPS --</small></td>
+      <td>-89.9%<small>P/S 3.8x · Fwd P/E 21.5x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="rblx roblox corp 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 stage 4 下跌(絕不持有)" data-depth="screen" data-cap="26996267008.0">
+      <td><strong class="ticker">RBLX</strong><small>Roblox Corp</small></td>
+      <td>$27.00B<small>US$37.79</small></td>
+      <td><b>16.0</b><small>高階分數</small></td>
+      <td>Stage 4 下跌(絕不持有)<small>0/8 · 派發 5</small></td>
+      <td>35.9%<small>EPS --</small></td>
+      <td>-13.3%<small>P/S 4.7x · Fwd P/E -30.9x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="mp mp materials corp. / de 僅高階篩選 sepa 執行閘門不透過，不接下跌趨勢 stage 4 下跌(絕不持有)" data-depth="screen" data-cap="9098714112.0">
+      <td><strong class="ticker">MP</strong><small>MP Materials Corp. / DE</small></td>
+      <td>$9.10B<small>US$51.11</small></td>
+      <td><b>15.0</b><small>高階分數</small></td>
+      <td>Stage 4 下跌(絕不持有)<small>1/8 · 派發 10</small></td>
+      <td>119.7%<small>EPS --</small></td>
+      <td>-14.7%<small>P/S 21.9x · Fwd P/E 55.4x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>SEPA 執行閘門不透過，不接下跌趨勢</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="lumn lumen technologies, inc. 僅高階篩選 sepa 執行閘門不透過，不接下跌趨勢 stage 4 下跌(絕不持有)" data-depth="screen" data-cap="6436218880.0">
+      <td><strong class="ticker">LUMN</strong><small>Lumen Technologies, Inc.</small></td>
+      <td>$6.44B<small>US$6.24</small></td>
+      <td><b>14.0</b><small>高階分數</small></td>
+      <td>Stage 4 下跌(絕不持有)<small>1/8 · 派發 6</small></td>
+      <td>-9.3%<small>EPS --</small></td>
+      <td>-2.9%<small>P/S 0.5x · Fwd P/E -23.1x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>SEPA 執行閘門不透過，不接下跌趨勢</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="eose eos energy enterprises, inc. 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 stage 4 下跌(絕不持有)" data-depth="screen" data-cap="1501002496.0">
+      <td><strong class="ticker">EOSE</strong><small>Eos Energy Enterprises, Inc.</small></td>
+      <td>$1.50B<small>US$4.15</small></td>
+      <td><b>13.0</b><small>高階分數</small></td>
+      <td>Stage 4 下跌(絕不持有)<small>1/8 · 派發 9</small></td>
+      <td>351.4%<small>EPS --</small></td>
+      <td>-121.9%<small>P/S 7.0x · Fwd P/E -27.7x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="flnc fluence energy, inc. 僅高階篩選 sepa 執行閘門不透過，不接下跌趨勢 stage 1 築底(等待轉 stage 2)" data-depth="screen" data-cap="2999779840.0">
+      <td><strong class="ticker">FLNC</strong><small>Fluence Energy, Inc.</small></td>
+      <td>$3.00B<small>US$13.20</small></td>
+      <td><b>13.0</b><small>高階分數</small></td>
+      <td>Stage 1 築底(等待轉 Stage 2)<small>1/8 · 派發 8</small></td>
+      <td>7.9%<small>EPS --</small></td>
+      <td>-8.9%<small>P/S 1.1x · Fwd P/E 56.6x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>SEPA 執行閘門不透過，不接下跌趨勢</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="rcat red cat holdings, inc. 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="1401690880.0">
+      <td><strong class="ticker">RCAT</strong><small>Red Cat Holdings, Inc.</small></td>
+      <td>$1.40B<small>US$9.21</small></td>
+      <td><b>12.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>2/8 · 派發 7</small></td>
+      <td>527.3%<small>EPS --</small></td>
+      <td>-191.4%<small>P/S 19.6x · Fwd P/E -25.6x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="smr nuscale power corp 僅高階篩選 成長、獲利與 sepa 未形成三重確認 過渡/不明(趨勢模板未達標)" data-depth="screen" data-cap="4030025216.0">
+      <td><strong class="ticker">SMR</strong><small>NUSCALE POWER Corp</small></td>
+      <td>$4.03B<small>US$9.82</small></td>
+      <td><b>12.0</b><small>高階分數</small></td>
+      <td>過渡/不明(趨勢模板未達標)<small>2/8 · 派發 8</small></td>
+      <td>-99.1%<small>EPS --</small></td>
+      <td>-85337.3%<small>P/S 377.0x · Fwd P/E -15.7x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>成長、獲利與 SEPA 未形成三重確認</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="stem stem, inc. 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 stage 4 下跌(絕不持有)" data-depth="screen" data-cap="52666884.0">
+      <td><strong class="ticker">STEM</strong><small>STEM, INC.</small></td>
+      <td>$0.05B<small>US$5.88</small></td>
+      <td><b>11.0</b><small>高階分數</small></td>
+      <td>Stage 4 下跌(絕不持有)<small>0/8 · 派發 10</small></td>
+      <td>-10.8%<small>EPS --</small></td>
+      <td>-37.5%<small>P/S 0.3x · Fwd P/E -1.0x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="coin coinbase global, inc. 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 stage 4 下跌(絕不持有)" data-depth="screen" data-cap="40525352960.0">
+      <td><strong class="ticker">COIN</strong><small>Coinbase Global, Inc.</small></td>
+      <td>$40.53B<small>US$153.60</small></td>
+      <td><b>10.0</b><small>高階分數</small></td>
+      <td>Stage 4 下跌(絕不持有)<small>0/8 · 派發 4</small></td>
+      <td>-17.3%<small>EPS --</small></td>
+      <td>-13.9%<small>P/S 6.7x · Fwd P/E 50.6x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="oklo oklo inc. 僅高階篩選 sepa 執行閘門不透過，不接下跌趨勢 stage 4 下跌(絕不持有)" data-depth="screen" data-cap="8424643584.0">
+      <td><strong class="ticker">OKLO</strong><small>Oklo Inc.</small></td>
+      <td>$8.42B<small>US$48.42</small></td>
+      <td><b>9.0</b><small>高階分數</small></td>
+      <td>Stage 4 下跌(絕不持有)<small>1/8 · 派發 7</small></td>
+      <td>--<small>EPS --</small></td>
+      <td>-6048.8%<small>P/S 6962.5x · Fwd P/E -53.1x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>SEPA 執行閘門不透過，不接下跌趨勢</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="bbai bigbear.ai holdings, inc. 僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 stage 4 下跌(絕不持有)" data-depth="screen" data-cap="1567947008.0">
+      <td><strong class="ticker">BBAI</strong><small>BigBear.ai Holdings, Inc.</small></td>
+      <td>$1.57B<small>US$3.27</small></td>
+      <td><b>8.0</b><small>高階分數</small></td>
+      <td>Stage 4 下跌(絕不持有)<small>1/8 · 派發 8</small></td>
+      <td>13.2%<small>EPS --</small></td>
+      <td>-74.4%<small>P/S 11.9x · Fwd P/E -16.4x</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr><tr data-search="sivef  僅高階篩選 只有機械篩選；尚未逐檔執行 s1–s10 stage 1 築底(等待轉 stage 2)" data-depth="screen" data-cap="1304863616.0">
+      <td><strong class="ticker">SIVEF</strong><small></small></td>
+      <td>$1.30B<small>US$4.42</small></td>
+      <td><b>7.0</b><small>高階分數</small></td>
+      <td>Stage 1 築底(等待轉 Stage 2)<small>1/8 · 派發 7</small></td>
+      <td>-21.5%<small>EPS --</small></td>
+      <td>0.0%<small>P/S -- · Fwd P/E --</small></td>
+      <td><span class="depth depth-screen">僅高階篩選</span><small>只有機械篩選；尚未逐檔執行 S1–S10</small></td>
+      <td><span class="muted">—</span></td>
+    </tr></tbody></table></div>
+  </section>
+  <section><h2>32 個排除標的</h2><p>指數、ETF、槓桿／反向產品、加密資產或重複股別不進入公司基本面排名。</p>
+    <div class="table-wrap"><table><thead><tr><th>代號</th><th>排除原因</th></tr></thead><tbody><tr><td><strong>000001</strong></td><td>index</td></tr><tr><td><strong>ARKQ</strong></td><td>ETF</td></tr><tr><td><strong>BLOK</strong></td><td>ETF</td></tr><tr><td><strong>BOXX</strong></td><td>ETF</td></tr><tr><td><strong>BRK-A</strong></td><td>duplicate share class; BRK-B retained</td></tr><tr><td><strong>BTC</strong></td><td>cryptocurrency</td></tr><tr><td><strong>DJI</strong></td><td>index</td></tr><tr><td><strong>DXJ</strong></td><td>ETF</td></tr><tr><td><strong>EWJ</strong></td><td>ETF</td></tr><tr><td><strong>EWZ</strong></td><td>ETF</td></tr><tr><td><strong>FOTO</strong></td><td>ETF</td></tr><tr><td><strong>HIMZ</strong></td><td>leveraged single-stock ETF</td></tr><tr><td><strong>HSTECH</strong></td><td>index</td></tr><tr><td><strong>IJR</strong></td><td>ETF</td></tr><tr><td><strong>IVES</strong></td><td>ETF</td></tr><tr><td><strong>IWB</strong></td><td>ETF</td></tr><tr><td><strong>IWV</strong></td><td>ETF</td></tr><tr><td><strong>NAIL</strong></td><td>leveraged ETF</td></tr><tr><td><strong>NUKZ</strong></td><td>ETF</td></tr><tr><td><strong>NVDX</strong></td><td>leveraged single-stock ETF</td></tr><tr><td><strong>QQQ</strong></td><td>ETF</td></tr><tr><td><strong>QQQM</strong></td><td>ETF</td></tr><tr><td><strong>SPMO</strong></td><td>ETF</td></tr><tr><td><strong>SPX</strong></td><td>index</td></tr><tr><td><strong>SPY</strong></td><td>ETF</td></tr><tr><td><strong>SQQQ</strong></td><td>inverse leveraged ETF</td></tr><tr><td><strong>TQQQ</strong></td><td>leveraged ETF</td></tr><tr><td><strong>TSLL</strong></td><td>leveraged single-stock ETF</td></tr><tr><td><strong>UPRO</strong></td><td>leveraged ETF</td></tr><tr><td><strong>VIXY</strong></td><td>volatility futures ETF</td></tr><tr><td><strong>VT</strong></td><td>ETF</td></tr><tr><td><strong>YINN</strong></td><td>leveraged ETF</td></tr></tbody></table></div>
+  </section>
+  <footer>資料時點：2026-08-09T22:31:51+0800。報價與聚合估值只用於漏斗；完整 verdict 必須另行完成一手證據、KB 動員及 S1–S10。</footer>
+</main>
+<script id="screening-data" type="application/json">{"generated_at": "2026-08-10T09:59:30+08:00", "screened_at": "2026-08-09T22:31:51+0800", "eligible_count": 150, "excluded_count": 32, "depth_counts": {"report": 28, "decision": 10, "research": 0, "bundle": 0, "screen": 112}, "smallcap_count": 53, "decision_matrix_count": 12}</script>
+<script>
+const rows=[...document.querySelectorAll("#equities tr")], search=document.querySelector("#search"), depth=document.querySelector("#depth"), cap=document.querySelector("#cap");
+function apply(){const q=search.value.trim().toLowerCase();rows.forEach(row=>{const value=Number(row.dataset.cap), capOK=!cap.value||(cap.value==="small"&&value>=2e9&&value<=20e9)||(cap.value==="mid"&&value>20e9&&value<=50e9)||(cap.value==="large"&&value>50e9);row.hidden=!(row.dataset.search.includes(q)&&(!depth.value||row.dataset.depth===depth.value)&&capOK)})}
+[search,depth,cap].forEach(x=>x.addEventListener("input",apply));
+</script></body></html>

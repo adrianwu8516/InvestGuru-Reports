@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>InvestGuru | 投資報告索引</title>
+  <style>
+    :root {
+      --ink:#182225; --muted:#667276; --line:#d8dfdd; --canvas:#edf1ef; --paper:#ffffff;
+      --green:#0d7963; --green-soft:#e5f2ed; --amber:#a96316; --amber-soft:#f8eddd;
+      --red:#ad3f47; --red-soft:#f7e5e7; --blue:#315d86; --blue-soft:#e8eff6;
+      --shadow:0 18px 44px rgb(24 34 37 / 8%);
+    }
+    * { box-sizing:border-box; }
+    [hidden] { display:none!important; }
+    html { background:var(--canvas); }
+    body { margin:0; color:var(--ink); font:14px/1.5 -apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang TC",sans-serif; }
+    a { color:inherit; }
+    .shell { width:min(1480px,calc(100% - 32px)); margin:24px auto 40px; background:var(--paper); box-shadow:var(--shadow); }
+    header { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:24px; align-items:end; padding:30px 34px 24px; border-top:5px solid var(--ink); }
+    .eyebrow { margin:0 0 5px; color:var(--green); font-size:11px; font-weight:800; text-transform:uppercase; }
+    h1 { margin:0; font:700 clamp(27px,3vw,42px)/1.05 "Avenir Next Condensed","Arial Narrow","PingFang TC",sans-serif; letter-spacing:0; }
+    header p:last-child { max-width:560px; margin:9px 0 0; color:var(--muted); }
+    .index-time { text-align:right; color:var(--muted); font:12px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace; }
+    .index-time strong { display:block; color:var(--ink); font-size:13px; }
+    .summary-band { display:grid; grid-template-columns:180px 150px 190px minmax(280px,1fr); min-height:92px; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+    .summary-primary,.summary-item { display:flex; flex-direction:column; justify-content:center; padding:17px 24px; border-right:1px solid var(--line); }
+    .summary-primary strong { color:var(--green); font:750 35px/1 ui-monospace,SFMono-Regular,Menlo,monospace; }
+    .summary-item strong { font:700 18px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace; }
+    .summary-primary span,.summary-item span { margin-top:5px; color:var(--muted); font-size:11px; }
+    .stance-strip { display:flex; align-items:center; justify-content:flex-end; flex-wrap:wrap; gap:8px; padding:16px 24px; }
+    .stance-count { display:inline-flex; align-items:baseline; gap:5px; padding:4px 8px; border:1px solid var(--line); color:var(--muted); font-size:11px; }
+    .stance-count b { color:var(--ink); font:700 14px/1 ui-monospace,SFMono-Regular,Menlo,monospace; }
+    .controls { display:grid; grid-template-columns:minmax(220px,1fr) repeat(4,minmax(130px,auto)); gap:10px; padding:18px 24px; background:#f7f9f8; border-bottom:1px solid var(--line); }
+    .search-wrap { position:relative; }
+    .search-wrap span { position:absolute; left:12px; top:9px; color:var(--muted); font-size:18px; pointer-events:none; }
+    input,select { width:100%; min-height:40px; border:1px solid #bdc8c5; border-radius:4px; background:#fff; color:var(--ink); font:inherit; }
+    input { padding:8px 12px 8px 36px; } select { padding:8px 32px 8px 10px; }
+    input:focus,select:focus,a:focus-visible,summary:focus-visible { outline:3px solid rgb(49 93 134 / 24%); outline-offset:1px; border-color:var(--blue); }
+    .table-wrap { width:100%; overflow-x:auto; }
+    table { width:100%; min-width:1220px; border-collapse:collapse; }
+    th { padding:11px 14px; background:#f7f9f8; border-bottom:1px solid var(--line); color:var(--muted); font-size:10px; font-weight:800; text-align:left; white-space:nowrap; }
+    td { padding:15px 14px; border-bottom:1px solid var(--line); vertical-align:top; }
+    tbody tr { transition:background-color 120ms ease; } tbody tr:hover { background:#f8faf9; }
+    .identity { min-width:150px; } .identity strong { display:block; font:800 20px/1.1 ui-monospace,SFMono-Regular,Menlo,monospace; }
+    .identity span { display:block; max-width:200px; margin-top:4px; color:var(--muted); font-size:12px; }
+    td time,td small,.secondary,.deadline { display:block; color:var(--muted); font-size:11px; }
+    td[data-label="報告"] > strong { display:block; margin-top:3px; font:700 14px/1.25 ui-monospace,SFMono-Regular,Menlo,monospace; }
+    .stance-badge { display:inline-block; padding:3px 7px; border-radius:3px; font-size:12px; font-weight:750; }
+    .stance-neutral { color:var(--blue); background:var(--blue-soft); } .stance-reduce,.stance-bearish { color:var(--red); background:var(--red-soft); }
+    .stance-bullish,.stance-accumulate { color:var(--green); background:var(--green-soft); } .secondary { margin-top:5px; }
+    .quality { display:flex; justify-content:space-between; gap:10px; min-width:94px; padding:2px 0; } .quality b { color:var(--muted); font-size:10px; text-transform:uppercase; }
+    .event { display:block; max-width:300px; font-size:12px; line-height:1.45; } .deadline { margin-top:5px; color:var(--amber); font-family:ui-monospace,SFMono-Regular,Menlo,monospace; }
+    .status { display:inline-flex; align-items:center; gap:6px; white-space:nowrap; } .status i { width:7px; height:7px; border-radius:50%; background:var(--green); }
+    .status-reviewed i,.status-closed i { background:var(--blue); }
+    .open-report { display:inline-flex; align-items:center; gap:6px; min-height:32px; padding:5px 9px; border:1px solid #aab8b4; border-radius:4px; color:var(--green); font-size:12px; font-weight:750; text-decoration:none; white-space:nowrap; }
+    .open-report:hover { border-color:var(--green); background:var(--green-soft); }
+    .empty-row td { padding:64px 24px; color:var(--muted); text-align:center; }
+    .no-results { display:none; padding:54px 24px; color:var(--muted); text-align:center; border-bottom:1px solid var(--line); }
+    .warnings { margin:18px 24px; border:1px solid #e6caa4; background:#fffaf2; } .warnings summary { padding:12px 14px; color:var(--amber); cursor:pointer; font-weight:750; }
+    .warnings ul { margin:0; padding:0 14px 12px; list-style:none; } .warnings li { display:grid; grid-template-columns:minmax(160px,.4fr) 1fr; gap:16px; padding:8px 0; border-top:1px solid #efdfc9; } .warnings li span { color:var(--muted); }
+    footer { display:flex; justify-content:space-between; gap:24px; padding:16px 24px; border-top:1px solid var(--line); color:var(--muted); font-size:11px; }
+    .screening-cta { display:flex; align-items:center; justify-content:space-between; gap:20px; padding:16px 24px; border-bottom:1px solid var(--line); background:var(--green-soft); }
+    .screening-cta strong,.screening-cta span { display:block; } .screening-cta span { margin-top:3px; color:var(--muted); font-size:12px; }
+    .screening-cta a { flex:none; padding:7px 10px; border:1px solid var(--green); color:var(--green); font-weight:750; text-decoration:none; }
+    @media (max-width:980px) {
+      .shell { width:min(100% - 20px,1480px); margin:10px auto 24px; }
+      header { grid-template-columns:1fr; padding:24px; } .index-time { text-align:left; }
+      .summary-band { grid-template-columns:repeat(3,1fr); } .stance-strip { grid-column:1/-1; justify-content:flex-start; border-top:1px solid var(--line); }
+      .controls { grid-template-columns:1fr 1fr; } .search-wrap,.controls label:last-child { grid-column:1/-1; }
+      .table-wrap { overflow:visible; } table,thead,tbody,tr,td { display:block; } table { min-width:0; } thead { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); }
+      .report-row { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); padding:12px 18px; border-bottom:1px solid var(--line); }
+      .report-row td { display:grid; grid-template-columns:92px minmax(0,1fr); min-width:0; padding:8px 6px; border:0; }
+      .report-row td::before { content:attr(data-label); color:var(--muted); font-size:10px; font-weight:800; }
+      .identity,.quality,.event { min-width:0; max-width:none; } .identity span { max-width:none; }
+      .report-row td:first-child,.report-row td:nth-child(6),.report-row td:last-child { grid-column:1/-1; }
+      .open-report { justify-self:start; }
+    }
+    @media (max-width:620px) {
+      .shell { width:100%; margin:0; box-shadow:none; } header { padding:22px 18px; }
+      .summary-band { grid-template-columns:1fr 1fr; } .summary-primary { grid-row:span 2; } .summary-item:nth-child(3) { border-top:1px solid var(--line); }
+      .stance-strip { padding:12px 18px; } .controls { grid-template-columns:1fr; padding:14px 18px; } .controls label:last-child { grid-column:auto; }
+      .report-row { grid-template-columns:1fr; padding:11px 13px; } .report-row td,.report-row td:first-child,.report-row td:nth-child(6),.report-row td:last-child { grid-column:1; grid-template-columns:82px minmax(0,1fr); }
+      .warnings { margin:14px; } .warnings li { grid-template-columns:1fr; gap:3px; } footer { flex-direction:column; gap:5px; padding:14px 18px; }
+    }
+    @media (prefers-reduced-motion:reduce) { * { scroll-behavior:auto!important; transition:none!important; } }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <div><p class="eyebrow">InvestGuru · Research archive</p><h1>投資報告索引</h1><p>所有完整分析都從這裡進入。先比較判斷、品質與驗證時鐘，再開啟報告查看完整證據。</p></div>
+      <div class="index-time"><span>INDEX UPDATED</span><strong>2026-08-10T10:00:13+08:00</strong></div>
+    </header>
+    <section class="summary-band" aria-label="報告摘要">
+      <div class="summary-primary"><strong>30</strong><span>份完整報告</span></div>
+      <div class="summary-item"><strong>30</strong><span>待持續驗證</span></div>
+      <div class="summary-item"><strong>2026-08-10</strong><span>最新報告日期</span></div>
+      <div class="stance-strip" aria-label="投資結論分布"><span class="stance-count stance-accumulate"><b>8</b>分批佈局</span><span class="stance-count stance-neutral"><b>19</b>中性</span><span class="stance-count stance-reduce"><b>3</b>減碼</span></div>
+    </section>
+    <aside class="screening-cta">
+      <div><strong>追蹤清單篩選審計</strong><span>查看完整股票宇宙、研究漏斗、淘汰理由與各標的研究深度。</span></div>
+      <a href="screening/20260810-watchlist.html">開啟總覽 <span aria-hidden="true">↗</span></a>
+    </aside>
+    <section class="controls" aria-label="報告篩選">
+      <label class="search-wrap"><span aria-hidden="true">⌕</span><input id="report-search" type="search" placeholder="搜尋 ticker、公司、驗證事件" autocomplete="off" aria-label="搜尋報告"></label>
+      <label><select id="stance-filter" aria-label="篩選投資結論"><option value="">全部結論</option><option value="bullish">看多</option><option value="accumulate">分批布局</option><option value="neutral">中性</option><option value="reduce">減碼</option><option value="bearish">看空</option></select></label>
+      <label><select id="conviction-filter" aria-label="篩選信心程度"><option value="">全部信心</option><option value="high">高</option><option value="medium">中等</option><option value="low">低</option></select></label>
+      <label><select id="status-filter" aria-label="篩選追蹤狀態"><option value="">全部狀態</option><option value="open">追蹤中</option><option value="reviewed">已複盤</option><option value="closed">已結案</option></select></label>
+      <label><select id="sort-control" aria-label="報告排序"><option value="newest">最新報告</option><option value="ticker">Ticker A–Z</option><option value="deadline">最近驗證日</option></select></label>
+    </section>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>標的</th><th>報告日期／價格</th><th>判斷</th><th>企業品質／進場條件</th><th>執行意圖</th><th>下一驗證</th><th>狀態</th><th>完整報告</th></tr></thead>
+        <tbody id="report-body"><tr class="report-row" data-search="z zillow group, inc. neutral medium wait_for_confirmation ftc v. zillow group／redfin 反壟斷案於2026年8月24日開庭，以及q3 2026財報驗證preferred agent每連結營收溢價、購屋房貸撮合量與q4 for sale成長壓力 2026-11-04 open" data-stance="neutral" data-conviction="medium" data-status="open" data-date="2026-08-10" data-deadline="2026-11-04" data-ticker="Z">
+      <td data-label="標的"><div class="identity"><strong>Z</strong><span>Zillow Group, Inc.</span></div></td>
+      <td data-label="報告"><time datetime="2026-08-10">2026-08-10</time><strong>US$33.61</strong><small>報告日股價</small></td>
+      <td data-label="判斷"><span class="stance-badge stance-neutral">中性</span><span class="secondary">信心 中等</span></td>
+      <td data-label="品質"><span class="quality"><b>企業</b>高</span><span class="quality"><b>Setup</b>偏弱</span></td>
+      <td data-label="執行意圖"><span>等待確認</span></td>
+      <td data-label="下一驗證"><strong class="event">FTC v. Zillow Group／Redfin 反壟斷案於2026年8月24日開庭，以及Q3 2026財報驗證Preferred agent每連結營收溢價、購屋房貸撮合量與Q4 For Sale成長壓力</strong><time class="deadline" datetime="2026-11-04">2026-11-04</time></td>
+      <td data-label="狀態"><span class="status status-open"><i aria-hidden="true"></i>追蹤中</span></td>
+      <td data-label="報告"><a class="open-report" href="20260810-0959-Z-neutral-M.html">開啟報告 <span aria-hidden="true">↗</span></a></td>
+    </tr><tr class="report-row" data-search="vrt vertiv holdings co（維諦技術） neutral medium wait_for_confirmation 2026年q3財報：驗證淨銷售us$3.65-3.85b、調整後營業利益率24-25%、大型專案延遲回補、遞延收入轉換及全年指引 2026-10-28 open" data-stance="neutral" data-conviction="medium" data-status="open" data-date="2026-08-10" data-deadline="2026-10-28" data-ticker="VRT">
+      <td data-label="標的"><div class="identity"><strong>VRT</strong><span>Vertiv Holdings Co（維諦技術）</span></div></td>
+      <td data-label="報告"><time datetime="2026-08-10">2026-08-10</time><strong>US$272.40</strong><small>報告日股價</small></td>
+      <td data-label="判斷"><span class="stance-badge stance-neutral">中性</span><span class="secondary">信心 中等</span></td>
+      <td data-label="品質"><span class="quality"><b>企業</b>高</span><span class="quality"><b>Setup</b>偏弱</span></td>
+      <td data-label="執行意圖"><span>等待確認</span></td>
+      <td data-label="下一驗證"><strong class="event">2026年Q3財報：驗證淨銷售US$3.65-3.85B、調整後營業利益率24-25%、大型專案延遲回補、遞延收入轉換及全年指引</strong><time class="deadline" datetime="2026-10-28">2026-10-28</time></td>
+      <td data-label="狀態"><span class="status status-open"><i aria-hidden="true"></i>追蹤中</span></td>
+      <td data-label="報告"><a class="open-report" href="20260810-0959-VRT-neutral-M.html">開啟報告 <span aria-hidden="true">↗</span></a></td>
+    </tr><tr class="report-row" data-search="upst upstart holdings, inc.（upstart） neutral low wait_for_confirmation 2026年q3財報與每月umi／origination揭露：驗證資金供給、信用週期、貸款轉換率及secured products損益路徑 2026-11-03 open" data-stance="neutral" data-conviction="low" data-status="open" data-date="2026-08-10" data-deadline="2026-11-03" data-ticker="UPST">
+      <td data-label="標的"><div class="identity"><strong>UPST</strong><span>Upstart Holdings, Inc.（Upstart）</span></div></td>
+      <td data-label="報告"><time datetime="2026-08-10">2026-08-10</time><strong>US$31.09</strong><small>報告日股價</small></td>
+      <td data-label="判斷"><span class="stance-badge stance-neutral">中性</span><span class="secondary">信心 低</span></td>
+      <td data-label="品質"><span class="quality"><b>企業</b>中等</span><span class="quality"><b>Setup</b>偏弱</span></td>
+      <td data-label="執行意圖"><span>等待確認</span></td>
+      <td data-label="下一驗證"><strong class="event">2026年Q3財報與每月UMI／origination揭露：驗證資金供給、信用週期、貸款轉換率及secured products損益路徑</strong><time class="deadline" datetime="2026-11-03">2026-11-03</time></td>
+      <td data-label="狀態"><span class="status status-open"><i aria-hidden="true"></i>追蹤中</span></td>
+      <td data-label="報告"><a class="open-report" href="20260810-0957-UPST-neutral-L.html">開啟報告 <span aria-hidden="true">↗</span></a></td>
+    </tr><tr class="report-row" data-search="tsm taiwan semiconductor manufacturing co., ltd.（臺灣積體電路製造） neutral medium wait_for_confirmation 2026年q3法說會：驗證營收us$44.6-45.8b、毛利率65-67%、營業利益率56-58%與資本支出us$60-64b軌道 2026-10-16 open" data-stance="neutral" data-conviction="medium" data-status="open" data-date="2026-08-10" data-deadline="2026-10-16" data-ticker="TSM">
+      <td data-label="標的"><div class="identity"><strong>TSM</strong><span>Taiwan Semiconductor Manufacturing Co., Ltd.（臺灣積體電路製造）</span></div></td>
+      <td data-label="報告"><time datetime="2026-08-10">2026-08-10</time><strong>US$420.04</strong><small>報告日股價</small></td>
+      <td data-label="判斷"><span class="stance-badge stance-neutral">中性</span><span class="secondary">信心 中等</span></td>
+      <td data-label="品質"><span class="quality"><b>企業</b>高</span><span class="quality"><b>Setup</b>尚可</span></td>
+      <td data-label="執行意圖"><span>等待確認</span></td>
+      <td data-label="下一驗證"><strong class="event">2026年Q3法說會：驗證營收US$44.6-45.8B、毛利率65-67%、營業利益率56-58%與資本支出US$60-64B軌道</strong><time class="deadline" datetime="2026-10-16">2026-10-16</time></td>
+      <td data-label="狀態"><span class="status status-open"><i aria-hidden="true"></i>追蹤中</span></td>
+      <td data-label="報告"><a class="open-report" href="20260810-0957-TSM-neutral-M.html">開啟報告 <span aria-hidden="true">↗</span></a></td>
+    </tr><tr class="report-row" data-search="sofi sofi technologies, inc. neutral medium wait_for_confirmation q3 2026財報：驗證nim與存款資金優勢、貸款出售／loan platform business需求、fee-based收入佔比及排除出售影響後的信用成本，並觀察價格能否收復200日均線 2026-10-30 open" data-stance="neutral" data-conviction="medium" data-status="open" data-date="2026-08-10" data-deadline="2026-10-30" data-ticker="SOFI">
+      <td data-label="標的"><div class="identity"><strong>SOFI</strong><span>SoFi Technologies, Inc.</span></div></td>
+      <td data-label="報告"><time datetime="2026-08-10">2026-08-10</time><strong>US$18.38</strong><small>報告日股價</small></td>
+      <td data-label="判斷"><span class="stance-badge stance-neutral">中性</span><span class="secondary">信心 中等</span></td>
+      <td data-label="品質"><span class="quality"><b>企業</b>高</span><span class="quality"><b>Setup</b>偏弱</span></td>
+      <td data-label="執行意圖"><span>等待確認</span></td>
+      <td data-label="下一驗證"><strong class="event">Q3 2026財報：驗證NIM與存款資金優勢、貸款出售／Loan Platform Business需求、fee-based收入佔比及排除出售影響後的信用成本，並觀察價格能否收復200日均線</strong><time class="deadline" datetime="2026-10-30">2026-10-30</time></td>
+      <td data-label="狀態"><span class="status status-open"><i aria-hidden="true"></i>追蹤中</span></td>
+      <td data-label="報告"><a class="open-report" href="20260810-0956-SOFI-neutral-M.html">開啟報告 <span aria-hidden="true">↗</span></a></td>
+    </tr><tr class="report-row" data-search="se sea limited（shopee／monee／garena） neutral medium wait_for_confirmation 2026年第二季財報：驗證shopee gmv與獲利、monee信用品質及garena訂單能否同步延續 2026-08-11 open" data-stance="neutral" data-conviction="medium" data-status="open" data-date="2026-08-10" data-deadline="2026-08-11" data-ticker="SE">
+      <td data-label="標的"><div class="identity"><strong>SE</strong><span>Sea Limited（Shopee／Monee／Garena）</span></div></td>
+      <td data-label="報告"><time datetime="2026-08-10">2026-08-10</time><strong>US$113.43</strong><small>報告日股價</small></td>
+      <td data-label="判斷"><span class="stance-badge stance-neutral">中性</span><span class="secondary">信心 中等</span></td>
+      <td data-label="品質"><span class="quality"><b>企業</b>高</span><span class="quality"><b>Setup</b>偏弱</span></td>
+      <td data-label="執行意圖"><span>等待確認</span></td>
+      <td data-label="下一驗證"><strong class="event">2026年第二季財報：驗證Shopee GMV與獲利、Monee信用品質及Garena訂單能否同步延續</strong><time class="deadline" datetime="2026-08-11">2026-08-11</time></td>
+      <td data-label="狀態"><span class="status status-open"><i aria-hidden="true"></i>追蹤中</span></td>
+      <td data-label="報告"><a class="open-report" href="20260810-0955-SE-neutral-M.html">開啟報告 <span aria-hidden="true">↗</span></a></td>
+    </tr><tr class="report-row" data-search="rddt reddit, inc. neutral medium wait_for_confirmation google資料授權續約／替代安排，以及q3 2026財報的dauq、arpu、搜尋導流與other revenue更新 2026-10-29 open" data-stance="neutral" data-conviction="medium" data-status="open" data-date="2026-08-10" data-deadline="2026-10-29" data-ticker="RDDT">
+      <td data-label="標的"><div class="identity"><strong>RDDT</strong><span>Reddit, Inc.</span></div></td>
+      <td data-label="報告"><time datetime="2026-08-10">2026-08-10</time><strong>US$161.70</strong><small>報告日股價</small></td>
+      <td data-label="判斷"><span class="stance-badge stance-neutral">中性</span><span class="secondary">信心 中等</span></td>
+      <td data-label="品質"><span class="quality"><b>企業</b>高</span><span class="quality"><b>Setup</b>偏弱</span></td>
+      <td data-label="執行意圖"><span>等待確認</span></td>
+      <td data-label="下一驗證"><strong class="event">Google資料授權續約／替代安排，以及Q3 2026財報的DAUq、ARPU、搜尋導流與Other revenue更新</strong><time class="deadline" datetime="2026-10-29">2026-10-29</time></td>
+      <td data-label="狀態"><span class="status status-open"><i aria-hidden="true"></i>追蹤中</span></td>
+      <td data-label="報告"><a class="open-report" href="20260810-0954-RDDT-neutral-M.html">開啟報告 <span aria-hidden="true">↗</span></a></td>
+    </tr><tr class="report-row" data-search="rbrk rubrik, inc. reduce medium protective rubrik q2 fy2027 財報：驗證 subscription arr 淨新增、約120% nrr、fcf 利潤率、完全稀釋股數與全年指引 2026-08-27 open" data-stance="reduce" data-conviction="medium" data-status="open" data-date="2026-08-10" data-deadline="2026-08-27" data-ticker="RBRK">
+      <td data-label="標的"><div class="identity"><strong>RBRK</strong><span>Rubrik, Inc.</span></div></td>
+      <td data-label="報告"><time datetime="2026-08-10">2026-08-10</time><strong>US$90.07</strong><small>報告日股價</small></td>
+      <td data-label="判斷"><span class="stance-badge stance-reduce">減碼</span><span class="secondary">信心 中等</span></td>
+      <td data-label="品質"><span class="quality"><b>企業</b>高</span><span class="quality"><b>Setup</b>偏弱</span></td>
+      <td data-label="執行意圖"><span>防禦</span></td>
+      <td data-label="下一驗證"><strong class="event">Rubrik Q2 FY2027 財報：驗證 Subscription ARR 淨新增、約120% NRR、FCF 利潤率、完全稀釋股數與全年指引</strong><time class="deadline" datetime="2026-08-27">2026-08-27</time></td>
+      <td data-label="狀態"><span class="status status-open"><i aria-hidden="true"></i>追蹤中</span></td>
+      <td data-label="報告"><a class="open-report" href="20260810-0954-RBRK-reduce-M.html">開啟報告 <span aria-hidden="true">↗</span></a></td>
+    </tr><tr class="report-row" data-search="pltr palantir technologies inc. neutral medium avoid_chasing 2026 q3財報(約2026-11-03)：美國政府營收yoy成長是否維持80%以上、美國商業營收是否持續130%+成長、sbc佔營收比例趨勢、股價能否消化post-earnings單日+10.3%的跳空缺口 2026-11-03 open" data-stance="neutral" data-conviction="medium" data-status="open" data-date="2026-08-10" data-deadline="2026-11-03" data-ticker="PLTR">
+      <td data-label="標的"><div class="identity"><strong>PLTR</strong><span>Palantir Technologies Inc.</span></div></td>
+      <td data-label="報告"><time datetime="2026-08-10">2026-08-10</time><strong>US$172.01</strong><small>報告日股價</small></td>
+      <td data-label="判斷"><span class="stance-badge stance-neutral">中性</span><span class="secondary">信心 中等</span></td>
+      <td data-label="品質"><span class="quality"><b>企業</b>高</span><span class="quality"><b>Setup</b>偏弱</span></td>
+      <td data-label="執行意圖"><span>避免追高</span></td>
+      <td data-label="下一驗證"><strong class="event">2026 Q3財報(約2026-11-03)：美國政府營收YoY成長是否維持80%以上、美國商業營收是否持續130%+成長、SBC佔營收比例趨勢、股價能否消化post-earnings單日+10.3%的跳空缺口</strong><time class="deadline" datetime="2026-11-03">2026-11-03</time></td>
+      <td data-label="狀態"><span class="status status-open"><i aria-hidden="true"></i>追蹤中</span></td>
+      <td data-label="報告"><a class="open-report" href="20260810-0953-PLTR-neutral-M.html">開啟報告 <span aria-hidden="true">↗</span></a></td>
+    </tr><tr class="report-row" data-search="oscr oscar health, inc. accumulate medium starter_only q3 2026財報與2027 aca marketplace定價／初期投保資料，驗證剔除準備金回撥後的underlying mlr、cms資格審查造成的會員流失及全年營業利益指引 2026-11-10 open" data-stance="accumulate" data-conviction="medium" data-status="open" data-date="2026-08-10" data-deadline="2026-11-10" data-ticker="OSCR">
+      <td data-label="標的"><div class="identity"><strong>OSCR</strong><span>Oscar Health, Inc.</span></div></td>
+      <td data-label="報告"><time datetime="2026-08-10">2026-08-10</time><strong>US$27.90</strong><small>報告日股價</small></td>
+      <td data-label="判斷"><span class="stance-badge stance-accumulate">分批佈局</span><span class="secondary">信心 中等</span></td>
+      <td data-label="品質"><span class="quality"><b>企業</b>中等</span><span class="quality"><b>Setup</b>尚可</span></td>
+      <td data-label="執行意圖"><span>僅試單</span></td>
+      <td data-label="下一驗證"><strong class="event">Q3 2026財報與2027 ACA Marketplace定價／初期投保資料，驗證剔除準備金回撥後的underlying MLR、CMS資格審查造成的會員流失及全年營業利益指引</strong><time class="deadline" datetime="2026-11-10">2026-11-10</time></td>
+      <td data-label="狀態"><span class="status status-open"><i aria-hidden="true"></i>追蹤中</span></td>
+      <td data-label="報告"><a class="open-report" href="20260810-0952-OSCR-accumulate-M.html">開啟報告 <span aria-hidden="true">↗</span></a></td>
+    </tr><tr class="report-row" data-search="orcl oracle corporation（甲骨文） neutral medium wait_for_confirmation fy2027 q1財報：驗證總營收成長27%至29%、雲端營收成長58%至64%、rpo轉換、資本支出／自由現金流與新增融資進度 2026-09-15 open" data-stance="neutral" data-conviction="medium" data-status="open" data-date="2026-08-10" data-deadline="2026-09-15" data-ticker="ORCL">
+      <td data-label="標的"><div class="identity"><strong>ORCL</strong><span>Oracle Corporation（甲骨文）</span></div></td>
+      <td data-label="報告"><time datetime="2026-08-10">2026-08-10</time><strong>US$147.02</strong><small>報告日股價</small></td>
+      <td data-label="判斷"><span class="stance-badge stance-neutral">中性</span><span class="secondary">信心 中等</span></td>
+      <td data-label="品質"><span class="quality"><b>企業</b>高</span><span class="quality"><b>Setup</b>偏弱</span></td>
+      <td data-label="執行意圖"><span>等待確認</span></td>
+      <td data-label="下一驗證"><strong class="event">FY2027 Q1財報：驗證總營收成長27%至29%、雲端營收成長58%至64%、RPO轉換、資本支出／自由現金流與新增融資進度</strong><time class="deadline" datetime="2026-09-15">2026-09-15</time></td>
+      <td data-label="狀態"><span class="status status-open"><i aria-hidden="true"></i>追蹤中</span></td>
+      <td data-label="報告"><a class="open-report" href="20260810-0948-ORCL-neutral-M.html">開啟報告 <span aria-hidden="true">↗</span></a></td>
+    </tr><tr class="report-row" data-search="msft microsoft corporation neutral medium avoid_chasing 預計fy2027 q1財報：azure成長、commercial rpo轉收入、microsoft cloud／整體毛利率、copilot付費席次與ai資本支出回報 2026-10-28 open" data-stance="neutral" data-conviction="medium" data-status="open" data-date="2026-08-10" data-deadline="2026-10-28" data-ticker="MSFT">
+      <td data-label="標的"><div class="identity"><strong>MSFT</strong><span>Microsoft Corporation</span></div></td>
+      <td data-label="報告"><time datetime="2026-08-10">2026-08-10</time><strong>US$499.99</strong><small>報告日股價</small></td>
+      <td data-label="判斷"><span class="stance-badge stance-neutral">中性</span><span class="secondary">信心 中等</span></td>
+      <td data-label="品質"><span class="quality"><b>企業</b>高</span><span class="quality"><b>Setup</b>偏弱</span></td>
+      <td data-label="執行意圖"><span>避免追高</span></td>
+      <td data-label="下一驗證"><strong class="event">預計FY2027 Q1財報：Azure成長、Commercial RPO轉收入、Microsoft Cloud／整體毛利率、Copilot付費席次與AI資本支出回報</strong><time class="deadline" datetime="2026-10-28">2026-10-28</time></td>
+      <td data-label="狀態"><span class="status status-open"><i aria-hidden="true"></i>追蹤中</span></td>
+      <td data-label="報告"><a class="open-report" href="20260810-0948-MSFT-neutral-M.html">開啟報告 <span aria-hidden="true">↗</span></a></td>
+    </tr><tr class="report-row" data-search="meta meta platforms, inc. reduce medium protective 2026 q3財報(約2026-10-28)：核心廣告營業利益率能否止穩回升至35%以上、自由現金流能否較q2&#x27;26的7.84億美元明顯回升、reality labs累計虧損收斂進度、青少年安全訴訟開庭結果與ftc上訴進度 2026-10-28 open" data-stance="reduce" data-conviction="medium" data-status="open" data-date="2026-08-10" data-deadline="2026-10-28" data-ticker="META">
+      <td data-label="標的"><div class="identity"><strong>META</strong><span>Meta Platforms, Inc.</span></div></td>
+      <td data-label="報告"><time datetime="2026-08-10">2026-08-10</time><strong>US$592.10</strong><small>報告日股價</small></td>
+      <td data-label="判斷"><span class="stance-badge stance-reduce">減碼</span><span class="secondary">信心 中等</span></td>
+      <td data-label="品質"><span class="quality"><b>企業</b>中等</span><span class="quality"><b>Setup</b>偏弱</span></td>
+      <td data-label="執行意圖"><span>防禦</span></td>
+      <td data-label="下一驗證"><strong class="event">2026 Q3財報(約2026-10-28)：核心廣告營業利益率能否止穩回升至35%以上、自由現金流能否較Q2&#x27;26的7.84億美元明顯回升、Reality Labs累計虧損收斂進度、青少年安全訴訟開庭結果與FTC上訴進度</strong><time class="deadline" datetime="2026-10-28">2026-10-28</time></td>
+      <td data-label="狀態"><span class="status status-open"><i aria-hidden="true"></i>追蹤中</span></td>
+      <td data-label="報告"><a class="open-report" href="20260810-0948-META-reduce-M.html">開啟報告 <span aria-hidden="true">↗</span></a></td>
+    </tr><tr class="report-row" data-search="goog alphabet inc. neutral medium wait_for_confirmation 預計2026年q3財報：驗證google search成長、google cloud營收與營業利益率、ai資本支出轉化、自由現金流及反壟斷救濟進度 2026-10-28 open" data-stance="neutral" data-conviction="medium" data-status="open" data-date="2026-08-10" data-deadline="2026-10-28" data-ticker="GOOG">
+      <td data-label="標的"><div class="identity"><strong>GOOG</strong><span>Alphabet Inc.</span></div></td>
+      <td data-label="報告"><time datetime="2026-08-10">2026-08-10</time><strong>US$353.47</strong><small>報告日股價</small></td>
+      <td data-label="判斷"><span class="stance-badge stance-neutral">中性</span><span class="secondary">信心 中等</span></td>
+      <td data-label="品質"><span class="quality"><b>企業</b>高</span><span class="quality"><b>Setup</b>偏弱</span></td>
+      <td data-label="執行意圖"><span>等待確認</span></td>
+      <td data-label="下一驗證"><strong class="event">預計2026年Q3財報：驗證Google Search成長、Google Cloud營收與營業利益率、AI資本支出轉化、自由現金流及反壟斷救濟進度</strong><time class="deadline" datetime="2026-10-28">2026-10-28</time></td>
+      <td data-label="狀態"><span class="status status-open"><i aria-hidden="true"></i>追蹤中</span></td>
+      <td data-label="報告"><a class="open-report" href="20260810-0947-GOOG-neutral-M.html">開啟報告 <span aria-hidden="true">↗</span></a></td>
+    </tr><tr class="report-row" data-search="etor etoro group ltd. neutral low wait_for_confirmation q2 2026財報(2026/8/11，即研究日隔天)——淨貢獻(net contribution)成長能否延續q1&#x27;26的商品期貨交易驅動、加密貨幣交易量能否止跌回升 2026-08-11 open" data-stance="neutral" data-conviction="low" data-status="open" data-date="2026-08-10" data-deadline="2026-08-11" data-ticker="ETOR">
+      <td data-label="標的"><div class="identity"><strong>ETOR</strong><span>eToro Group Ltd.</span></div></td>
+      <td data-label="報告"><time datetime="2026-08-10">2026-08-10</time><strong>US$35.24</strong><small>報告日股價</small></td>
+      <td data-label="判斷"><span class="stance-badge stance-neutral">中性</span><span class="secondary">信心 低</span></td>
+      <td data-label="品質"><span class="quality"><b>企業</b>中等</span><span class="quality"><b>Setup</b>偏弱</span></td>
+      <td data-label="執行意圖"><span>等待確認</span></td>
+      <td data-label="下一驗證"><strong class="event">Q2 2026財報(2026/8/11，即研究日隔天)——淨貢獻(Net Contribution)成長能否延續Q1&#x27;26的商品期貨交易驅動、加密貨幣交易量能否止跌回升</strong><time class="deadline" datetime="2026-08-11">2026-08-11</time></td>
+      <td data-label="狀態"><span class="status status-open"><i aria-hidden="true"></i>追蹤中</span></td>
+      <td data-label="報告"><a class="open-report" href="20260810-0947-ETOR-neutral-L.html">開啟報告 <span aria-hidden="true">↗</span></a></td>
+    </tr><tr class="report-row" data-search="crdo credo technology group holding ltd.（credo technology） neutral medium starter_only fy2027 q1財報：驗證營收us$465-475m、dustphotonics整合、毛利率67-69%及最大客戶集中度 2026-09-15 open" data-stance="neutral" data-conviction="medium" data-status="open" data-date="2026-08-10" data-deadline="2026-09-15" data-ticker="CRDO">
+      <td data-label="標的"><div class="identity"><strong>CRDO</strong><span>Credo Technology Group Holding Ltd.（Credo Technology）</span></div></td>
+      <td data-label="報告"><time datetime="2026-08-10">2026-08-10</time><strong>US$249.89</strong><small>報告日股價</small></td>
+      <td data-label="判斷"><span class="stance-badge stance-neutral">中性</span><span class="secondary">信心 中等</span></td>
+      <td data-label="品質"><span class="quality"><b>企業</b>高</span><span class="quality"><b>Setup</b>尚可</span></td>
+      <td data-label="執行意圖"><span>僅試單</span></td>
+      <td data-label="下一驗證"><strong class="event">FY2027 Q1財報：驗證營收US$465-475M、DustPhotonics整合、毛利率67-69%及最大客戶集中度</strong><time class="deadline" datetime="2026-09-15">2026-09-15</time></td>
+      <td data-label="狀態"><span class="status status-open"><i aria-hidden="true"></i>追蹤中</span></td>
+      <td data-label="報告"><a class="open-report" href="20260810-0940-CRDO-neutral-M.html">開啟報告 <span aria-hidden="true">↗</span></a></td>
+    </tr><tr class="report-row" data-search="cohr coherent corp.（相干公司） neutral medium wait_for_confirmation fy2026 q4暨全年財報：驗證營收us$1.91-2.05b、資料中心book-to-bill、inp擴產與淨負債 2026-08-12 open" data-stance="neutral" data-conviction="medium" data-status="open" data-date="2026-08-10" data-deadline="2026-08-12" data-ticker="COHR">
+      <td data-label="標的"><div class="identity"><strong>COHR</strong><span>Coherent Corp.（相干公司）</span></div></td>
+      <td data-label="報告"><time datetime="2026-08-10">2026-08-10</time><strong>US$379.13</strong><small>報告日股價</small></td>
+      <td data-label="判斷"><span class="stance-badge stance-neutral">中性</span><span class="secondary">信心 中等</span></td>
+      <td data-label="品質"><span class="quality"><b>企業</b>高</span><span class="quality"><b>Setup</b>尚可</span></td>
+      <td data-label="執行意圖"><span>等待確認</span></td>
+      <td data-label="下一驗證"><strong class="event">FY2026 Q4暨全年財報：驗證營收US$1.91-2.05B、資料中心book-to-bill、InP擴產與淨負債</strong><time class="deadline" datetime="2026-08-12">2026-08-12</time></td>
+      <td data-label="狀態"><span class="status status-open"><i aria-hidden="true"></i>追蹤中</span></td>
+      <td data-label="報告"><a class="open-report" href="20260810-0940-COHR-neutral-M.html">開啟報告 <span aria-hidden="true">↗</span></a></td>
+    </tr><tr class="report-row" data-search="anet arista networks, inc.（艾瑞斯塔網路） accumulate medium starter_only 2026年q3財報：驗證營收約us$3.30b、遞延收入、etherlink客戶擴張及全年指引是否第五度上修 2026-11-04 open" data-stance="accumulate" data-conviction="medium" data-status="open" data-date="2026-08-10" data-deadline="2026-11-04" data-ticker="ANET">
+      <td data-label="標的"><div class="identity"><strong>ANET</strong><span>Arista Networks, Inc.（艾瑞斯塔網路）</span></div></td>
+      <td data-label="報告"><time datetime="2026-08-10">2026-08-10</time><strong>US$188.67</strong><small>報告日股價</small></td>
+      <td data-label="判斷"><span class="stance-badge stance-accumulate">分批佈局</span><span class="secondary">信心 中等</span></td>
+      <td data-label="品質"><span class="quality"><b>企業</b>高</span><span class="quality"><b>Setup</b>尚可</span></td>
+      <td data-label="執行意圖"><span>僅試單</span></td>
+      <td data-label="下一驗證"><strong class="event">2026年Q3財報：驗證營收約US$3.30B、遞延收入、Etherlink客戶擴張及全年指引是否第五度上修</strong><time class="deadline" datetime="2026-11-04">2026-11-04</time></td>
+      <td data-label="狀態"><span class="status status-open"><i aria-hidden="true"></i>追蹤中</span></td>
+      <td data-label="報告"><a class="open-report" href="20260810-0939-ANET-accumulate-M.html">開啟報告 <span aria-hidden="true">↗</span></a></td>
+    </tr><tr class="report-row" data-search="sb safe bulkers, inc. accumulate medium starter_only 2026年q3財報(6-k新聞稿，含tce與2027長約覆蓋率更新) 2026-11-15 open" data-stance="accumulate" data-conviction="medium" data-status="open" data-date="2026-08-10" data-deadline="2026-11-15" data-ticker="SB">
+      <td data-label="標的"><div class="identity"><strong>SB</strong><span>Safe Bulkers, Inc.</span></div></td>
+      <td data-label="報告"><time datetime="2026-08-10">2026-08-10</time><strong>US$7.60</strong><small>報告日股價</small></td>
+      <td data-label="判斷"><span class="stance-badge stance-accumulate">分批佈局</span><span class="secondary">信心 中等</span></td>
+      <td data-label="品質"><span class="quality"><b>企業</b>中等</span><span class="quality"><b>Setup</b>強</span></td>
+      <td data-label="執行意圖"><span>僅試單</span></td>
+      <td data-label="下一驗證"><strong class="event">2026年Q3財報(6-K新聞稿，含TCE與2027長約覆蓋率更新)</strong><time class="deadline" datetime="2026-11-15">2026-11-15</time></td>
+      <td data-label="狀態"><span class="status status-open"><i aria-hidden="true"></i>追蹤中</span></td>
+      <td data-label="報告"><a class="open-report" href="20260810-0921-SB-accumulate-M.html">開啟報告 <span aria-hidden="true">↗</span></a></td>
+    </tr><tr class="report-row" data-search="zeta zeta global holdings corp. accumulate medium wait_for_pullback 2026 q3 財報：有機成長、fcf 與 marigold 整合 2026-11-15 open" data-stance="accumulate" data-conviction="medium" data-status="open" data-date="2026-08-09" data-deadline="2026-11-15" data-ticker="ZETA">
+      <td data-label="標的"><div class="identity"><strong>ZETA</strong><span>Zeta Global Holdings Corp.</span></div></td>
+      <td data-label="報告"><time datetime="2026-08-09">2026-08-09</time><strong>US$26.64</strong><small>報告日股價</small></td>
+      <td data-label="判斷"><span class="stance-badge stance-accumulate">分批佈局</span><span class="secondary">信心 中等</span></td>
+      <td data-label="品質"><span class="quality"><b>企業</b>中等</span><span class="quality"><b>Setup</b>尚可</span></td>
+      <td data-label="執行意圖"><span>wait_for_pullback</span></td>
+      <td data-label="下一驗證"><strong class="event">2026 Q3 財報：有機成長、FCF 與 Marigold 整合</strong><time class="deadline" datetime="2026-11-15">2026-11-15</time></td>
+      <td data-label="狀態"><span class="status status-open"><i aria-hidden="true"></i>追蹤中</span></td>
+      <td data-label="報告"><a class="open-report" href="20260809-0014-ZETA-accumulate-M.html">開啟報告 <span aria-hidden="true">↗</span></a></td>
+    </tr><tr class="report-row" data-search="amzn amazon.com, inc. accumulate medium starter_only 2026 q3 財報、aws 增速與 ai 資本支出現金回收 2026-11-30 open" data-stance="accumulate" data-conviction="medium" data-status="open" data-date="2026-08-09" data-deadline="2026-11-30" data-ticker="AMZN">
+      <td data-label="標的"><div class="identity"><strong>AMZN</strong><span>Amazon.com, Inc.</span></div></td>
+      <td data-label="報告"><time datetime="2026-08-09">2026-08-09</time><strong>US$274.48</strong><small>報告日股價</small></td>
+      <td data-label="判斷"><span class="stance-badge stance-accumulate">分批佈局</span><span class="secondary">信心 中等</span></td>
+      <td data-label="品質"><span class="quality"><b>企業</b>高</span><span class="quality"><b>Setup</b>強</span></td>
+      <td data-label="執行意圖"><span>僅試單</span></td>
+      <td data-label="下一驗證"><strong class="event">2026 Q3 財報、AWS 增速與 AI 資本支出現金回收</strong><time class="deadline" datetime="2026-11-30">2026-11-30</time></td>
+      <td data-label="狀態"><span class="status status-open"><i aria-hidden="true"></i>追蹤中</span></td>
+      <td data-label="報告"><a class="open-report" href="20260809-2336-AMZN-accumulate-M.html">開啟報告 <span aria-hidden="true">↗</span></a></td>
+    </tr><tr class="report-row" data-search="lly eli lilly and company accumulate medium buy_on_pullback 2026 q3 財報、glp-1 產能與 retatrutide 送件進度 2026-11-30 open" data-stance="accumulate" data-conviction="medium" data-status="open" data-date="2026-08-09" data-deadline="2026-11-30" data-ticker="LLY">
+      <td data-label="標的"><div class="identity"><strong>LLY</strong><span>Eli Lilly and Company</span></div></td>
+      <td data-label="報告"><time datetime="2026-08-09">2026-08-09</time><strong>US$1,185.71</strong><small>報告日股價</small></td>
+      <td data-label="判斷"><span class="stance-badge stance-accumulate">分批佈局</span><span class="secondary">信心 中等</span></td>
+      <td data-label="品質"><span class="quality"><b>企業</b>高</span><span class="quality"><b>Setup</b>強</span></td>
+      <td data-label="執行意圖"><span>buy_on_pullback</span></td>
+      <td data-label="下一驗證"><strong class="event">2026 Q3 財報、GLP-1 產能與 retatrutide 送件進度</strong><time class="deadline" datetime="2026-11-30">2026-11-30</time></td>
+      <td data-label="狀態"><span class="status status-open"><i aria-hidden="true"></i>追蹤中</span></td>
+      <td data-label="報告"><a class="open-report" href="20260809-2336-LLY-accumulate-M.html">開啟報告 <span aria-hidden="true">↗</span></a></td>
+    </tr><tr class="report-row" data-search="avgo broadcom inc. accumulate high buy_on_pullback fy2026 q3 財報、ai 半導體營收與 vmware 軟體續約 2026-12-15 open" data-stance="accumulate" data-conviction="high" data-status="open" data-date="2026-08-09" data-deadline="2026-12-15" data-ticker="AVGO">
+      <td data-label="標的"><div class="identity"><strong>AVGO</strong><span>Broadcom Inc.</span></div></td>
+      <td data-label="報告"><time datetime="2026-08-09">2026-08-09</time><strong>US$427.76</strong><small>報告日股價</small></td>
+      <td data-label="判斷"><span class="stance-badge stance-accumulate">分批佈局</span><span class="secondary">信心 高</span></td>
+      <td data-label="品質"><span class="quality"><b>企業</b>高</span><span class="quality"><b>Setup</b>強</span></td>
+      <td data-label="執行意圖"><span>buy_on_pullback</span></td>
+      <td data-label="下一驗證"><strong class="event">FY2026 Q3 財報、AI 半導體營收與 VMware 軟體續約</strong><time class="deadline" datetime="2026-12-15">2026-12-15</time></td>
+      <td data-label="狀態"><span class="status status-open"><i aria-hidden="true"></i>追蹤中</span></td>
+      <td data-label="報告"><a class="open-report" href="20260809-2336-AVGO-accumulate-H.html">開啟報告 <span aria-hidden="true">↗</span></a></td>
+    </tr><tr class="report-row" data-search="nvda nvidia corporation accumulate high buy_on_pullback fy2027 q2 財報與 blackwell/rubin 出貨、資料中心指引 2026-11-30 open" data-stance="accumulate" data-conviction="high" data-status="open" data-date="2026-08-09" data-deadline="2026-11-30" data-ticker="NVDA">
+      <td data-label="標的"><div class="identity"><strong>NVDA</strong><span>NVIDIA Corporation</span></div></td>
+      <td data-label="報告"><time datetime="2026-08-09">2026-08-09</time><strong>US$223.96</strong><small>報告日股價</small></td>
+      <td data-label="判斷"><span class="stance-badge stance-accumulate">分批佈局</span><span class="secondary">信心 高</span></td>
+      <td data-label="品質"><span class="quality"><b>企業</b>高</span><span class="quality"><b>Setup</b>強</span></td>
+      <td data-label="執行意圖"><span>buy_on_pullback</span></td>
+      <td data-label="下一驗證"><strong class="event">FY2027 Q2 財報與 Blackwell/Rubin 出貨、資料中心指引</strong><time class="deadline" datetime="2026-11-30">2026-11-30</time></td>
+      <td data-label="狀態"><span class="status status-open"><i aria-hidden="true"></i>追蹤中</span></td>
+      <td data-label="報告"><a class="open-report" href="20260809-2336-NVDA-accumulate-H.html">開啟報告 <span aria-hidden="true">↗</span></a></td>
+    </tr><tr class="report-row" data-search="onds ondas inc. neutral high wait_for_confirmation 2026 年 q2 財報與 dzyne 收購備考財務：訂單認列、調整後 ebitda、現金與完全稀釋股數 2026-09-20 open" data-stance="neutral" data-conviction="high" data-status="open" data-date="2026-08-09" data-deadline="2026-09-20" data-ticker="ONDS">
+      <td data-label="標的"><div class="identity"><strong>ONDS</strong><span>Ondas Inc.</span></div></td>
+      <td data-label="報告"><time datetime="2026-08-09">2026-08-09</time><strong>US$9.11</strong><small>報告日股價</small></td>
+      <td data-label="判斷"><span class="stance-badge stance-neutral">中性</span><span class="secondary">信心 高</span></td>
+      <td data-label="品質"><span class="quality"><b>企業</b>中等</span><span class="quality"><b>Setup</b>偏弱</span></td>
+      <td data-label="執行意圖"><span>等待確認</span></td>
+      <td data-label="下一驗證"><strong class="event">2026 年 Q2 財報與 DZYNE 收購備考財務：訂單認列、調整後 EBITDA、現金與完全稀釋股數</strong><time class="deadline" datetime="2026-09-20">2026-09-20</time></td>
+      <td data-label="狀態"><span class="status status-open"><i aria-hidden="true"></i>追蹤中</span></td>
+      <td data-label="報告"><a class="open-report" href="20260809-1229-ONDS-neutral-H.html">開啟報告 <span aria-hidden="true">↗</span></a></td>
+    </tr><tr class="report-row" data-search="celh celsius holdings, inc. reduce high protective 2026 年 q3 財報：核心 celsius 品牌動銷、毛利率與調整後 ebitda 2026-11-15 open" data-stance="reduce" data-conviction="high" data-status="open" data-date="2026-08-09" data-deadline="2026-11-15" data-ticker="CELH">
+      <td data-label="標的"><div class="identity"><strong>CELH</strong><span>Celsius Holdings, Inc.</span></div></td>
+      <td data-label="報告"><time datetime="2026-08-09">2026-08-09</time><strong>US$27.77</strong><small>報告日股價</small></td>
+      <td data-label="判斷"><span class="stance-badge stance-reduce">減碼</span><span class="secondary">信心 高</span></td>
+      <td data-label="品質"><span class="quality"><b>企業</b>中等</span><span class="quality"><b>Setup</b>偏弱</span></td>
+      <td data-label="執行意圖"><span>防禦</span></td>
+      <td data-label="下一驗證"><strong class="event">2026 年 Q3 財報：核心 CELSIUS 品牌動銷、毛利率與調整後 EBITDA</strong><time class="deadline" datetime="2026-11-15">2026-11-15</time></td>
+      <td data-label="狀態"><span class="status status-open"><i aria-hidden="true"></i>追蹤中</span></td>
+      <td data-label="報告"><a class="open-report" href="20260809-1218-CELH-reduce-H.html">開啟報告 <span aria-hidden="true">↗</span></a></td>
+    </tr><tr class="report-row" data-search="nbis nebius group n.v. neutral high wait_for_confirmation 2026 年 q2 財報：arr、營收、ai cloud ebitda、資本支出與新增融資 2026-08-20 open" data-stance="neutral" data-conviction="high" data-status="open" data-date="2026-08-09" data-deadline="2026-08-20" data-ticker="NBIS">
+      <td data-label="標的"><div class="identity"><strong>NBIS</strong><span>Nebius Group N.V.</span></div></td>
+      <td data-label="報告"><time datetime="2026-08-09">2026-08-09</time><strong>US$187.97</strong><small>報告日股價</small></td>
+      <td data-label="判斷"><span class="stance-badge stance-neutral">中性</span><span class="secondary">信心 高</span></td>
+      <td data-label="品質"><span class="quality"><b>企業</b>中等</span><span class="quality"><b>Setup</b>偏弱</span></td>
+      <td data-label="執行意圖"><span>等待確認</span></td>
+      <td data-label="下一驗證"><strong class="event">2026 年 Q2 財報：ARR、營收、AI Cloud EBITDA、資本支出與新增融資</strong><time class="deadline" datetime="2026-08-20">2026-08-20</time></td>
+      <td data-label="狀態"><span class="status status-open"><i aria-hidden="true"></i>追蹤中</span></td>
+      <td data-label="報告"><a class="open-report" href="20260809-1206-NBIS-neutral-H.html">開啟報告 <span aria-hidden="true">↗</span></a></td>
+    </tr><tr class="report-row" data-search="nok nokia corporation neutral high wait_for_confirmation 2026 年 q3 財報、ai/cloud 訂單轉營收與現金回收 2026-10-25 open" data-stance="neutral" data-conviction="high" data-status="open" data-date="2026-08-09" data-deadline="2026-10-25" data-ticker="NOK">
+      <td data-label="標的"><div class="identity"><strong>NOK</strong><span>Nokia Corporation</span></div></td>
+      <td data-label="報告"><time datetime="2026-08-09">2026-08-09</time><strong>US$9.36</strong><small>報告日股價</small></td>
+      <td data-label="判斷"><span class="stance-badge stance-neutral">中性</span><span class="secondary">信心 高</span></td>
+      <td data-label="品質"><span class="quality"><b>企業</b>中等</span><span class="quality"><b>Setup</b>偏弱</span></td>
+      <td data-label="執行意圖"><span>等待確認</span></td>
+      <td data-label="下一驗證"><strong class="event">2026 年 Q3 財報、AI/Cloud 訂單轉營收與現金回收</strong><time class="deadline" datetime="2026-10-25">2026-10-25</time></td>
+      <td data-label="狀態"><span class="status status-open"><i aria-hidden="true"></i>追蹤中</span></td>
+      <td data-label="報告"><a class="open-report" href="20260809-1145-NOK-neutral-H.html">開啟報告 <span aria-hidden="true">↗</span></a></td>
+    </tr><tr class="report-row" data-search="app applovin corporation neutral high wait_for_confirmation 2026 年 q3 財報與電商廣告採用進度 2026-11-15 open" data-stance="neutral" data-conviction="high" data-status="open" data-date="2026-08-09" data-deadline="2026-11-15" data-ticker="APP">
+      <td data-label="標的"><div class="identity"><strong>APP</strong><span>AppLovin Corporation</span></div></td>
+      <td data-label="報告"><time datetime="2026-08-09">2026-08-09</time><strong>US$346.80</strong><small>報告日股價</small></td>
+      <td data-label="判斷"><span class="stance-badge stance-neutral">中性</span><span class="secondary">信心 高</span></td>
+      <td data-label="品質"><span class="quality"><b>企業</b>高</span><span class="quality"><b>Setup</b>偏弱</span></td>
+      <td data-label="執行意圖"><span>等待確認</span></td>
+      <td data-label="下一驗證"><strong class="event">2026 年 Q3 財報與電商廣告採用進度</strong><time class="deadline" datetime="2026-11-15">2026-11-15</time></td>
+      <td data-label="狀態"><span class="status status-open"><i aria-hidden="true"></i>追蹤中</span></td>
+      <td data-label="報告"><a class="open-report" href="20260809-1138-APP-neutral-H.html">開啟報告 <span aria-hidden="true">↗</span></a></td>
+    </tr><tr class="report-row" data-search="nu nu holdings ltd. neutral medium wait_for_confirmation 2026 年 q2 財報與信用品質更新 2026-08-20 open" data-stance="neutral" data-conviction="medium" data-status="open" data-date="2026-08-08" data-deadline="2026-08-20" data-ticker="NU">
+      <td data-label="標的"><div class="identity"><strong>NU</strong><span>Nu Holdings Ltd.</span></div></td>
+      <td data-label="報告"><time datetime="2026-08-08">2026-08-08</time><strong>US$13.84</strong><small>報告日股價</small></td>
+      <td data-label="判斷"><span class="stance-badge stance-neutral">中性</span><span class="secondary">信心 中等</span></td>
+      <td data-label="品質"><span class="quality"><b>企業</b>高</span><span class="quality"><b>Setup</b>偏弱</span></td>
+      <td data-label="執行意圖"><span>等待確認</span></td>
+      <td data-label="下一驗證"><strong class="event">2026 年 Q2 財報與信用品質更新</strong><time class="deadline" datetime="2026-08-20">2026-08-20</time></td>
+      <td data-label="狀態"><span class="status status-open"><i aria-hidden="true"></i>追蹤中</span></td>
+      <td data-label="報告"><a class="open-report" href="20260808-1718-NU-neutral-M.html">開啟報告 <span aria-hidden="true">↗</span></a></td>
+    </tr></tbody>
+      </table>
+      <div id="no-results" class="no-results" role="status">沒有符合目前條件的報告</div>
+    </div>
+
+    <footer><span>完整報告仍以各 HTML 內嵌審計資料為準。</span><span id="visible-count">顯示 30 / 30 份</span></footer>
+  </main>
+  <script id="report-index-data" type="application/json">{"generated_at": "2026-08-10T10:00:13+08:00", "reports": [{"ticker": "Z", "company": "Zillow Group, Inc.", "prediction_date": "2026-08-10", "price_at_prediction": 33.61, "currency": "USD", "stance": "neutral", "conviction": "medium", "business_quality": "high", "setup_quality": "weak", "stance_intent": "wait_for_confirmation", "primary_validation_event": "FTC v. Zillow Group／Redfin 反壟斷案於2026年8月24日開庭，以及Q3 2026財報驗證Preferred agent每連結營收溢價、購屋房貸撮合量與Q4 For Sale成長壓力", "validation_deadline": "2026-11-04", "status": "open", "logged_at": "2026-08-10T09:59:23", "filename": "20260810-0959-Z-neutral-M.html"}, {"ticker": "VRT", "company": "Vertiv Holdings Co（維諦技術）", "prediction_date": "2026-08-10", "price_at_prediction": 272.4, "currency": "USD", "stance": "neutral", "conviction": "medium", "business_quality": "high", "setup_quality": "weak", "stance_intent": "wait_for_confirmation", "primary_validation_event": "2026年Q3財報：驗證淨銷售US$3.65-3.85B、調整後營業利益率24-25%、大型專案延遲回補、遞延收入轉換及全年指引", "validation_deadline": "2026-10-28", "status": "open", "logged_at": "2026-08-10T09:59:00", "filename": "20260810-0959-VRT-neutral-M.html"}, {"ticker": "UPST", "company": "Upstart Holdings, Inc.（Upstart）", "prediction_date": "2026-08-10", "price_at_prediction": 31.09, "currency": "USD", "stance": "neutral", "conviction": "low", "business_quality": "medium", "setup_quality": "weak", "stance_intent": "wait_for_confirmation", "primary_validation_event": "2026年Q3財報與每月UMI／origination揭露：驗證資金供給、信用週期、貸款轉換率及secured products損益路徑", "validation_deadline": "2026-11-03", "status": "open", "logged_at": "2026-08-10T09:57:28", "filename": "20260810-0957-UPST-neutral-L.html"}, {"ticker": "TSM", "company": "Taiwan Semiconductor Manufacturing Co., Ltd.（台灣積體電路製造）", "prediction_date": "2026-08-10", "price_at_prediction": 420.04, "currency": "USD", "stance": "neutral", "conviction": "medium", "business_quality": "high", "setup_quality": "ok", "stance_intent": "wait_for_confirmation", "primary_validation_event": "2026年Q3法說會：驗證營收US$44.6-45.8B、毛利率65-67%、營業利益率56-58%與資本支出US$60-64B軌道", "validation_deadline": "2026-10-16", "status": "open", "logged_at": "2026-08-10T09:57:09", "filename": "20260810-0957-TSM-neutral-M.html"}, {"ticker": "SOFI", "company": "SoFi Technologies, Inc.", "prediction_date": "2026-08-10", "price_at_prediction": 18.38, "currency": "USD", "stance": "neutral", "conviction": "medium", "business_quality": "high", "setup_quality": "weak", "stance_intent": "wait_for_confirmation", "primary_validation_event": "Q3 2026財報：驗證NIM與存款資金優勢、貸款出售／Loan Platform Business需求、fee-based收入占比及排除出售影響後的信用成本，並觀察價格能否收復200日均線", "validation_deadline": "2026-10-30", "status": "open", "logged_at": "2026-08-10T09:56:50", "filename": "20260810-0956-SOFI-neutral-M.html"}, {"ticker": "SE", "company": "Sea Limited（Shopee／Monee／Garena）", "prediction_date": "2026-08-10", "price_at_prediction": 113.43, "currency": "USD", "stance": "neutral", "conviction": "medium", "business_quality": "high", "setup_quality": "weak", "stance_intent": "wait_for_confirmation", "primary_validation_event": "2026年第二季財報：驗證Shopee GMV與獲利、Monee信用品質及Garena訂單能否同步延續", "validation_deadline": "2026-08-11", "status": "open", "logged_at": "2026-08-10T09:55:19", "filename": "20260810-0955-SE-neutral-M.html"}, {"ticker": "RDDT", "company": "Reddit, Inc.", "prediction_date": "2026-08-10", "price_at_prediction": 161.7, "currency": "USD", "stance": "neutral", "conviction": "medium", "business_quality": "high", "setup_quality": "weak", "stance_intent": "wait_for_confirmation", "primary_validation_event": "Google資料授權續約／替代安排，以及Q3 2026財報的DAUq、ARPU、搜尋導流與Other revenue更新", "validation_deadline": "2026-10-29", "status": "open", "logged_at": "2026-08-10T09:54:54", "filename": "20260810-0954-RDDT-neutral-M.html"}, {"ticker": "RBRK", "company": "Rubrik, Inc.", "prediction_date": "2026-08-10", "price_at_prediction": 90.07, "currency": "USD", "stance": "reduce", "conviction": "medium", "business_quality": "high", "setup_quality": "weak", "stance_intent": "protective", "primary_validation_event": "Rubrik Q2 FY2027 財報：驗證 Subscription ARR 淨新增、約120% NRR、FCF 利潤率、完全稀釋股數與全年指引", "validation_deadline": "2026-08-27", "status": "open", "logged_at": "2026-08-10T09:54:35", "filename": "20260810-0954-RBRK-reduce-M.html"}, {"ticker": "PLTR", "company": "Palantir Technologies Inc.", "prediction_date": "2026-08-10", "price_at_prediction": 172.01, "currency": "USD", "stance": "neutral", "conviction": "medium", "business_quality": "high", "setup_quality": "weak", "stance_intent": "avoid_chasing", "primary_validation_event": "2026 Q3財報(約2026-11-03)：美國政府營收YoY成長是否維持80%以上、美國商業營收是否持續130%+成長、SBC占營收比例趨勢、股價能否消化post-earnings單日+10.3%的跳空缺口", "validation_deadline": "2026-11-03", "status": "open", "logged_at": "2026-08-10T09:53:01", "filename": "20260810-0953-PLTR-neutral-M.html"}, {"ticker": "OSCR", "company": "Oscar Health, Inc.", "prediction_date": "2026-08-10", "price_at_prediction": 27.9, "currency": "USD", "stance": "accumulate", "conviction": "medium", "business_quality": "medium", "setup_quality": "ok", "stance_intent": "starter_only", "primary_validation_event": "Q3 2026財報與2027 ACA Marketplace定價／初期投保資料，驗證剔除準備金回撥後的underlying MLR、CMS資格審查造成的會員流失及全年營業利益指引", "validation_deadline": "2026-11-10", "status": "open", "logged_at": "2026-08-10T09:52:45", "filename": "20260810-0952-OSCR-accumulate-M.html"}, {"ticker": "ORCL", "company": "Oracle Corporation（甲骨文）", "prediction_date": "2026-08-10", "price_at_prediction": 147.02, "currency": "USD", "stance": "neutral", "conviction": "medium", "business_quality": "high", "setup_quality": "weak", "stance_intent": "wait_for_confirmation", "primary_validation_event": "FY2027 Q1財報：驗證總營收成長27%至29%、雲端營收成長58%至64%、RPO轉換、資本支出／自由現金流與新增融資進度", "validation_deadline": "2026-09-15", "status": "open", "logged_at": "2026-08-10T09:48:43", "filename": "20260810-0948-ORCL-neutral-M.html"}, {"ticker": "MSFT", "company": "Microsoft Corporation", "prediction_date": "2026-08-10", "price_at_prediction": 499.99, "currency": "USD", "stance": "neutral", "conviction": "medium", "business_quality": "high", "setup_quality": "weak", "stance_intent": "avoid_chasing", "primary_validation_event": "預計FY2027 Q1財報：Azure成長、Commercial RPO轉收入、Microsoft Cloud／整體毛利率、Copilot付費席次與AI資本支出回報", "validation_deadline": "2026-10-28", "status": "open", "logged_at": "2026-08-10T09:48:22", "filename": "20260810-0948-MSFT-neutral-M.html"}, {"ticker": "META", "company": "Meta Platforms, Inc.", "prediction_date": "2026-08-10", "price_at_prediction": 592.1, "currency": "USD", "stance": "reduce", "conviction": "medium", "business_quality": "medium", "setup_quality": "weak", "stance_intent": "protective", "primary_validation_event": "2026 Q3財報(約2026-10-28)：核心廣告營業利益率能否止穩回升至35%以上、自由現金流能否較Q2'26的7.84億美元明顯回升、Reality Labs累計虧損收斂進度、青少年安全訴訟開庭結果與FTC上訴進度", "validation_deadline": "2026-10-28", "status": "open", "logged_at": "2026-08-10T09:48:00", "filename": "20260810-0948-META-reduce-M.html"}, {"ticker": "GOOG", "company": "Alphabet Inc.", "prediction_date": "2026-08-10", "price_at_prediction": 353.47, "currency": "USD", "stance": "neutral", "conviction": "medium", "business_quality": "high", "setup_quality": "weak", "stance_intent": "wait_for_confirmation", "primary_validation_event": "預計2026年Q3財報：驗證Google Search成長、Google Cloud營收與營業利益率、AI資本支出轉化、自由現金流及反壟斷救濟進度", "validation_deadline": "2026-10-28", "status": "open", "logged_at": "2026-08-10T09:47:33", "filename": "20260810-0947-GOOG-neutral-M.html"}, {"ticker": "ETOR", "company": "eToro Group Ltd.", "prediction_date": "2026-08-10", "price_at_prediction": 35.24, "currency": "USD", "stance": "neutral", "conviction": "low", "business_quality": "medium", "setup_quality": "weak", "stance_intent": "wait_for_confirmation", "primary_validation_event": "Q2 2026財報(2026/8/11，即研究日隔天)——淨貢獻(Net Contribution)成長能否延續Q1'26的商品期貨交易驅動、加密貨幣交易量能否止跌回升", "validation_deadline": "2026-08-11", "status": "open", "logged_at": "2026-08-10T09:47:09", "filename": "20260810-0947-ETOR-neutral-L.html"}, {"ticker": "CRDO", "company": "Credo Technology Group Holding Ltd.（Credo Technology）", "prediction_date": "2026-08-10", "price_at_prediction": 249.89, "currency": "USD", "stance": "neutral", "conviction": "medium", "business_quality": "high", "setup_quality": "ok", "stance_intent": "starter_only", "primary_validation_event": "FY2027 Q1財報：驗證營收US$465-475M、DustPhotonics整合、毛利率67-69%及最大客戶集中度", "validation_deadline": "2026-09-15", "status": "open", "logged_at": "2026-08-10T09:40:38", "filename": "20260810-0940-CRDO-neutral-M.html"}, {"ticker": "COHR", "company": "Coherent Corp.（相干公司）", "prediction_date": "2026-08-10", "price_at_prediction": 379.13, "currency": "USD", "stance": "neutral", "conviction": "medium", "business_quality": "high", "setup_quality": "ok", "stance_intent": "wait_for_confirmation", "primary_validation_event": "FY2026 Q4暨全年財報：驗證營收US$1.91-2.05B、資料中心book-to-bill、InP擴產與淨負債", "validation_deadline": "2026-08-12", "status": "open", "logged_at": "2026-08-10T09:40:09", "filename": "20260810-0940-COHR-neutral-M.html"}, {"ticker": "ANET", "company": "Arista Networks, Inc.（艾瑞斯塔網路）", "prediction_date": "2026-08-10", "price_at_prediction": 188.67, "currency": "USD", "stance": "accumulate", "conviction": "medium", "business_quality": "high", "setup_quality": "ok", "stance_intent": "starter_only", "primary_validation_event": "2026年Q3財報：驗證營收約US$3.30B、遞延收入、Etherlink客戶擴張及全年指引是否第五度上修", "validation_deadline": "2026-11-04", "status": "open", "logged_at": "2026-08-10T09:39:16", "filename": "20260810-0939-ANET-accumulate-M.html"}, {"ticker": "SB", "company": "Safe Bulkers, Inc.", "prediction_date": "2026-08-10", "price_at_prediction": 7.6, "currency": "USD", "stance": "accumulate", "conviction": "medium", "business_quality": "medium", "setup_quality": "strong", "stance_intent": "starter_only", "primary_validation_event": "2026年Q3財報(6-K新聞稿，含TCE與2027長約覆蓋率更新)", "validation_deadline": "2026-11-15", "status": "open", "logged_at": "2026-08-10T09:21:07", "filename": "20260810-0921-SB-accumulate-M.html"}, {"ticker": "ZETA", "company": "Zeta Global Holdings Corp.", "prediction_date": "2026-08-09", "price_at_prediction": 26.64, "currency": "USD", "stance": "accumulate", "conviction": "medium", "business_quality": "medium", "setup_quality": "ok", "stance_intent": "wait_for_pullback", "primary_validation_event": "2026 Q3 財報：有機成長、FCF 與 Marigold 整合", "validation_deadline": "2026-11-15", "status": "open", "logged_at": "2026-08-10T00:14:00", "filename": "20260809-0014-ZETA-accumulate-M.html"}, {"ticker": "AMZN", "company": "Amazon.com, Inc.", "prediction_date": "2026-08-09", "price_at_prediction": 274.48, "currency": "USD", "stance": "accumulate", "conviction": "medium", "business_quality": "high", "setup_quality": "strong", "stance_intent": "starter_only", "primary_validation_event": "2026 Q3 財報、AWS 增速與 AI 資本支出現金回收", "validation_deadline": "2026-11-30", "status": "open", "logged_at": "2026-08-09T23:36:06", "filename": "20260809-2336-AMZN-accumulate-M.html"}, {"ticker": "LLY", "company": "Eli Lilly and Company", "prediction_date": "2026-08-09", "price_at_prediction": 1185.71, "currency": "USD", "stance": "accumulate", "conviction": "medium", "business_quality": "high", "setup_quality": "strong", "stance_intent": "buy_on_pullback", "primary_validation_event": "2026 Q3 財報、GLP-1 產能與 retatrutide 送件進度", "validation_deadline": "2026-11-30", "status": "open", "logged_at": "2026-08-09T23:36:05", "filename": "20260809-2336-LLY-accumulate-M.html"}, {"ticker": "AVGO", "company": "Broadcom Inc.", "prediction_date": "2026-08-09", "price_at_prediction": 427.76, "currency": "USD", "stance": "accumulate", "conviction": "high", "business_quality": "high", "setup_quality": "strong", "stance_intent": "buy_on_pullback", "primary_validation_event": "FY2026 Q3 財報、AI 半導體營收與 VMware 軟體續約", "validation_deadline": "2026-12-15", "status": "open", "logged_at": "2026-08-09T23:36:05", "filename": "20260809-2336-AVGO-accumulate-H.html"}, {"ticker": "NVDA", "company": "NVIDIA Corporation", "prediction_date": "2026-08-09", "price_at_prediction": 223.96, "currency": "USD", "stance": "accumulate", "conviction": "high", "business_quality": "high", "setup_quality": "strong", "stance_intent": "buy_on_pullback", "primary_validation_event": "FY2027 Q2 財報與 Blackwell/Rubin 出貨、資料中心指引", "validation_deadline": "2026-11-30", "status": "open", "logged_at": "2026-08-09T23:36:04", "filename": "20260809-2336-NVDA-accumulate-H.html"}, {"ticker": "ONDS", "company": "Ondas Inc.", "prediction_date": "2026-08-09", "price_at_prediction": 9.11, "currency": "USD", "stance": "neutral", "conviction": "high", "business_quality": "medium", "setup_quality": "weak", "stance_intent": "wait_for_confirmation", "primary_validation_event": "2026 年 Q2 財報與 DZYNE 收購備考財務：訂單認列、調整後 EBITDA、現金與完全稀釋股數", "validation_deadline": "2026-09-20", "status": "open", "logged_at": "2026-08-09T12:29:52", "filename": "20260809-1229-ONDS-neutral-H.html"}, {"ticker": "CELH", "company": "Celsius Holdings, Inc.", "prediction_date": "2026-08-09", "price_at_prediction": 27.77, "currency": "USD", "stance": "reduce", "conviction": "high", "business_quality": "medium", "setup_quality": "weak", "stance_intent": "protective", "primary_validation_event": "2026 年 Q3 財報：核心 CELSIUS 品牌動銷、毛利率與調整後 EBITDA", "validation_deadline": "2026-11-15", "status": "open", "logged_at": "2026-08-09T12:18:05", "filename": "20260809-1218-CELH-reduce-H.html"}, {"ticker": "NBIS", "company": "Nebius Group N.V.", "prediction_date": "2026-08-09", "price_at_prediction": 187.97, "currency": "USD", "stance": "neutral", "conviction": "high", "business_quality": "medium", "setup_quality": "weak", "stance_intent": "wait_for_confirmation", "primary_validation_event": "2026 年 Q2 財報：ARR、營收、AI Cloud EBITDA、資本支出與新增融資", "validation_deadline": "2026-08-20", "status": "open", "logged_at": "2026-08-09T12:06:32", "filename": "20260809-1206-NBIS-neutral-H.html"}, {"ticker": "NOK", "company": "Nokia Corporation", "prediction_date": "2026-08-09", "price_at_prediction": 9.36, "currency": "USD", "stance": "neutral", "conviction": "high", "business_quality": "medium", "setup_quality": "weak", "stance_intent": "wait_for_confirmation", "primary_validation_event": "2026 年 Q3 財報、AI/Cloud 訂單轉營收與現金回收", "validation_deadline": "2026-10-25", "status": "open", "logged_at": "2026-08-09T11:45:36", "filename": "20260809-1145-NOK-neutral-H.html"}, {"ticker": "APP", "company": "AppLovin Corporation", "prediction_date": "2026-08-09", "price_at_prediction": 346.8, "currency": "USD", "stance": "neutral", "conviction": "high", "business_quality": "high", "setup_quality": "weak", "stance_intent": "wait_for_confirmation", "primary_validation_event": "2026 年 Q3 財報與電商廣告採用進度", "validation_deadline": "2026-11-15", "status": "open", "logged_at": "2026-08-09T11:38:00", "filename": "20260809-1138-APP-neutral-H.html"}, {"ticker": "NU", "company": "Nu Holdings Ltd.", "prediction_date": "2026-08-08", "price_at_prediction": 13.84, "currency": "USD", "stance": "neutral", "conviction": "medium", "business_quality": "high", "setup_quality": "weak", "stance_intent": "wait_for_confirmation", "primary_validation_event": "2026 年 Q2 财报与信用质量更新", "validation_deadline": "2026-08-20", "status": "open", "logged_at": "2026-08-08T17:18:40", "filename": "20260808-1718-NU-neutral-M.html"}], "warnings": []}</script>
+  <script>
+  (() => {
+    const rows = [...document.querySelectorAll('.report-row')];
+    const body = document.getElementById('report-body');
+    const search = document.getElementById('report-search');
+    const filters = { stance:document.getElementById('stance-filter'), conviction:document.getElementById('conviction-filter'), status:document.getElementById('status-filter') };
+    const sort = document.getElementById('sort-control');
+    const empty = document.getElementById('no-results');
+    const counter = document.getElementById('visible-count');
+    const total = rows.length;
+    const refresh = () => {
+      const term = search.value.trim().toLowerCase();
+      let visible = rows.filter(row => (!term || row.dataset.search.includes(term)) && Object.entries(filters).every(([key,input]) => !input.value || row.dataset[key] === input.value));
+      visible.sort((a,b) => sort.value === 'ticker' ? a.dataset.ticker.localeCompare(b.dataset.ticker) : sort.value === 'deadline' ? (a.dataset.deadline || '9999').localeCompare(b.dataset.deadline || '9999') : (b.dataset.date || '').localeCompare(a.dataset.date || ''));
+      rows.forEach(row => row.hidden = !visible.includes(row));
+      visible.forEach(row => body.appendChild(row));
+      empty.style.display = visible.length ? 'none' : 'block';
+      counter.textContent = `顯示 ${visible.length} / ${total} 份`;
+    };
+    search.addEventListener('input', refresh);
+    Object.values(filters).forEach(input => input.addEventListener('change', refresh));
+    sort.addEventListener('change', refresh);
+  })();
+  </script>
+</body>
+</html>

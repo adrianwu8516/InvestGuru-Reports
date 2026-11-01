@@ -1,0 +1,1889 @@
+<!doctype html><html lang='zh-Hant'><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>InvestGuru 完整歷史審計</title>
+<style>body{font:16px system-ui;max-width:1150px;margin:36px auto;padding:20px;color:#203238}table{border-collapse:collapse;width:100%;margin:20px 0}td,th{padding:9px;border-bottom:1px solid #ddd;text-align:left}pre{white-space:pre-wrap;font-size:13px}summary{cursor:pointer}h1,h2{color:#126656}body{overflow-wrap:anywhere}table{display:block;overflow-x:auto;max-width:100%}</style>
+<nav><a href="20261101-update-review.html">11/1更新驗收</a> · <a href="../index.html">報告索引</a></nav><h1>完整歷史、最新版與全部修訂</h1><p>2026-11-01T15:07:46.015066+00:00</p>
+<p>本報告取代僅用最新版評估整體歷史的口徑。比率為描述統計，未證明可重複超額能力。</p>
+<p>已完成日線截止日（依標的）：2026-10-30。擷取日不等於行情日期。</p>
+<h2>基準代碼更名映射（原預測不改寫）</h2><pre>{
+  &quot;20261006-0957-CIEN-neutral-M.html&quot;: {
+    &quot;requested_ticker&quot;: &quot;IGN&quot;,
+    &quot;resolved_ticker&quot;: &quot;IDGT&quot;,
+    &quot;effective_date&quot;: &quot;2023-12-18&quot;,
+    &quot;source_url&quot;: &quot;https://infomemo.theocc.com/infomemos?number=53726&quot;,
+    &quot;limitation&quot;: &quot;Same fund (CUSIP 464287531), not the old networking index; the fund mandate/index also changed. No pre-change history substitution.&quot;
+  },
+  &quot;20261007-0935-CIEN-neutral-M.html&quot;: {
+    &quot;requested_ticker&quot;: &quot;IGN&quot;,
+    &quot;resolved_ticker&quot;: &quot;IDGT&quot;,
+    &quot;effective_date&quot;: &quot;2023-12-18&quot;,
+    &quot;source_url&quot;: &quot;https://infomemo.theocc.com/infomemos?number=53726&quot;,
+    &quot;limitation&quot;: &quot;Same fund (CUSIP 464287531), not the old networking index; the fund mandate/index also changed. No pre-change history substitution.&quot;
+  },
+  &quot;20261007-1031-CIEN-neutral-M.html&quot;: {
+    &quot;requested_ticker&quot;: &quot;IGN&quot;,
+    &quot;resolved_ticker&quot;: &quot;IDGT&quot;,
+    &quot;effective_date&quot;: &quot;2023-12-18&quot;,
+    &quot;source_url&quot;: &quot;https://infomemo.theocc.com/infomemos?number=53726&quot;,
+    &quot;limitation&quot;: &quot;Same fund (CUSIP 464287531), not the old networking index; the fund mandate/index also changed. No pre-change history substitution.&quot;
+  }
+}</pre>
+<h2>inception · 66 records</h2>
+<h3>3m · matured 21 · scored 21 · hits 9</h3>
+<table><tr><th>Ticker / record</th><th>Stance</th><th>Alpha pp</th><th>Action</th><th>Missed upside pp</th><th>Avoided downside pp</th></tr>
+<tr><td>NU<br><small>20260620-2155-NU-accumulate-M.md</small></td><td>accumulate</td><td>5.10</td><td>False</td><td>0.00</td><td>0.00</td></tr>
+<tr><td>SOFI<br><small>20260620-2200-SOFI-neutral-M.md</small></td><td>neutral</td><td>-7.60</td><td>True</td><td>0.00</td><td>7.60</td></tr>
+<tr><td>MSFT<br><small>20260620-2215-MSFT-accumulate-M.md</small></td><td>accumulate</td><td>27.80</td><td>True</td><td>0.00</td><td>0.00</td></tr>
+<tr><td>ONDS<br><small>20260620-2215-ONDS-neutral-M.md</small></td><td>neutral</td><td>-22.60</td><td>True</td><td>0.00</td><td>22.60</td></tr>
+<tr><td>SE<br><small>20260620-2215-SE-accumulate-M.md</small></td><td>accumulate</td><td>9.20</td><td>False</td><td>0.00</td><td>0.00</td></tr>
+<tr><td>CELH<br><small>20260620-2231-CELH-accumulate-L.md</small></td><td>accumulate</td><td>-11.40</td><td>False</td><td>0.00</td><td>0.00</td></tr>
+<tr><td>ASX<br><small>20260620-2306-ASX-neutral-M.md</small></td><td>neutral</td><td>0.30</td><td>True</td><td>0.30</td><td>0.00</td></tr>
+<tr><td>NOK<br><small>20260620-2306-NOK-reduce-L.md</small></td><td>reduce</td><td>-23.20</td><td>True</td><td>0.00</td><td>23.20</td></tr>
+<tr><td>APP<br><small>20260620-2342-APP-neutral-M.md</small></td><td>neutral</td><td>-36.70</td><td>False</td><td>0.00</td><td>36.70</td></tr>
+<tr><td>FTAI<br><small>20260620-2342-FTAI-accumulate-L.md</small></td><td>accumulate</td><td>-33.20</td><td>False</td><td>0.00</td><td>0.00</td></tr>
+<tr><td>MELI<br><small>20260620-2355-MELI-accumulate-L.md</small></td><td>accumulate</td><td>7.00</td><td>False</td><td>0.00</td><td>0.00</td></tr>
+<tr><td>TSM<br><small>20260620-2355-TSM-accumulate-L.md</small></td><td>accumulate</td><td>-8.30</td><td>False</td><td>0.00</td><td>0.00</td></tr>
+<tr><td>AMD<br><small>20260621-0002-AMD-neutral-M.md</small></td><td>neutral</td><td>10.60</td><td>True</td><td>10.60</td><td>0.00</td></tr>
+<tr><td>NVDA<br><small>20260621-0002-NVDA-accumulate-M.md</small></td><td>accumulate</td><td>4.00</td><td>False</td><td>0.00</td><td>0.00</td></tr>
+<tr><td>GTLB<br><small>20260621-1753-GTLB-neutral-M.md</small></td><td>neutral</td><td>83.60</td><td>False</td><td>83.60</td><td>0.00</td></tr>
+<tr><td>HOOD<br><small>20260621-2302-HOOD-neutral-M.md</small></td><td>neutral</td><td>10.10</td><td>True</td><td>10.10</td><td>0.00</td></tr>
+<tr><td>MU<br><small>20260621-2302-MU-neutral-M.md</small></td><td>neutral</td><td>-11.80</td><td>True</td><td>0.00</td><td>11.80</td></tr>
+<tr><td>NOW<br><small>20260621-2302-NOW-accumulate-L.md</small></td><td>accumulate</td><td>41.00</td><td>True</td><td>0.00</td><td>0.00</td></tr>
+<tr><td>STNE<br><small>20260621-2302-STNE-accumulate-L.md</small></td><td>accumulate</td><td>-12.20</td><td>False</td><td>0.00</td><td>0.00</td></tr>
+<tr><td>LLY<br><small>20260621-2315-LLY-accumulate-M.md</small></td><td>accumulate</td><td>2.10</td><td>False</td><td>0.00</td><td>0.00</td></tr>
+<tr><td>ORCL<br><small>20260621-2315-ORCL-accumulate-L.md</small></td><td>accumulate</td><td>-23.30</td><td>False</td><td>0.00</td><td>0.00</td></tr>
+</table><details><summary>同樣本基準、止損情境及分組統計</summary><pre>{
+  &quot;summary&quot;: {
+    &quot;matured_n&quot;: 21,
+    &quot;scoreable_n&quot;: 21,
+    &quot;hits&quot;: 9,
+    &quot;action_hit_rate&quot;: 0.42857142857142855,
+    &quot;wilson95_descriptive_only&quot;: [
+      0.2447,
+      0.6345
+    ],
+    &quot;mean_candidate_alpha_pp&quot;: 0.5,
+    &quot;mean_scoring_basis_alpha_pp&quot;: 0.5,
+    &quot;missed_upside_pp_mean&quot;: 11.6222,
+    &quot;avoided_downside_pp_mean&quot;: 11.3222,
+    &quot;same_sample_baselines&quot;: {
+      &quot;accumulate&quot;: {
+        &quot;n&quot;: 21,
+        &quot;hits&quot;: 3
+      },
+      &quot;neutral&quot;: {
+        &quot;n&quot;: 21,
+        &quot;hits&quot;: 14
+      },
+      &quot;reduce&quot;: {
+        &quot;n&quot;: 21,
+        &quot;hits&quot;: 4
+      }
+    },
+    &quot;mechanical_flat_account_scenario&quot;: {
+      &quot;eligible_n&quot;: 19,
+      &quot;excluded_n&quot;: 2,
+      &quot;policy_return_pct&quot;: 0.8941,
+      &quot;buy_candidate_return_pct&quot;: 5.4335,
+      &quot;benchmark_return_pct&quot;: 2.4193,
+      &quot;paired_policy_minus_benchmark_pp&quot;: -1.5252
+    }
+  },
+  &quot;by_stance&quot;: {
+    &quot;accumulate&quot;: {
+      &quot;matured_n&quot;: 12,
+      &quot;scoreable_n&quot;: 12,
+      &quot;hits&quot;: 2,
+      &quot;action_hit_rate&quot;: 0.16666666666666666,
+      &quot;wilson95_descriptive_only&quot;: [
+        0.047,
+        0.448
+      ],
+      &quot;mean_candidate_alpha_pp&quot;: 0.65,
+      &quot;mean_scoring_basis_alpha_pp&quot;: 0.65,
+      &quot;missed_upside_pp_mean&quot;: null,
+      &quot;avoided_downside_pp_mean&quot;: null,
+      &quot;same_sample_baselines&quot;: {
+        &quot;accumulate&quot;: {
+          &quot;n&quot;: 12,
+          &quot;hits&quot;: 2
+        },
+        &quot;neutral&quot;: {
+          &quot;n&quot;: 12,
+          &quot;hits&quot;: 8
+        },
+        &quot;reduce&quot;: {
+          &quot;n&quot;: 12,
+          &quot;hits&quot;: 2
+        }
+      },
+      &quot;mechanical_flat_account_scenario&quot;: {
+        &quot;eligible_n&quot;: 10,
+        &quot;excluded_n&quot;: 2,
+        &quot;policy_return_pct&quot;: 1.6988,
+        &quot;buy_candidate_return_pct&quot;: 8.3163,
+        &quot;benchmark_return_pct&quot;: 2.4608,
+        &quot;paired_policy_minus_benchmark_pp&quot;: -0.762
+      }
+    },
+    &quot;neutral&quot;: {
+      &quot;matured_n&quot;: 8,
+      &quot;scoreable_n&quot;: 8,
+      &quot;hits&quot;: 6,
+      &quot;action_hit_rate&quot;: 0.75,
+      &quot;wilson95_descriptive_only&quot;: [
+        0.4093,
+        0.9285
+      ],
+      &quot;mean_candidate_alpha_pp&quot;: 3.2375,
+      &quot;mean_scoring_basis_alpha_pp&quot;: 3.2375,
+      &quot;missed_upside_pp_mean&quot;: 13.075,
+      &quot;avoided_downside_pp_mean&quot;: 9.8375,
+      &quot;same_sample_baselines&quot;: {
+        &quot;accumulate&quot;: {
+          &quot;n&quot;: 8,
+          &quot;hits&quot;: 1
+        },
+        &quot;neutral&quot;: {
+          &quot;n&quot;: 8,
+          &quot;hits&quot;: 6
+        },
+        &quot;reduce&quot;: {
+          &quot;n&quot;: 8,
+          &quot;hits&quot;: 1
+        }
+      },
+      &quot;mechanical_flat_account_scenario&quot;: {
+        &quot;eligible_n&quot;: 8,
+        &quot;excluded_n&quot;: 0,
+        &quot;policy_return_pct&quot;: 0.0,
+        &quot;buy_candidate_return_pct&quot;: 5.3882,
+        &quot;benchmark_return_pct&quot;: 2.4608,
+        &quot;paired_policy_minus_benchmark_pp&quot;: -2.4608
+      }
+    },
+    &quot;reduce&quot;: {
+      &quot;matured_n&quot;: 1,
+      &quot;scoreable_n&quot;: 1,
+      &quot;hits&quot;: 1,
+      &quot;action_hit_rate&quot;: 1.0,
+      &quot;wilson95_descriptive_only&quot;: [
+        0.2065,
+        1.0
+      ],
+      &quot;mean_candidate_alpha_pp&quot;: -23.2,
+      &quot;mean_scoring_basis_alpha_pp&quot;: -23.2,
+      &quot;missed_upside_pp_mean&quot;: 0,
+      &quot;avoided_downside_pp_mean&quot;: 23.2,
+      &quot;same_sample_baselines&quot;: {
+        &quot;accumulate&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;neutral&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;reduce&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 1
+        }
+      },
+      &quot;mechanical_flat_account_scenario&quot;: {
+        &quot;eligible_n&quot;: 1,
+        &quot;excluded_n&quot;: 0,
+        &quot;policy_return_pct&quot;: 0.0,
+        &quot;buy_candidate_return_pct&quot;: -23.0324,
+        &quot;benchmark_return_pct&quot;: 1.6711,
+        &quot;paired_policy_minus_benchmark_pp&quot;: -1.6711
+      }
+    }
+  },
+  &quot;by_ticker&quot;: {
+    &quot;NU&quot;: {
+      &quot;matured_n&quot;: 1,
+      &quot;scoreable_n&quot;: 1,
+      &quot;hits&quot;: 0,
+      &quot;action_hit_rate&quot;: 0.0,
+      &quot;wilson95_descriptive_only&quot;: [
+        0.0,
+        0.7935
+      ],
+      &quot;mean_candidate_alpha_pp&quot;: 5.1,
+      &quot;mean_scoring_basis_alpha_pp&quot;: 5.1,
+      &quot;missed_upside_pp_mean&quot;: null,
+      &quot;avoided_downside_pp_mean&quot;: null,
+      &quot;same_sample_baselines&quot;: {
+        &quot;accumulate&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;neutral&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 1
+        },
+        &quot;reduce&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        }
+      },
+      &quot;mechanical_flat_account_scenario&quot;: {
+        &quot;eligible_n&quot;: 1,
+        &quot;excluded_n&quot;: 0,
+        &quot;policy_return_pct&quot;: 6.6075,
+        &quot;buy_candidate_return_pct&quot;: 6.6075,
+        &quot;benchmark_return_pct&quot;: 1.6711,
+        &quot;paired_policy_minus_benchmark_pp&quot;: 4.9364
+      }
+    },
+    &quot;SOFI&quot;: {
+      &quot;matured_n&quot;: 1,
+      &quot;scoreable_n&quot;: 1,
+      &quot;hits&quot;: 1,
+      &quot;action_hit_rate&quot;: 1.0,
+      &quot;wilson95_descriptive_only&quot;: [
+        0.2065,
+        1.0
+      ],
+      &quot;mean_candidate_alpha_pp&quot;: -7.6,
+      &quot;mean_scoring_basis_alpha_pp&quot;: -7.6,
+      &quot;missed_upside_pp_mean&quot;: 0,
+      &quot;avoided_downside_pp_mean&quot;: 7.6,
+      &quot;same_sample_baselines&quot;: {
+        &quot;accumulate&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;neutral&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 1
+        },
+        &quot;reduce&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        }
+      },
+      &quot;mechanical_flat_account_scenario&quot;: {
+        &quot;eligible_n&quot;: 1,
+        &quot;excluded_n&quot;: 0,
+        &quot;policy_return_pct&quot;: 0.0,
+        &quot;buy_candidate_return_pct&quot;: -3.7816,
+        &quot;benchmark_return_pct&quot;: 1.6711,
+        &quot;paired_policy_minus_benchmark_pp&quot;: -1.6711
+      }
+    },
+    &quot;MSFT&quot;: {
+      &quot;matured_n&quot;: 1,
+      &quot;scoreable_n&quot;: 1,
+      &quot;hits&quot;: 1,
+      &quot;action_hit_rate&quot;: 1.0,
+      &quot;wilson95_descriptive_only&quot;: [
+        0.2065,
+        1.0
+      ],
+      &quot;mean_candidate_alpha_pp&quot;: 27.8,
+      &quot;mean_scoring_basis_alpha_pp&quot;: 27.8,
+      &quot;missed_upside_pp_mean&quot;: null,
+      &quot;avoided_downside_pp_mean&quot;: null,
+      &quot;same_sample_baselines&quot;: {
+        &quot;accumulate&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 1
+        },
+        &quot;neutral&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;reduce&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        }
+      },
+      &quot;mechanical_flat_account_scenario&quot;: {
+        &quot;eligible_n&quot;: 1,
+        &quot;excluded_n&quot;: 0,
+        &quot;policy_return_pct&quot;: -5.4536,
+        &quot;buy_candidate_return_pct&quot;: 31.2153,
+        &quot;benchmark_return_pct&quot;: 1.6711,
+        &quot;paired_policy_minus_benchmark_pp&quot;: -7.1247
+      }
+    },
+    &quot;ONDS&quot;: {
+      &quot;matured_n&quot;: 1,
+      &quot;scoreable_n&quot;: 1,
+      &quot;hits&quot;: 1,
+      &quot;action_hit_rate&quot;: 1.0,
+      &quot;wilson95_descriptive_only&quot;: [
+        0.2065,
+        1.0
+      ],
+      &quot;mean_candidate_alpha_pp&quot;: -22.6,
+      &quot;mean_scoring_basis_alpha_pp&quot;: -22.6,
+      &quot;missed_upside_pp_mean&quot;: 0,
+      &quot;avoided_downside_pp_mean&quot;: 22.6,
+      &quot;same_sample_baselines&quot;: {
+        &quot;accumulate&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;neutral&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 1
+        },
+        &quot;reduce&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        }
+      },
+      &quot;mechanical_flat_account_scenario&quot;: {
+        &quot;eligible_n&quot;: 1,
+        &quot;excluded_n&quot;: 0,
+        &quot;policy_return_pct&quot;: 0.0,
+        &quot;buy_candidate_return_pct&quot;: -21.2048,
+        &quot;benchmark_return_pct&quot;: 1.6711,
+        &quot;paired_policy_minus_benchmark_pp&quot;: -1.6711
+      }
+    },
+    &quot;SE&quot;: {
+      &quot;matured_n&quot;: 1,
+      &quot;scoreable_n&quot;: 1,
+      &quot;hits&quot;: 0,
+      &quot;action_hit_rate&quot;: 0.0,
+      &quot;wilson95_descriptive_only&quot;: [
+        0.0,
+        0.7935
+      ],
+      &quot;mean_candidate_alpha_pp&quot;: 9.2,
+      &quot;mean_scoring_basis_alpha_pp&quot;: 9.2,
+      &quot;missed_upside_pp_mean&quot;: null,
+      &quot;avoided_downside_pp_mean&quot;: null,
+      &quot;same_sample_baselines&quot;: {
+        &quot;accumulate&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;neutral&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 1
+        },
+        &quot;reduce&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        }
+      },
+      &quot;mechanical_flat_account_scenario&quot;: {
+        &quot;eligible_n&quot;: 1,
+        &quot;excluded_n&quot;: 0,
+        &quot;policy_return_pct&quot;: 12.8874,
+        &quot;buy_candidate_return_pct&quot;: 12.8874,
+        &quot;benchmark_return_pct&quot;: 1.6711,
+        &quot;paired_policy_minus_benchmark_pp&quot;: 11.2164
+      }
+    },
+    &quot;CELH&quot;: {
+      &quot;matured_n&quot;: 1,
+      &quot;scoreable_n&quot;: 1,
+      &quot;hits&quot;: 0,
+      &quot;action_hit_rate&quot;: 0.0,
+      &quot;wilson95_descriptive_only&quot;: [
+        0.0,
+        0.7935
+      ],
+      &quot;mean_candidate_alpha_pp&quot;: -11.4,
+      &quot;mean_scoring_basis_alpha_pp&quot;: -11.4,
+      &quot;missed_upside_pp_mean&quot;: null,
+      &quot;avoided_downside_pp_mean&quot;: null,
+      &quot;same_sample_baselines&quot;: {
+        &quot;accumulate&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;neutral&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 1
+        },
+        &quot;reduce&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        }
+      },
+      &quot;mechanical_flat_account_scenario&quot;: {
+        &quot;eligible_n&quot;: 1,
+        &quot;excluded_n&quot;: 0,
+        &quot;policy_return_pct&quot;: -10.6526,
+        &quot;buy_candidate_return_pct&quot;: -8.9594,
+        &quot;benchmark_return_pct&quot;: 1.6711,
+        &quot;paired_policy_minus_benchmark_pp&quot;: -12.3237
+      }
+    },
+    &quot;ASX&quot;: {
+      &quot;matured_n&quot;: 1,
+      &quot;scoreable_n&quot;: 1,
+      &quot;hits&quot;: 1,
+      &quot;action_hit_rate&quot;: 1.0,
+      &quot;wilson95_descriptive_only&quot;: [
+        0.2065,
+        1.0
+      ],
+      &quot;mean_candidate_alpha_pp&quot;: 0.3,
+      &quot;mean_scoring_basis_alpha_pp&quot;: 0.3,
+      &quot;missed_upside_pp_mean&quot;: 0.3,
+      &quot;avoided_downside_pp_mean&quot;: 0,
+      &quot;same_sample_baselines&quot;: {
+        &quot;accumulate&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;neutral&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 1
+        },
+        &quot;reduce&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        }
+      },
+      &quot;mechanical_flat_account_scenario&quot;: {
+        &quot;eligible_n&quot;: 1,
+        &quot;excluded_n&quot;: 0,
+        &quot;policy_return_pct&quot;: 0.0,
+        &quot;buy_candidate_return_pct&quot;: -3.4535,
+        &quot;benchmark_return_pct&quot;: 1.6711,
+        &quot;paired_policy_minus_benchmark_pp&quot;: -1.6711
+      }
+    },
+    &quot;NOK&quot;: {
+      &quot;matured_n&quot;: 1,
+      &quot;scoreable_n&quot;: 1,
+      &quot;hits&quot;: 1,
+      &quot;action_hit_rate&quot;: 1.0,
+      &quot;wilson95_descriptive_only&quot;: [
+        0.2065,
+        1.0
+      ],
+      &quot;mean_candidate_alpha_pp&quot;: -23.2,
+      &quot;mean_scoring_basis_alpha_pp&quot;: -23.2,
+      &quot;missed_upside_pp_mean&quot;: 0,
+      &quot;avoided_downside_pp_mean&quot;: 23.2,
+      &quot;same_sample_baselines&quot;: {
+        &quot;accumulate&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;neutral&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;reduce&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 1
+        }
+      },
+      &quot;mechanical_flat_account_scenario&quot;: {
+        &quot;eligible_n&quot;: 1,
+        &quot;excluded_n&quot;: 0,
+        &quot;policy_return_pct&quot;: 0.0,
+        &quot;buy_candidate_return_pct&quot;: -23.0324,
+        &quot;benchmark_return_pct&quot;: 1.6711,
+        &quot;paired_policy_minus_benchmark_pp&quot;: -1.6711
+      }
+    },
+    &quot;APP&quot;: {
+      &quot;matured_n&quot;: 1,
+      &quot;scoreable_n&quot;: 1,
+      &quot;hits&quot;: 0,
+      &quot;action_hit_rate&quot;: 0.0,
+      &quot;wilson95_descriptive_only&quot;: [
+        0.0,
+        0.7935
+      ],
+      &quot;mean_candidate_alpha_pp&quot;: -36.7,
+      &quot;mean_scoring_basis_alpha_pp&quot;: -36.7,
+      &quot;missed_upside_pp_mean&quot;: 0,
+      &quot;avoided_downside_pp_mean&quot;: 36.7,
+      &quot;same_sample_baselines&quot;: {
+        &quot;accumulate&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;neutral&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;reduce&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 1
+        }
+      },
+      &quot;mechanical_flat_account_scenario&quot;: {
+        &quot;eligible_n&quot;: 1,
+        &quot;excluded_n&quot;: 0,
+        &quot;policy_return_pct&quot;: 0.0,
+        &quot;buy_candidate_return_pct&quot;: -32.8409,
+        &quot;benchmark_return_pct&quot;: 1.6711,
+        &quot;paired_policy_minus_benchmark_pp&quot;: -1.6711
+      }
+    },
+    &quot;FTAI&quot;: {
+      &quot;matured_n&quot;: 1,
+      &quot;scoreable_n&quot;: 1,
+      &quot;hits&quot;: 0,
+      &quot;action_hit_rate&quot;: 0.0,
+      &quot;wilson95_descriptive_only&quot;: [
+        0.0,
+        0.7935
+      ],
+      &quot;mean_candidate_alpha_pp&quot;: -33.2,
+      &quot;mean_scoring_basis_alpha_pp&quot;: -33.2,
+      &quot;missed_upside_pp_mean&quot;: null,
+      &quot;avoided_downside_pp_mean&quot;: null,
+      &quot;same_sample_baselines&quot;: {
+        &quot;accumulate&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;neutral&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;reduce&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 1
+        }
+      },
+      &quot;mechanical_flat_account_scenario&quot;: {
+        &quot;eligible_n&quot;: 0,
+        &quot;excluded_n&quot;: 1,
+        &quot;policy_return_pct&quot;: null,
+        &quot;buy_candidate_return_pct&quot;: null,
+        &quot;benchmark_return_pct&quot;: null,
+        &quot;paired_policy_minus_benchmark_pp&quot;: null
+      }
+    },
+    &quot;MELI&quot;: {
+      &quot;matured_n&quot;: 1,
+      &quot;scoreable_n&quot;: 1,
+      &quot;hits&quot;: 0,
+      &quot;action_hit_rate&quot;: 0.0,
+      &quot;wilson95_descriptive_only&quot;: [
+        0.0,
+        0.7935
+      ],
+      &quot;mean_candidate_alpha_pp&quot;: 7.0,
+      &quot;mean_scoring_basis_alpha_pp&quot;: 7.0,
+      &quot;missed_upside_pp_mean&quot;: null,
+      &quot;avoided_downside_pp_mean&quot;: null,
+      &quot;same_sample_baselines&quot;: {
+        &quot;accumulate&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;neutral&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 1
+        },
+        &quot;reduce&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        }
+      },
+      &quot;mechanical_flat_account_scenario&quot;: {
+        &quot;eligible_n&quot;: 1,
+        &quot;excluded_n&quot;: 0,
+        &quot;policy_return_pct&quot;: 9.2209,
+        &quot;buy_candidate_return_pct&quot;: 9.2209,
+        &quot;benchmark_return_pct&quot;: 1.6711,
+        &quot;paired_policy_minus_benchmark_pp&quot;: 7.5498
+      }
+    },
+    &quot;TSM&quot;: {
+      &quot;matured_n&quot;: 1,
+      &quot;scoreable_n&quot;: 1,
+      &quot;hits&quot;: 0,
+      &quot;action_hit_rate&quot;: 0.0,
+      &quot;wilson95_descriptive_only&quot;: [
+        0.0,
+        0.7935
+      ],
+      &quot;mean_candidate_alpha_pp&quot;: -8.3,
+      &quot;mean_scoring_basis_alpha_pp&quot;: -8.3,
+      &quot;missed_upside_pp_mean&quot;: null,
+      &quot;avoided_downside_pp_mean&quot;: null,
+      &quot;same_sample_baselines&quot;: {
+        &quot;accumulate&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;neutral&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 1
+        },
+        &quot;reduce&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        }
+      },
+      &quot;mechanical_flat_account_scenario&quot;: {
+        &quot;eligible_n&quot;: 0,
+        &quot;excluded_n&quot;: 1,
+        &quot;policy_return_pct&quot;: null,
+        &quot;buy_candidate_return_pct&quot;: null,
+        &quot;benchmark_return_pct&quot;: null,
+        &quot;paired_policy_minus_benchmark_pp&quot;: null
+      }
+    },
+    &quot;AMD&quot;: {
+      &quot;matured_n&quot;: 1,
+      &quot;scoreable_n&quot;: 1,
+      &quot;hits&quot;: 1,
+      &quot;action_hit_rate&quot;: 1.0,
+      &quot;wilson95_descriptive_only&quot;: [
+        0.2065,
+        1.0
+      ],
+      &quot;mean_candidate_alpha_pp&quot;: 10.6,
+      &quot;mean_scoring_basis_alpha_pp&quot;: 10.6,
+      &quot;missed_upside_pp_mean&quot;: 10.6,
+      &quot;avoided_downside_pp_mean&quot;: 0,
+      &quot;same_sample_baselines&quot;: {
+        &quot;accumulate&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;neutral&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 1
+        },
+        &quot;reduce&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        }
+      },
+      &quot;mechanical_flat_account_scenario&quot;: {
+        &quot;eligible_n&quot;: 1,
+        &quot;excluded_n&quot;: 0,
+        &quot;policy_return_pct&quot;: 0.0,
+        &quot;buy_candidate_return_pct&quot;: 12.6359,
+        &quot;benchmark_return_pct&quot;: 3.2506,
+        &quot;paired_policy_minus_benchmark_pp&quot;: -3.2506
+      }
+    },
+    &quot;NVDA&quot;: {
+      &quot;matured_n&quot;: 1,
+      &quot;scoreable_n&quot;: 1,
+      &quot;hits&quot;: 0,
+      &quot;action_hit_rate&quot;: 0.0,
+      &quot;wilson95_descriptive_only&quot;: [
+        0.0,
+        0.7935
+      ],
+      &quot;mean_candidate_alpha_pp&quot;: 4.0,
+      &quot;mean_scoring_basis_alpha_pp&quot;: 4.0,
+      &quot;missed_upside_pp_mean&quot;: null,
+      &quot;avoided_downside_pp_mean&quot;: null,
+      &quot;same_sample_baselines&quot;: {
+        &quot;accumulate&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;neutral&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 1
+        },
+        &quot;reduce&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        }
+      },
+      &quot;mechanical_flat_account_scenario&quot;: {
+        &quot;eligible_n&quot;: 1,
+        &quot;excluded_n&quot;: 0,
+        &quot;policy_return_pct&quot;: -10.34,
+        &quot;buy_candidate_return_pct&quot;: 7.3388,
+        &quot;benchmark_return_pct&quot;: 3.2506,
+        &quot;paired_policy_minus_benchmark_pp&quot;: -13.5906
+      }
+    },
+    &quot;GTLB&quot;: {
+      &quot;matured_n&quot;: 1,
+      &quot;scoreable_n&quot;: 1,
+      &quot;hits&quot;: 0,
+      &quot;action_hit_rate&quot;: 0.0,
+      &quot;wilson95_descriptive_only&quot;: [
+        0.0,
+        0.7935
+      ],
+      &quot;mean_candidate_alpha_pp&quot;: 83.6,
+      &quot;mean_scoring_basis_alpha_pp&quot;: 83.6,
+      &quot;missed_upside_pp_mean&quot;: 83.6,
+      &quot;avoided_downside_pp_mean&quot;: 0,
+      &quot;same_sample_baselines&quot;: {
+        &quot;accumulate&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 1
+        },
+        &quot;neutral&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;reduce&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        }
+      },
+      &quot;mechanical_flat_account_scenario&quot;: {
+        &quot;eligible_n&quot;: 1,
+        &quot;excluded_n&quot;: 0,
+        &quot;policy_return_pct&quot;: 0.0,
+        &quot;buy_candidate_return_pct&quot;: 90.7126,
+        &quot;benchmark_return_pct&quot;: 3.2506,
+        &quot;paired_policy_minus_benchmark_pp&quot;: -3.2506
+      }
+    },
+    &quot;HOOD&quot;: {
+      &quot;matured_n&quot;: 1,
+      &quot;scoreable_n&quot;: 1,
+      &quot;hits&quot;: 1,
+      &quot;action_hit_rate&quot;: 1.0,
+      &quot;wilson95_descriptive_only&quot;: [
+        0.2065,
+        1.0
+      ],
+      &quot;mean_candidate_alpha_pp&quot;: 10.1,
+      &quot;mean_scoring_basis_alpha_pp&quot;: 10.1,
+      &quot;missed_upside_pp_mean&quot;: 10.1,
+      &quot;avoided_downside_pp_mean&quot;: 0,
+      &quot;same_sample_baselines&quot;: {
+        &quot;accumulate&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;neutral&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 1
+        },
+        &quot;reduce&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        }
+      },
+      &quot;mechanical_flat_account_scenario&quot;: {
+        &quot;eligible_n&quot;: 1,
+        &quot;excluded_n&quot;: 0,
+        &quot;policy_return_pct&quot;: 0.0,
+        &quot;buy_candidate_return_pct&quot;: 13.9667,
+        &quot;benchmark_return_pct&quot;: 3.2506,
+        &quot;paired_policy_minus_benchmark_pp&quot;: -3.2506
+      }
+    },
+    &quot;MU&quot;: {
+      &quot;matured_n&quot;: 1,
+      &quot;scoreable_n&quot;: 1,
+      &quot;hits&quot;: 1,
+      &quot;action_hit_rate&quot;: 1.0,
+      &quot;wilson95_descriptive_only&quot;: [
+        0.2065,
+        1.0
+      ],
+      &quot;mean_candidate_alpha_pp&quot;: -11.8,
+      &quot;mean_scoring_basis_alpha_pp&quot;: -11.8,
+      &quot;missed_upside_pp_mean&quot;: 0,
+      &quot;avoided_downside_pp_mean&quot;: 11.8,
+      &quot;same_sample_baselines&quot;: {
+        &quot;accumulate&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;neutral&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 1
+        },
+        &quot;reduce&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        }
+      },
+      &quot;mechanical_flat_account_scenario&quot;: {
+        &quot;eligible_n&quot;: 1,
+        &quot;excluded_n&quot;: 0,
+        &quot;policy_return_pct&quot;: 0.0,
+        &quot;buy_candidate_return_pct&quot;: -12.9284,
+        &quot;benchmark_return_pct&quot;: 3.2506,
+        &quot;paired_policy_minus_benchmark_pp&quot;: -3.2506
+      }
+    },
+    &quot;NOW&quot;: {
+      &quot;matured_n&quot;: 1,
+      &quot;scoreable_n&quot;: 1,
+      &quot;hits&quot;: 1,
+      &quot;action_hit_rate&quot;: 1.0,
+      &quot;wilson95_descriptive_only&quot;: [
+        0.2065,
+        1.0
+      ],
+      &quot;mean_candidate_alpha_pp&quot;: 41.0,
+      &quot;mean_scoring_basis_alpha_pp&quot;: 41.0,
+      &quot;missed_upside_pp_mean&quot;: null,
+      &quot;avoided_downside_pp_mean&quot;: null,
+      &quot;same_sample_baselines&quot;: {
+        &quot;accumulate&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 1
+        },
+        &quot;neutral&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;reduce&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        }
+      },
+      &quot;mechanical_flat_account_scenario&quot;: {
+        &quot;eligible_n&quot;: 1,
+        &quot;excluded_n&quot;: 0,
+        &quot;policy_return_pct&quot;: 47.367,
+        &quot;buy_candidate_return_pct&quot;: 47.367,
+        &quot;benchmark_return_pct&quot;: 3.2506,
+        &quot;paired_policy_minus_benchmark_pp&quot;: 44.1164
+      }
+    },
+    &quot;STNE&quot;: {
+      &quot;matured_n&quot;: 1,
+      &quot;scoreable_n&quot;: 1,
+      &quot;hits&quot;: 0,
+      &quot;action_hit_rate&quot;: 0.0,
+      &quot;wilson95_descriptive_only&quot;: [
+        0.0,
+        0.7935
+      ],
+      &quot;mean_candidate_alpha_pp&quot;: -12.2,
+      &quot;mean_scoring_basis_alpha_pp&quot;: -12.2,
+      &quot;missed_upside_pp_mean&quot;: null,
+      &quot;avoided_downside_pp_mean&quot;: null,
+      &quot;same_sample_baselines&quot;: {
+        &quot;accumulate&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;neutral&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 1
+        },
+        &quot;reduce&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        }
+      },
+      &quot;mechanical_flat_account_scenario&quot;: {
+        &quot;eligible_n&quot;: 1,
+        &quot;excluded_n&quot;: 0,
+        &quot;policy_return_pct&quot;: -10.796,
+        &quot;buy_candidate_return_pct&quot;: -8.3362,
+        &quot;benchmark_return_pct&quot;: 3.2506,
+        &quot;paired_policy_minus_benchmark_pp&quot;: -14.0466
+      }
+    },
+    &quot;LLY&quot;: {
+      &quot;matured_n&quot;: 1,
+      &quot;scoreable_n&quot;: 1,
+      &quot;hits&quot;: 0,
+      &quot;action_hit_rate&quot;: 0.0,
+      &quot;wilson95_descriptive_only&quot;: [
+        0.0,
+        0.7935
+      ],
+      &quot;mean_candidate_alpha_pp&quot;: 2.1,
+      &quot;mean_scoring_basis_alpha_pp&quot;: 2.1,
+      &quot;missed_upside_pp_mean&quot;: null,
+      &quot;avoided_downside_pp_mean&quot;: null,
+      &quot;same_sample_baselines&quot;: {
+        &quot;accumulate&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;neutral&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 1
+        },
+        &quot;reduce&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        }
+      },
+      &quot;mechanical_flat_account_scenario&quot;: {
+        &quot;eligible_n&quot;: 1,
+        &quot;excluded_n&quot;: 0,
+        &quot;policy_return_pct&quot;: 4.5337,
+        &quot;buy_candidate_return_pct&quot;: 4.5337,
+        &quot;benchmark_return_pct&quot;: 3.2506,
+        &quot;paired_policy_minus_benchmark_pp&quot;: 1.2831
+      }
+    },
+    &quot;ORCL&quot;: {
+      &quot;matured_n&quot;: 1,
+      &quot;scoreable_n&quot;: 1,
+      &quot;hits&quot;: 0,
+      &quot;action_hit_rate&quot;: 0.0,
+      &quot;wilson95_descriptive_only&quot;: [
+        0.0,
+        0.7935
+      ],
+      &quot;mean_candidate_alpha_pp&quot;: -23.3,
+      &quot;mean_scoring_basis_alpha_pp&quot;: -23.3,
+      &quot;missed_upside_pp_mean&quot;: null,
+      &quot;avoided_downside_pp_mean&quot;: null,
+      &quot;same_sample_baselines&quot;: {
+        &quot;accumulate&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;neutral&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;reduce&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 1
+        }
+      },
+      &quot;mechanical_flat_account_scenario&quot;: {
+        &quot;eligible_n&quot;: 1,
+        &quot;excluded_n&quot;: 0,
+        &quot;policy_return_pct&quot;: -26.3862,
+        &quot;buy_candidate_return_pct&quot;: -18.7124,
+        &quot;benchmark_return_pct&quot;: 3.2506,
+        &quot;paired_policy_minus_benchmark_pp&quot;: -29.6367
+      }
+    }
+  },
+  &quot;ticker_equal_weight_hit_rate&quot;: 0.4286
+}</pre></details>
+<h2>latest · 66 records</h2>
+<h2>all_revisions · 355 records</h2>
+<h3>3m · matured 21 · scored 21 · hits 9</h3>
+<table><tr><th>Ticker / record</th><th>Stance</th><th>Alpha pp</th><th>Action</th><th>Missed upside pp</th><th>Avoided downside pp</th></tr>
+<tr><td>NU<br><small>20260620-2155-NU-accumulate-M.md</small></td><td>accumulate</td><td>5.10</td><td>False</td><td>0.00</td><td>0.00</td></tr>
+<tr><td>SOFI<br><small>20260620-2200-SOFI-neutral-M.md</small></td><td>neutral</td><td>-7.60</td><td>True</td><td>0.00</td><td>7.60</td></tr>
+<tr><td>MSFT<br><small>20260620-2215-MSFT-accumulate-M.md</small></td><td>accumulate</td><td>27.80</td><td>True</td><td>0.00</td><td>0.00</td></tr>
+<tr><td>ONDS<br><small>20260620-2215-ONDS-neutral-M.md</small></td><td>neutral</td><td>-22.60</td><td>True</td><td>0.00</td><td>22.60</td></tr>
+<tr><td>SE<br><small>20260620-2215-SE-accumulate-M.md</small></td><td>accumulate</td><td>9.20</td><td>False</td><td>0.00</td><td>0.00</td></tr>
+<tr><td>CELH<br><small>20260620-2231-CELH-accumulate-L.md</small></td><td>accumulate</td><td>-11.40</td><td>False</td><td>0.00</td><td>0.00</td></tr>
+<tr><td>ASX<br><small>20260620-2306-ASX-neutral-M.md</small></td><td>neutral</td><td>0.30</td><td>True</td><td>0.30</td><td>0.00</td></tr>
+<tr><td>NOK<br><small>20260620-2306-NOK-reduce-L.md</small></td><td>reduce</td><td>-23.20</td><td>True</td><td>0.00</td><td>23.20</td></tr>
+<tr><td>APP<br><small>20260620-2342-APP-neutral-M.md</small></td><td>neutral</td><td>-36.70</td><td>False</td><td>0.00</td><td>36.70</td></tr>
+<tr><td>FTAI<br><small>20260620-2342-FTAI-accumulate-L.md</small></td><td>accumulate</td><td>-33.20</td><td>False</td><td>0.00</td><td>0.00</td></tr>
+<tr><td>MELI<br><small>20260620-2355-MELI-accumulate-L.md</small></td><td>accumulate</td><td>7.00</td><td>False</td><td>0.00</td><td>0.00</td></tr>
+<tr><td>TSM<br><small>20260620-2355-TSM-accumulate-L.md</small></td><td>accumulate</td><td>-8.30</td><td>False</td><td>0.00</td><td>0.00</td></tr>
+<tr><td>AMD<br><small>20260621-0002-AMD-neutral-M.md</small></td><td>neutral</td><td>10.60</td><td>True</td><td>10.60</td><td>0.00</td></tr>
+<tr><td>NVDA<br><small>20260621-0002-NVDA-accumulate-M.md</small></td><td>accumulate</td><td>4.00</td><td>False</td><td>0.00</td><td>0.00</td></tr>
+<tr><td>GTLB<br><small>20260621-1753-GTLB-neutral-M.md</small></td><td>neutral</td><td>83.60</td><td>False</td><td>83.60</td><td>0.00</td></tr>
+<tr><td>HOOD<br><small>20260621-2302-HOOD-neutral-M.md</small></td><td>neutral</td><td>10.10</td><td>True</td><td>10.10</td><td>0.00</td></tr>
+<tr><td>MU<br><small>20260621-2302-MU-neutral-M.md</small></td><td>neutral</td><td>-11.80</td><td>True</td><td>0.00</td><td>11.80</td></tr>
+<tr><td>NOW<br><small>20260621-2302-NOW-accumulate-L.md</small></td><td>accumulate</td><td>41.00</td><td>True</td><td>0.00</td><td>0.00</td></tr>
+<tr><td>STNE<br><small>20260621-2302-STNE-accumulate-L.md</small></td><td>accumulate</td><td>-12.20</td><td>False</td><td>0.00</td><td>0.00</td></tr>
+<tr><td>LLY<br><small>20260621-2315-LLY-accumulate-M.md</small></td><td>accumulate</td><td>2.10</td><td>False</td><td>0.00</td><td>0.00</td></tr>
+<tr><td>ORCL<br><small>20260621-2315-ORCL-accumulate-L.md</small></td><td>accumulate</td><td>-23.30</td><td>False</td><td>0.00</td><td>0.00</td></tr>
+</table><details><summary>同樣本基準、止損情境及分組統計</summary><pre>{
+  &quot;summary&quot;: {
+    &quot;matured_n&quot;: 21,
+    &quot;scoreable_n&quot;: 21,
+    &quot;hits&quot;: 9,
+    &quot;action_hit_rate&quot;: 0.42857142857142855,
+    &quot;wilson95_descriptive_only&quot;: null,
+    &quot;mean_candidate_alpha_pp&quot;: 0.5,
+    &quot;mean_scoring_basis_alpha_pp&quot;: 0.5,
+    &quot;missed_upside_pp_mean&quot;: 11.6222,
+    &quot;avoided_downside_pp_mean&quot;: 11.3222,
+    &quot;same_sample_baselines&quot;: {
+      &quot;accumulate&quot;: {
+        &quot;n&quot;: 21,
+        &quot;hits&quot;: 3
+      },
+      &quot;neutral&quot;: {
+        &quot;n&quot;: 21,
+        &quot;hits&quot;: 14
+      },
+      &quot;reduce&quot;: {
+        &quot;n&quot;: 21,
+        &quot;hits&quot;: 4
+      }
+    },
+    &quot;mechanical_flat_account_scenario&quot;: {
+      &quot;eligible_n&quot;: 19,
+      &quot;excluded_n&quot;: 2,
+      &quot;policy_return_pct&quot;: 0.8941,
+      &quot;buy_candidate_return_pct&quot;: 5.4335,
+      &quot;benchmark_return_pct&quot;: 2.4193,
+      &quot;paired_policy_minus_benchmark_pp&quot;: -1.5252
+    }
+  },
+  &quot;by_stance&quot;: {
+    &quot;accumulate&quot;: {
+      &quot;matured_n&quot;: 12,
+      &quot;scoreable_n&quot;: 12,
+      &quot;hits&quot;: 2,
+      &quot;action_hit_rate&quot;: 0.16666666666666666,
+      &quot;wilson95_descriptive_only&quot;: [
+        0.047,
+        0.448
+      ],
+      &quot;mean_candidate_alpha_pp&quot;: 0.65,
+      &quot;mean_scoring_basis_alpha_pp&quot;: 0.65,
+      &quot;missed_upside_pp_mean&quot;: null,
+      &quot;avoided_downside_pp_mean&quot;: null,
+      &quot;same_sample_baselines&quot;: {
+        &quot;accumulate&quot;: {
+          &quot;n&quot;: 12,
+          &quot;hits&quot;: 2
+        },
+        &quot;neutral&quot;: {
+          &quot;n&quot;: 12,
+          &quot;hits&quot;: 8
+        },
+        &quot;reduce&quot;: {
+          &quot;n&quot;: 12,
+          &quot;hits&quot;: 2
+        }
+      },
+      &quot;mechanical_flat_account_scenario&quot;: {
+        &quot;eligible_n&quot;: 10,
+        &quot;excluded_n&quot;: 2,
+        &quot;policy_return_pct&quot;: 1.6988,
+        &quot;buy_candidate_return_pct&quot;: 8.3163,
+        &quot;benchmark_return_pct&quot;: 2.4608,
+        &quot;paired_policy_minus_benchmark_pp&quot;: -0.762
+      }
+    },
+    &quot;neutral&quot;: {
+      &quot;matured_n&quot;: 8,
+      &quot;scoreable_n&quot;: 8,
+      &quot;hits&quot;: 6,
+      &quot;action_hit_rate&quot;: 0.75,
+      &quot;wilson95_descriptive_only&quot;: [
+        0.4093,
+        0.9285
+      ],
+      &quot;mean_candidate_alpha_pp&quot;: 3.2375,
+      &quot;mean_scoring_basis_alpha_pp&quot;: 3.2375,
+      &quot;missed_upside_pp_mean&quot;: 13.075,
+      &quot;avoided_downside_pp_mean&quot;: 9.8375,
+      &quot;same_sample_baselines&quot;: {
+        &quot;accumulate&quot;: {
+          &quot;n&quot;: 8,
+          &quot;hits&quot;: 1
+        },
+        &quot;neutral&quot;: {
+          &quot;n&quot;: 8,
+          &quot;hits&quot;: 6
+        },
+        &quot;reduce&quot;: {
+          &quot;n&quot;: 8,
+          &quot;hits&quot;: 1
+        }
+      },
+      &quot;mechanical_flat_account_scenario&quot;: {
+        &quot;eligible_n&quot;: 8,
+        &quot;excluded_n&quot;: 0,
+        &quot;policy_return_pct&quot;: 0.0,
+        &quot;buy_candidate_return_pct&quot;: 5.3882,
+        &quot;benchmark_return_pct&quot;: 2.4608,
+        &quot;paired_policy_minus_benchmark_pp&quot;: -2.4608
+      }
+    },
+    &quot;reduce&quot;: {
+      &quot;matured_n&quot;: 1,
+      &quot;scoreable_n&quot;: 1,
+      &quot;hits&quot;: 1,
+      &quot;action_hit_rate&quot;: 1.0,
+      &quot;wilson95_descriptive_only&quot;: [
+        0.2065,
+        1.0
+      ],
+      &quot;mean_candidate_alpha_pp&quot;: -23.2,
+      &quot;mean_scoring_basis_alpha_pp&quot;: -23.2,
+      &quot;missed_upside_pp_mean&quot;: 0,
+      &quot;avoided_downside_pp_mean&quot;: 23.2,
+      &quot;same_sample_baselines&quot;: {
+        &quot;accumulate&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;neutral&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;reduce&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 1
+        }
+      },
+      &quot;mechanical_flat_account_scenario&quot;: {
+        &quot;eligible_n&quot;: 1,
+        &quot;excluded_n&quot;: 0,
+        &quot;policy_return_pct&quot;: 0.0,
+        &quot;buy_candidate_return_pct&quot;: -23.0324,
+        &quot;benchmark_return_pct&quot;: 1.6711,
+        &quot;paired_policy_minus_benchmark_pp&quot;: -1.6711
+      }
+    }
+  },
+  &quot;by_ticker&quot;: {
+    &quot;NU&quot;: {
+      &quot;matured_n&quot;: 1,
+      &quot;scoreable_n&quot;: 1,
+      &quot;hits&quot;: 0,
+      &quot;action_hit_rate&quot;: 0.0,
+      &quot;wilson95_descriptive_only&quot;: [
+        0.0,
+        0.7935
+      ],
+      &quot;mean_candidate_alpha_pp&quot;: 5.1,
+      &quot;mean_scoring_basis_alpha_pp&quot;: 5.1,
+      &quot;missed_upside_pp_mean&quot;: null,
+      &quot;avoided_downside_pp_mean&quot;: null,
+      &quot;same_sample_baselines&quot;: {
+        &quot;accumulate&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;neutral&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 1
+        },
+        &quot;reduce&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        }
+      },
+      &quot;mechanical_flat_account_scenario&quot;: {
+        &quot;eligible_n&quot;: 1,
+        &quot;excluded_n&quot;: 0,
+        &quot;policy_return_pct&quot;: 6.6075,
+        &quot;buy_candidate_return_pct&quot;: 6.6075,
+        &quot;benchmark_return_pct&quot;: 1.6711,
+        &quot;paired_policy_minus_benchmark_pp&quot;: 4.9364
+      }
+    },
+    &quot;SOFI&quot;: {
+      &quot;matured_n&quot;: 1,
+      &quot;scoreable_n&quot;: 1,
+      &quot;hits&quot;: 1,
+      &quot;action_hit_rate&quot;: 1.0,
+      &quot;wilson95_descriptive_only&quot;: [
+        0.2065,
+        1.0
+      ],
+      &quot;mean_candidate_alpha_pp&quot;: -7.6,
+      &quot;mean_scoring_basis_alpha_pp&quot;: -7.6,
+      &quot;missed_upside_pp_mean&quot;: 0,
+      &quot;avoided_downside_pp_mean&quot;: 7.6,
+      &quot;same_sample_baselines&quot;: {
+        &quot;accumulate&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;neutral&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 1
+        },
+        &quot;reduce&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        }
+      },
+      &quot;mechanical_flat_account_scenario&quot;: {
+        &quot;eligible_n&quot;: 1,
+        &quot;excluded_n&quot;: 0,
+        &quot;policy_return_pct&quot;: 0.0,
+        &quot;buy_candidate_return_pct&quot;: -3.7816,
+        &quot;benchmark_return_pct&quot;: 1.6711,
+        &quot;paired_policy_minus_benchmark_pp&quot;: -1.6711
+      }
+    },
+    &quot;MSFT&quot;: {
+      &quot;matured_n&quot;: 1,
+      &quot;scoreable_n&quot;: 1,
+      &quot;hits&quot;: 1,
+      &quot;action_hit_rate&quot;: 1.0,
+      &quot;wilson95_descriptive_only&quot;: [
+        0.2065,
+        1.0
+      ],
+      &quot;mean_candidate_alpha_pp&quot;: 27.8,
+      &quot;mean_scoring_basis_alpha_pp&quot;: 27.8,
+      &quot;missed_upside_pp_mean&quot;: null,
+      &quot;avoided_downside_pp_mean&quot;: null,
+      &quot;same_sample_baselines&quot;: {
+        &quot;accumulate&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 1
+        },
+        &quot;neutral&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;reduce&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        }
+      },
+      &quot;mechanical_flat_account_scenario&quot;: {
+        &quot;eligible_n&quot;: 1,
+        &quot;excluded_n&quot;: 0,
+        &quot;policy_return_pct&quot;: -5.4536,
+        &quot;buy_candidate_return_pct&quot;: 31.2153,
+        &quot;benchmark_return_pct&quot;: 1.6711,
+        &quot;paired_policy_minus_benchmark_pp&quot;: -7.1247
+      }
+    },
+    &quot;ONDS&quot;: {
+      &quot;matured_n&quot;: 1,
+      &quot;scoreable_n&quot;: 1,
+      &quot;hits&quot;: 1,
+      &quot;action_hit_rate&quot;: 1.0,
+      &quot;wilson95_descriptive_only&quot;: [
+        0.2065,
+        1.0
+      ],
+      &quot;mean_candidate_alpha_pp&quot;: -22.6,
+      &quot;mean_scoring_basis_alpha_pp&quot;: -22.6,
+      &quot;missed_upside_pp_mean&quot;: 0,
+      &quot;avoided_downside_pp_mean&quot;: 22.6,
+      &quot;same_sample_baselines&quot;: {
+        &quot;accumulate&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;neutral&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 1
+        },
+        &quot;reduce&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        }
+      },
+      &quot;mechanical_flat_account_scenario&quot;: {
+        &quot;eligible_n&quot;: 1,
+        &quot;excluded_n&quot;: 0,
+        &quot;policy_return_pct&quot;: 0.0,
+        &quot;buy_candidate_return_pct&quot;: -21.2048,
+        &quot;benchmark_return_pct&quot;: 1.6711,
+        &quot;paired_policy_minus_benchmark_pp&quot;: -1.6711
+      }
+    },
+    &quot;SE&quot;: {
+      &quot;matured_n&quot;: 1,
+      &quot;scoreable_n&quot;: 1,
+      &quot;hits&quot;: 0,
+      &quot;action_hit_rate&quot;: 0.0,
+      &quot;wilson95_descriptive_only&quot;: [
+        0.0,
+        0.7935
+      ],
+      &quot;mean_candidate_alpha_pp&quot;: 9.2,
+      &quot;mean_scoring_basis_alpha_pp&quot;: 9.2,
+      &quot;missed_upside_pp_mean&quot;: null,
+      &quot;avoided_downside_pp_mean&quot;: null,
+      &quot;same_sample_baselines&quot;: {
+        &quot;accumulate&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;neutral&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 1
+        },
+        &quot;reduce&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        }
+      },
+      &quot;mechanical_flat_account_scenario&quot;: {
+        &quot;eligible_n&quot;: 1,
+        &quot;excluded_n&quot;: 0,
+        &quot;policy_return_pct&quot;: 12.8874,
+        &quot;buy_candidate_return_pct&quot;: 12.8874,
+        &quot;benchmark_return_pct&quot;: 1.6711,
+        &quot;paired_policy_minus_benchmark_pp&quot;: 11.2164
+      }
+    },
+    &quot;CELH&quot;: {
+      &quot;matured_n&quot;: 1,
+      &quot;scoreable_n&quot;: 1,
+      &quot;hits&quot;: 0,
+      &quot;action_hit_rate&quot;: 0.0,
+      &quot;wilson95_descriptive_only&quot;: [
+        0.0,
+        0.7935
+      ],
+      &quot;mean_candidate_alpha_pp&quot;: -11.4,
+      &quot;mean_scoring_basis_alpha_pp&quot;: -11.4,
+      &quot;missed_upside_pp_mean&quot;: null,
+      &quot;avoided_downside_pp_mean&quot;: null,
+      &quot;same_sample_baselines&quot;: {
+        &quot;accumulate&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;neutral&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 1
+        },
+        &quot;reduce&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        }
+      },
+      &quot;mechanical_flat_account_scenario&quot;: {
+        &quot;eligible_n&quot;: 1,
+        &quot;excluded_n&quot;: 0,
+        &quot;policy_return_pct&quot;: -10.6526,
+        &quot;buy_candidate_return_pct&quot;: -8.9594,
+        &quot;benchmark_return_pct&quot;: 1.6711,
+        &quot;paired_policy_minus_benchmark_pp&quot;: -12.3237
+      }
+    },
+    &quot;ASX&quot;: {
+      &quot;matured_n&quot;: 1,
+      &quot;scoreable_n&quot;: 1,
+      &quot;hits&quot;: 1,
+      &quot;action_hit_rate&quot;: 1.0,
+      &quot;wilson95_descriptive_only&quot;: [
+        0.2065,
+        1.0
+      ],
+      &quot;mean_candidate_alpha_pp&quot;: 0.3,
+      &quot;mean_scoring_basis_alpha_pp&quot;: 0.3,
+      &quot;missed_upside_pp_mean&quot;: 0.3,
+      &quot;avoided_downside_pp_mean&quot;: 0,
+      &quot;same_sample_baselines&quot;: {
+        &quot;accumulate&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;neutral&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 1
+        },
+        &quot;reduce&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        }
+      },
+      &quot;mechanical_flat_account_scenario&quot;: {
+        &quot;eligible_n&quot;: 1,
+        &quot;excluded_n&quot;: 0,
+        &quot;policy_return_pct&quot;: 0.0,
+        &quot;buy_candidate_return_pct&quot;: -3.4535,
+        &quot;benchmark_return_pct&quot;: 1.6711,
+        &quot;paired_policy_minus_benchmark_pp&quot;: -1.6711
+      }
+    },
+    &quot;NOK&quot;: {
+      &quot;matured_n&quot;: 1,
+      &quot;scoreable_n&quot;: 1,
+      &quot;hits&quot;: 1,
+      &quot;action_hit_rate&quot;: 1.0,
+      &quot;wilson95_descriptive_only&quot;: [
+        0.2065,
+        1.0
+      ],
+      &quot;mean_candidate_alpha_pp&quot;: -23.2,
+      &quot;mean_scoring_basis_alpha_pp&quot;: -23.2,
+      &quot;missed_upside_pp_mean&quot;: 0,
+      &quot;avoided_downside_pp_mean&quot;: 23.2,
+      &quot;same_sample_baselines&quot;: {
+        &quot;accumulate&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;neutral&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;reduce&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 1
+        }
+      },
+      &quot;mechanical_flat_account_scenario&quot;: {
+        &quot;eligible_n&quot;: 1,
+        &quot;excluded_n&quot;: 0,
+        &quot;policy_return_pct&quot;: 0.0,
+        &quot;buy_candidate_return_pct&quot;: -23.0324,
+        &quot;benchmark_return_pct&quot;: 1.6711,
+        &quot;paired_policy_minus_benchmark_pp&quot;: -1.6711
+      }
+    },
+    &quot;APP&quot;: {
+      &quot;matured_n&quot;: 1,
+      &quot;scoreable_n&quot;: 1,
+      &quot;hits&quot;: 0,
+      &quot;action_hit_rate&quot;: 0.0,
+      &quot;wilson95_descriptive_only&quot;: [
+        0.0,
+        0.7935
+      ],
+      &quot;mean_candidate_alpha_pp&quot;: -36.7,
+      &quot;mean_scoring_basis_alpha_pp&quot;: -36.7,
+      &quot;missed_upside_pp_mean&quot;: 0,
+      &quot;avoided_downside_pp_mean&quot;: 36.7,
+      &quot;same_sample_baselines&quot;: {
+        &quot;accumulate&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;neutral&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;reduce&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 1
+        }
+      },
+      &quot;mechanical_flat_account_scenario&quot;: {
+        &quot;eligible_n&quot;: 1,
+        &quot;excluded_n&quot;: 0,
+        &quot;policy_return_pct&quot;: 0.0,
+        &quot;buy_candidate_return_pct&quot;: -32.8409,
+        &quot;benchmark_return_pct&quot;: 1.6711,
+        &quot;paired_policy_minus_benchmark_pp&quot;: -1.6711
+      }
+    },
+    &quot;FTAI&quot;: {
+      &quot;matured_n&quot;: 1,
+      &quot;scoreable_n&quot;: 1,
+      &quot;hits&quot;: 0,
+      &quot;action_hit_rate&quot;: 0.0,
+      &quot;wilson95_descriptive_only&quot;: [
+        0.0,
+        0.7935
+      ],
+      &quot;mean_candidate_alpha_pp&quot;: -33.2,
+      &quot;mean_scoring_basis_alpha_pp&quot;: -33.2,
+      &quot;missed_upside_pp_mean&quot;: null,
+      &quot;avoided_downside_pp_mean&quot;: null,
+      &quot;same_sample_baselines&quot;: {
+        &quot;accumulate&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;neutral&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;reduce&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 1
+        }
+      },
+      &quot;mechanical_flat_account_scenario&quot;: {
+        &quot;eligible_n&quot;: 0,
+        &quot;excluded_n&quot;: 1,
+        &quot;policy_return_pct&quot;: null,
+        &quot;buy_candidate_return_pct&quot;: null,
+        &quot;benchmark_return_pct&quot;: null,
+        &quot;paired_policy_minus_benchmark_pp&quot;: null
+      }
+    },
+    &quot;MELI&quot;: {
+      &quot;matured_n&quot;: 1,
+      &quot;scoreable_n&quot;: 1,
+      &quot;hits&quot;: 0,
+      &quot;action_hit_rate&quot;: 0.0,
+      &quot;wilson95_descriptive_only&quot;: [
+        0.0,
+        0.7935
+      ],
+      &quot;mean_candidate_alpha_pp&quot;: 7.0,
+      &quot;mean_scoring_basis_alpha_pp&quot;: 7.0,
+      &quot;missed_upside_pp_mean&quot;: null,
+      &quot;avoided_downside_pp_mean&quot;: null,
+      &quot;same_sample_baselines&quot;: {
+        &quot;accumulate&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;neutral&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 1
+        },
+        &quot;reduce&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        }
+      },
+      &quot;mechanical_flat_account_scenario&quot;: {
+        &quot;eligible_n&quot;: 1,
+        &quot;excluded_n&quot;: 0,
+        &quot;policy_return_pct&quot;: 9.2209,
+        &quot;buy_candidate_return_pct&quot;: 9.2209,
+        &quot;benchmark_return_pct&quot;: 1.6711,
+        &quot;paired_policy_minus_benchmark_pp&quot;: 7.5498
+      }
+    },
+    &quot;TSM&quot;: {
+      &quot;matured_n&quot;: 1,
+      &quot;scoreable_n&quot;: 1,
+      &quot;hits&quot;: 0,
+      &quot;action_hit_rate&quot;: 0.0,
+      &quot;wilson95_descriptive_only&quot;: [
+        0.0,
+        0.7935
+      ],
+      &quot;mean_candidate_alpha_pp&quot;: -8.3,
+      &quot;mean_scoring_basis_alpha_pp&quot;: -8.3,
+      &quot;missed_upside_pp_mean&quot;: null,
+      &quot;avoided_downside_pp_mean&quot;: null,
+      &quot;same_sample_baselines&quot;: {
+        &quot;accumulate&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;neutral&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 1
+        },
+        &quot;reduce&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        }
+      },
+      &quot;mechanical_flat_account_scenario&quot;: {
+        &quot;eligible_n&quot;: 0,
+        &quot;excluded_n&quot;: 1,
+        &quot;policy_return_pct&quot;: null,
+        &quot;buy_candidate_return_pct&quot;: null,
+        &quot;benchmark_return_pct&quot;: null,
+        &quot;paired_policy_minus_benchmark_pp&quot;: null
+      }
+    },
+    &quot;AMD&quot;: {
+      &quot;matured_n&quot;: 1,
+      &quot;scoreable_n&quot;: 1,
+      &quot;hits&quot;: 1,
+      &quot;action_hit_rate&quot;: 1.0,
+      &quot;wilson95_descriptive_only&quot;: [
+        0.2065,
+        1.0
+      ],
+      &quot;mean_candidate_alpha_pp&quot;: 10.6,
+      &quot;mean_scoring_basis_alpha_pp&quot;: 10.6,
+      &quot;missed_upside_pp_mean&quot;: 10.6,
+      &quot;avoided_downside_pp_mean&quot;: 0,
+      &quot;same_sample_baselines&quot;: {
+        &quot;accumulate&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;neutral&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 1
+        },
+        &quot;reduce&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        }
+      },
+      &quot;mechanical_flat_account_scenario&quot;: {
+        &quot;eligible_n&quot;: 1,
+        &quot;excluded_n&quot;: 0,
+        &quot;policy_return_pct&quot;: 0.0,
+        &quot;buy_candidate_return_pct&quot;: 12.6359,
+        &quot;benchmark_return_pct&quot;: 3.2506,
+        &quot;paired_policy_minus_benchmark_pp&quot;: -3.2506
+      }
+    },
+    &quot;NVDA&quot;: {
+      &quot;matured_n&quot;: 1,
+      &quot;scoreable_n&quot;: 1,
+      &quot;hits&quot;: 0,
+      &quot;action_hit_rate&quot;: 0.0,
+      &quot;wilson95_descriptive_only&quot;: [
+        0.0,
+        0.7935
+      ],
+      &quot;mean_candidate_alpha_pp&quot;: 4.0,
+      &quot;mean_scoring_basis_alpha_pp&quot;: 4.0,
+      &quot;missed_upside_pp_mean&quot;: null,
+      &quot;avoided_downside_pp_mean&quot;: null,
+      &quot;same_sample_baselines&quot;: {
+        &quot;accumulate&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;neutral&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 1
+        },
+        &quot;reduce&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        }
+      },
+      &quot;mechanical_flat_account_scenario&quot;: {
+        &quot;eligible_n&quot;: 1,
+        &quot;excluded_n&quot;: 0,
+        &quot;policy_return_pct&quot;: -10.34,
+        &quot;buy_candidate_return_pct&quot;: 7.3388,
+        &quot;benchmark_return_pct&quot;: 3.2506,
+        &quot;paired_policy_minus_benchmark_pp&quot;: -13.5906
+      }
+    },
+    &quot;GTLB&quot;: {
+      &quot;matured_n&quot;: 1,
+      &quot;scoreable_n&quot;: 1,
+      &quot;hits&quot;: 0,
+      &quot;action_hit_rate&quot;: 0.0,
+      &quot;wilson95_descriptive_only&quot;: [
+        0.0,
+        0.7935
+      ],
+      &quot;mean_candidate_alpha_pp&quot;: 83.6,
+      &quot;mean_scoring_basis_alpha_pp&quot;: 83.6,
+      &quot;missed_upside_pp_mean&quot;: 83.6,
+      &quot;avoided_downside_pp_mean&quot;: 0,
+      &quot;same_sample_baselines&quot;: {
+        &quot;accumulate&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 1
+        },
+        &quot;neutral&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;reduce&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        }
+      },
+      &quot;mechanical_flat_account_scenario&quot;: {
+        &quot;eligible_n&quot;: 1,
+        &quot;excluded_n&quot;: 0,
+        &quot;policy_return_pct&quot;: 0.0,
+        &quot;buy_candidate_return_pct&quot;: 90.7126,
+        &quot;benchmark_return_pct&quot;: 3.2506,
+        &quot;paired_policy_minus_benchmark_pp&quot;: -3.2506
+      }
+    },
+    &quot;HOOD&quot;: {
+      &quot;matured_n&quot;: 1,
+      &quot;scoreable_n&quot;: 1,
+      &quot;hits&quot;: 1,
+      &quot;action_hit_rate&quot;: 1.0,
+      &quot;wilson95_descriptive_only&quot;: [
+        0.2065,
+        1.0
+      ],
+      &quot;mean_candidate_alpha_pp&quot;: 10.1,
+      &quot;mean_scoring_basis_alpha_pp&quot;: 10.1,
+      &quot;missed_upside_pp_mean&quot;: 10.1,
+      &quot;avoided_downside_pp_mean&quot;: 0,
+      &quot;same_sample_baselines&quot;: {
+        &quot;accumulate&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;neutral&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 1
+        },
+        &quot;reduce&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        }
+      },
+      &quot;mechanical_flat_account_scenario&quot;: {
+        &quot;eligible_n&quot;: 1,
+        &quot;excluded_n&quot;: 0,
+        &quot;policy_return_pct&quot;: 0.0,
+        &quot;buy_candidate_return_pct&quot;: 13.9667,
+        &quot;benchmark_return_pct&quot;: 3.2506,
+        &quot;paired_policy_minus_benchmark_pp&quot;: -3.2506
+      }
+    },
+    &quot;MU&quot;: {
+      &quot;matured_n&quot;: 1,
+      &quot;scoreable_n&quot;: 1,
+      &quot;hits&quot;: 1,
+      &quot;action_hit_rate&quot;: 1.0,
+      &quot;wilson95_descriptive_only&quot;: [
+        0.2065,
+        1.0
+      ],
+      &quot;mean_candidate_alpha_pp&quot;: -11.8,
+      &quot;mean_scoring_basis_alpha_pp&quot;: -11.8,
+      &quot;missed_upside_pp_mean&quot;: 0,
+      &quot;avoided_downside_pp_mean&quot;: 11.8,
+      &quot;same_sample_baselines&quot;: {
+        &quot;accumulate&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;neutral&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 1
+        },
+        &quot;reduce&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        }
+      },
+      &quot;mechanical_flat_account_scenario&quot;: {
+        &quot;eligible_n&quot;: 1,
+        &quot;excluded_n&quot;: 0,
+        &quot;policy_return_pct&quot;: 0.0,
+        &quot;buy_candidate_return_pct&quot;: -12.9284,
+        &quot;benchmark_return_pct&quot;: 3.2506,
+        &quot;paired_policy_minus_benchmark_pp&quot;: -3.2506
+      }
+    },
+    &quot;NOW&quot;: {
+      &quot;matured_n&quot;: 1,
+      &quot;scoreable_n&quot;: 1,
+      &quot;hits&quot;: 1,
+      &quot;action_hit_rate&quot;: 1.0,
+      &quot;wilson95_descriptive_only&quot;: [
+        0.2065,
+        1.0
+      ],
+      &quot;mean_candidate_alpha_pp&quot;: 41.0,
+      &quot;mean_scoring_basis_alpha_pp&quot;: 41.0,
+      &quot;missed_upside_pp_mean&quot;: null,
+      &quot;avoided_downside_pp_mean&quot;: null,
+      &quot;same_sample_baselines&quot;: {
+        &quot;accumulate&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 1
+        },
+        &quot;neutral&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;reduce&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        }
+      },
+      &quot;mechanical_flat_account_scenario&quot;: {
+        &quot;eligible_n&quot;: 1,
+        &quot;excluded_n&quot;: 0,
+        &quot;policy_return_pct&quot;: 47.367,
+        &quot;buy_candidate_return_pct&quot;: 47.367,
+        &quot;benchmark_return_pct&quot;: 3.2506,
+        &quot;paired_policy_minus_benchmark_pp&quot;: 44.1164
+      }
+    },
+    &quot;STNE&quot;: {
+      &quot;matured_n&quot;: 1,
+      &quot;scoreable_n&quot;: 1,
+      &quot;hits&quot;: 0,
+      &quot;action_hit_rate&quot;: 0.0,
+      &quot;wilson95_descriptive_only&quot;: [
+        0.0,
+        0.7935
+      ],
+      &quot;mean_candidate_alpha_pp&quot;: -12.2,
+      &quot;mean_scoring_basis_alpha_pp&quot;: -12.2,
+      &quot;missed_upside_pp_mean&quot;: null,
+      &quot;avoided_downside_pp_mean&quot;: null,
+      &quot;same_sample_baselines&quot;: {
+        &quot;accumulate&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;neutral&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 1
+        },
+        &quot;reduce&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        }
+      },
+      &quot;mechanical_flat_account_scenario&quot;: {
+        &quot;eligible_n&quot;: 1,
+        &quot;excluded_n&quot;: 0,
+        &quot;policy_return_pct&quot;: -10.796,
+        &quot;buy_candidate_return_pct&quot;: -8.3362,
+        &quot;benchmark_return_pct&quot;: 3.2506,
+        &quot;paired_policy_minus_benchmark_pp&quot;: -14.0466
+      }
+    },
+    &quot;LLY&quot;: {
+      &quot;matured_n&quot;: 1,
+      &quot;scoreable_n&quot;: 1,
+      &quot;hits&quot;: 0,
+      &quot;action_hit_rate&quot;: 0.0,
+      &quot;wilson95_descriptive_only&quot;: [
+        0.0,
+        0.7935
+      ],
+      &quot;mean_candidate_alpha_pp&quot;: 2.1,
+      &quot;mean_scoring_basis_alpha_pp&quot;: 2.1,
+      &quot;missed_upside_pp_mean&quot;: null,
+      &quot;avoided_downside_pp_mean&quot;: null,
+      &quot;same_sample_baselines&quot;: {
+        &quot;accumulate&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;neutral&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 1
+        },
+        &quot;reduce&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        }
+      },
+      &quot;mechanical_flat_account_scenario&quot;: {
+        &quot;eligible_n&quot;: 1,
+        &quot;excluded_n&quot;: 0,
+        &quot;policy_return_pct&quot;: 4.5337,
+        &quot;buy_candidate_return_pct&quot;: 4.5337,
+        &quot;benchmark_return_pct&quot;: 3.2506,
+        &quot;paired_policy_minus_benchmark_pp&quot;: 1.2831
+      }
+    },
+    &quot;ORCL&quot;: {
+      &quot;matured_n&quot;: 1,
+      &quot;scoreable_n&quot;: 1,
+      &quot;hits&quot;: 0,
+      &quot;action_hit_rate&quot;: 0.0,
+      &quot;wilson95_descriptive_only&quot;: [
+        0.0,
+        0.7935
+      ],
+      &quot;mean_candidate_alpha_pp&quot;: -23.3,
+      &quot;mean_scoring_basis_alpha_pp&quot;: -23.3,
+      &quot;missed_upside_pp_mean&quot;: null,
+      &quot;avoided_downside_pp_mean&quot;: null,
+      &quot;same_sample_baselines&quot;: {
+        &quot;accumulate&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;neutral&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 0
+        },
+        &quot;reduce&quot;: {
+          &quot;n&quot;: 1,
+          &quot;hits&quot;: 1
+        }
+      },
+      &quot;mechanical_flat_account_scenario&quot;: {
+        &quot;eligible_n&quot;: 1,
+        &quot;excluded_n&quot;: 0,
+        &quot;policy_return_pct&quot;: -26.3862,
+        &quot;buy_candidate_return_pct&quot;: -18.7124,
+        &quot;benchmark_return_pct&quot;: 3.2506,
+        &quot;paired_policy_minus_benchmark_pp&quot;: -29.6367
+      }
+    }
+  },
+  &quot;ticker_equal_weight_hit_rate&quot;: 0.4286
+}</pre></details>
+<h2>解讀限制</h2><ul><li>Inception = earliest available archived file per ticker; not proof of original publication.</li><li>Latest and inception are descriptive ticker cohorts; sectors and dates remain correlated.</li><li>All revisions are an audit ledger, not independent trials; no pooled p-value.</li><li>Price returns, not total returns; splits/dividends and source corrections need independent validation.</li><li>Stop replay is a flat-account scenario with fixed stops, 10bp/side costs and zero cash yield, not actual trades.</li><li>Historical reported prices may predate an executable session; next-session-open replay is separate.</li><li>50% is not a valid universal null for asymmetric stance rules.</li><li>No historical KB/no-KB experiment is inferred from citations.</li></ul></html>
